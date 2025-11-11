@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in / Sign up</title>
+</head>
+<body>
+    <header>
+        <img src="https://tse1.mm.bing.net/th/id/OIP.9-LakYMSxQjGAjAk4f8dMQHaD7?w=319&h=180&c=7&r=0&o=7&cb=ucfimg2&dpr=1.5&pid=1.7&rm=3&ucfimg=1" alt="Platform logo" title="Platform logo">
+        <h1>PeerGo</h1>
+        <p>introduction area</p>
+    </header>
+
+    <main>
+        <section id="login-section" aria-labelledby="login-title">
+            <h2>Login</h2>
+            <form action="" method="post" autocomplete="on">
+                <div>
+                    <label for="login-username">Username</label>
+                    <input id="login-username" name="username" type="text" placeholder="Enter username" autocomplete="username" required>
+                </div>
+
+                <div>
+                    <label for="login-password">Password</label>
+                    <input id="login-password" name="password" type="password" minlength="8" maxlength="20" placeholder="Enter password" required>
+                </div>
+
+                <div>
+                    <label>
+                        <input name="remember" type="checkbox" checked>
+                        Remember Me
+                    </label>
+                </div>
+
+                <div>
+                    <button type="submit">Login</button> 
+                    <button type="button">Forgot Password</button> 
+                </div>
+
+                <p>No account? Go to register.</p>
+                <!-- Js: switch to register -->
+            </form>
+        </section>
+
+        <section id="register-section" aria-labelledby="register-title" hidden>
+            <h2>Register</h2>
+            <form action="" method="post" autocomplete="on">
+                <div>
+                    <label for="register-email">Email</label>
+                    <input id="register-email" name="email" type="email" placeholder="must end with @mnsu.edu" autocomplete="email" required>
+                </div>
+
+                <div>
+                    <label for="register-username">Username</label>
+                    <input id="register-username" name="username" type="text" minlength="2" maxlength="20" placeholder="2-20 chars, must be unique" autocomplete="username" required>                    
+                </div>
+
+
+                <div>
+                    <label for="register-password1">Set Password</label>
+                    <input id="register-password1" name="password1" type="password" minlength="8" maxlength="20" placeholder="8-20 chars, include lettters and numbers" required>                    
+                </div>
+
+                <div>
+                    <label for="register-password2">Password Confirm</label>
+                    <input id="register-password2" name="password2" type="password" minlength="8" maxlength="20" placeholder="8-20 chars, include lettters and numbers" required>                    
+                </div>
+
+                <div>
+                    <button type="submit">Sign up</button>
+                </div>
+
+                <p>Already have an account? Go to login.</p>
+                <!-- Js: switch to login -->
+            </form>
+        </section>
+
+        <section id="reset-section" aria-labelledby="reset-title" hidden>
+            <h2>Reset</h2>
+            <form action="" method="post" autocomplete="on">
+                <div>
+                    <label for="reset-email">Email</label>
+                    <input id="reset-email" name="email" type="email" placeholder="Enter your email end with @mnsu.edu" autocomplete="email" required>
+                </div>
+
+                <div>
+                    <label for="reset-password1">New Password</label>
+                    <input id="reset-password1" name="password1" type="password" minlength="8" maxlength="20" placeholder="8-20 chars, include lettters and numbers" required>
+                </div>
+
+                <div>
+                    <label for="reset-password2">Password Confirm</label>
+                    <input id="register-password2" name="password2" type="password" minlength="8" maxlength="20" placeholder="8-20 chars, include lettters and numbers" required>
+                </div>
+                
+                <div>
+                    <button type="submit">Reset</button>
+                    <button type="button">Return</button>
+                    <!-- Js: switch to login -->
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <small>© 2025 PeerGo</small>
+    </footer>
+</body>
+</html>
