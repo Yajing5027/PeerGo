@@ -1,158 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mutual Assistance</title>
-    </head>
-    <body>
-        <header>
-            <h1>Mutual Assistance</h1>
-            <p>Thank you!</p>
-        </header>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mutual Assistance</title>
+</head>
+<body>
+    <header>
+        <h1>Mutual Assistance</h1>
+        <p>Thank you!</p>
+    </header>
 
-        <main>
-            <section id="filter-section" aria-labelledby="filter-title">
-                <h2 id="filter-title">Filter</h2>
-                <div>
-                    <label for="request-type">Type</label>
-                    <select name="request-type" id="request-type">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>
-                </div>
+    <main>
+        <section id="filter-section" aria-labelledby="filter-title">
+            <h2 id="filter-title">Filter</h2>
+            <div>
+                <label for="request-type">Type</label>
+                <select name="request-type" id="request-type">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
 
-                <div>
-                    <label for="pickup-location">Pickup Location</label>
-                    <select name="pickup-location" id="pickup-location">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>
-                </div>
+            <div>
+                <label for="pickup-location">Pickup Location</label>
+                <select name="pickup-location" id="pickup-location">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
 
-                <div>
-                    <label for="delivery-location">Delivery Location</label>
-                    <select name="delivery-location" id="delivery-location">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>
-                </div>
+            <div>
+                <label for="delivery-location">Delivery Location</label>
+                <select name="delivery-location" id="delivery-location">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
 
-                <div>
-                    <label for="state">State</label>
-                    <select name="state" id="state">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                    </select>
-                </div>
+            <div>
+                <label for="state">State</label>
+                <select name="state" id="state">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                </select>
+            </div>
 
-                <button type="submit">Filter</button>
+            <button type="submit">Filter</button>
 
-                <button type="button">Post</button>
-            </section>
+            <button type="button">Post</button>
+        </section>
 
-            <section id="request-table-section" aria-labelledby="request-table">
-                <table id="request-table" title="request-table">
-                    <thead>
-                        <tr>
-                            <th>Type</th>
-                            <th>Request Content</th>
-                            <th>Pickup Location</th>
-                            <th>Delivery Location</th>
-                            <th>Inspire</th>
-                            <th>State</th>
-                            <th>Time</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td rowspan="3">A</td>
-                            <td>1</td>
-                            <td>N</td>
-                            <td>N</td>
-                            <td>N</td>
-                            <td>Enable</td>
-                            <td>N</td>
-                            <td><button type="button">Accept</button></td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>N</td>
-                            <td>N</td>
-                            <td>N</td>
-                            <td>Enable</td>
-                            <td>N</td>
-                            <td><button type="button">Accept</button></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>N</td>
-                            <td>N</td>
-                            <td>N</td>
-                            <td>Enable</td>
-                            <td>N</td>
-                            <td><button type="button">Accept</button></td>
-                        </tr>
-                        <tr>
-                            <td>B</td>
-                            <td>4</td>
-                            <td>N</td>
-                            <td>N</td>
-                            <td>N</td>
-                            <td>Enable</td>
-                            <td>N</td>
-                            <td><button type="button">Accept</button></td>
-                        </tr>
-                        <tr>
-                            <td rowspan="2">C</td>
-                            <td>5</td>
-                            <td>N</td>
-                            <td>N</td>
-                            <td>N</td>
-                            <td>Enable</td>
-                            <td>N</td>
-                            <td><button type="button">Accept</button></td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>N</td>
-                            <td>N</td>
-                            <td>N</td>
-                            <td>Enable</td>
-                            <td>N</td>
-                            <td><button type="button">Accept</button></td>
-                        </tr>
-                        <tr>
-                            <td>D</td>
-                            <td>7</td>
-                            <td>N</td>
-                            <td>N</td>
-                            <td>N</td>
-                            <td>Enable</td>
-                            <td>N</td>
-                            <td><button type="button">Accept</button></td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td>Total</td>
-                            <td colspan="7">7</td>
-                        </tr>
-                    </tfoot>
-                </table>
-            </section>
-        </main>
+        <section id="request-table-section" aria-labelledby="request-table">
+            <table id="request-table" title="request-table">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Request Content</th>
+                        <th>Pickup Location</th>
+                        <th>Delivery Location</th>
+                        <th>Inspire</th>
+                        <th>State</th>
+                        <th>Time</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="3">A</td>
+                        <td>1</td>
+                        <td>N</td>
+                        <td>N</td>
+                        <td>N</td>
+                        <td>Enable</td>
+                        <td>N</td>
+                        <td><button type="button">Accept</button></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>N</td>
+                        <td>N</td>
+                        <td>N</td>
+                        <td>Enable</td>
+                        <td>N</td>
+                        <td><button type="button">Accept</button></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>N</td>
+                        <td>N</td>
+                        <td>N</td>
+                        <td>Enable</td>
+                        <td>N</td>
+                        <td><button type="button">Accept</button></td>
+                    </tr>
+                    <tr>
+                        <td>B</td>
+                        <td>4</td>
+                        <td>N</td>
+                        <td>N</td>
+                        <td>N</td>
+                        <td>Enable</td>
+                        <td>N</td>
+                        <td><button type="button">Accept</button></td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">C</td>
+                        <td>5</td>
+                        <td>N</td>
+                        <td>N</td>
+                        <td>N</td>
+                        <td>Enable</td>
+                        <td>N</td>
+                        <td><button type="button">Accept</button></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>N</td>
+                        <td>N</td>
+                        <td>N</td>
+                        <td>Enable</td>
+                        <td>N</td>
+                        <td><button type="button">Accept</button></td>
+                    </tr>
+                    <tr>
+                        <td>D</td>
+                        <td>7</td>
+                        <td>N</td>
+                        <td>N</td>
+                        <td>N</td>
+                        <td>Enable</td>
+                        <td>N</td>
+                        <td><button type="button">Accept</button></td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>Total</td>
+                        <td colspan="7">7</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+    </main>
 
-        <footer>
-            <small>© 2025 PeerGo</small>
-        </footer>
+    <div id="footer"></div>
+    <!-- js -->
 
-    </body>
+</body>
 </html>

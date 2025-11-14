@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost and Found</title>
+</head>
+<body>
+    <header>
+
+    </header>
+
+    <main>
+        <section id="filter-section" aria-labelledby="filter-title">
+            <h2 id="filter-title">Filter</h2>
+            <div>
+                <label for="lofo-type">Type</label>
+                <select name="lofo-type" id="type">
+                    <option value="lost">Lost</option>
+                    <option value="found">Found</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="lofo-location">Location</label>
+                <select name="lnfo-location" id="lnfo-location">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+
+            <div>
+                Color: 
+                <input type="checkbox" id="color-white" name="info-color" value="white">
+                <label for="color-white">White</label>
+
+                <input type="checkbox" id="color-black" name="info-color" value="black">
+                <label for="color-black">Black</label>
+
+                <input type="checkbox" id="color-grey" name="info-color" value="grey">
+                <label for="color-grey">Grey</label>
+
+                <input type="checkbox" id="color-yellow" name="info-color" value="yellow">
+                <label for="color-yellow">Yellow</label>
+
+                <input type="checkbox" id="color-red" name="info-color" value="red">
+                <label for="color-red">Red</label>
+
+                <input type="checkbox" id="color-blue" name="info-color" value="blue">
+                <label for="color-blue">Blue</label>
+
+                <input type="checkbox" id="color-green" name="info-color" value="green">
+                <label for="color-green">Green</label>
+
+                <input type="checkbox" id="color-purple" name="info-color" value="purple">
+                <label for="color-purple">Purple</label>
+            </div>
+        </section>
+
+        <section id="lofo-table-section" aria-labelledby="lofo-table">
+            <table id="lofo-table">
+                <thead>
+                    <tr>
+                        <th>Item name</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <div id="footer"></div>
+    <!-- js -->
+
+</body>
+</html>
