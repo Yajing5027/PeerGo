@@ -12,7 +12,7 @@
 
         <main>
             <section id="filter-section" aria-labelledby="filter-title">
-                <h2 id="filter-title">Filter</h2>
+                <h2 id="filter-title" class="sr-only">Filter</h2>
                 <div>
                     <label for="request-type">Type</label>
                     <select name="request-type" id="request-type">
@@ -54,7 +54,8 @@
                 <button type="submit">Filter</button>
             </section>
 
-            <section id="request-table-section" aria-labelledby="request-table">
+            <section id="request-table-section" aria-labelledby="request-table-title">
+                <h2 id="request-table-title" class="sr-only">Request Table</h2>
                 <table id="request-table" title="request-table">
                     <thead>
                         <tr>
@@ -154,9 +155,7 @@
             </section>
         </main>
 
-        <footer>
-            <small>© 2025 PeerGo</small>
-        </footer>
+    <div data-include="components/footer.html"></div>
 
     </body>
 </html>

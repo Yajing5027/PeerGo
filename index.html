@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign in / Sign up</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <header>
-        <img src="/workspaces/Campus-service/assets/images/logo.jpeg" alt="Platform logo" title="Platform logo">
+        <img src="assets/images/logo.jpeg" alt="Platform logo" title="Platform logo">
         <h1>PeerGo</h1>
         <p>introduction area</p>
     </header>
 
     <main>
         <section id="login-section" aria-labelledby="login-title">
-            <h2>Login</h2>
+            <h2 id="login-title">Login</h2>
             <form action="" method="post" autocomplete="on">
                 <div>
                     <label for="login-username">Username</label>
@@ -27,8 +28,8 @@
                 </div>
 
                 <div>
-                    <label>
-                        <input name="remember" type="checkbox" checked>
+                    <label for="remember">
+                        <input id="remember" name="remember" type="checkbox" checked>
                         Remember Me
                     </label>
                 </div>
@@ -44,7 +45,7 @@
         </section>
 
         <section id="register-section" aria-labelledby="register-title" hidden>
-            <h2>Register</h2>
+            <h2 id="register-title">Register</h2>
             <form action="" method="post" autocomplete="on">
                 <div>
                     <label for="register-email">Email</label>
@@ -77,7 +78,7 @@
         </section>
 
         <section id="reset-section" aria-labelledby="reset-title" hidden>
-            <h2>Reset</h2>
+            <h2 id="reset-title">Reset</h2>
             <form action="" method="post" autocomplete="on">
                 <div>
                     <label for="reset-email">Email</label>
@@ -91,7 +92,7 @@
 
                 <div>
                     <label for="reset-password2">Password Confirm</label>
-                    <input id="register-password2" name="password2" type="password" minlength="8" maxlength="20" placeholder="8-20 chars, include lettters and numbers" required>
+                    <input id="reset-password2" name="password2" type="password" minlength="8" maxlength="20" placeholder="8-20 chars, include lettters and numbers" required>
                 </div>
                 
                 <div>
@@ -103,7 +104,7 @@
         </section>
     </main>
 
-    <div id="footer"></div>
+    <div data-include="components/footer.html"></div>
     <!-- js -->
 
 </body>

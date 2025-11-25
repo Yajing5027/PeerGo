@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lost and Found</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
     <header>
@@ -13,10 +13,10 @@
 
     <main>
         <section id="filter-section" aria-labelledby="filter-title">
-            <h2 id="filter-title">Filter</h2>
+            <h2 id="filter-title" class="sr-only">Filter</h2>
             <div>
                 <label for="lofo-type">Type</label>
-                <select name="lofo-type" id="type">
+                <select name="lofo-type" id="lofo-type">
                     <option value="lost">Lost</option>
                     <option value="found">Found</option>
                 </select>
@@ -65,7 +65,8 @@
 
         </section>
 
-        <section id="lofo-table-section" aria-labelledby="lofo-table">
+        <section id="lofo-table-section" aria-labelledby="lofo-table-title">
+            <h2 id="lofo-table-title" class="sr-only">Lost and Found Table</h2>
             <table id="lofo-table">
                 <thead>
                     <tr>
@@ -85,7 +86,7 @@
                         <td>A</td>
                         <td>red</td>
                         <td>with a cat pendent</td>
-                        <td><a href="bob@mnsu.edu">email</a></td>
+                        <td><a href="mailto:bob@mnsu.edu" target="_blank">email</a></td>
                     </tr>
                     <tr>
                         <td>2025-11-15</td>
@@ -93,14 +94,14 @@
                         <td>B</td>
                         <td>blue</td>
                         <td>screen have a tiny part black</td>
-                        <td><a href="amy@mnsu.edu">email</a></td>
+                        <td><a href="mailto:amy@mnsu.edu" target="_blank">email</a></td>
                     </tr>
                 </tbody>
             </table>
         </section>
     </main>
 
-    <div id="footer"></div>
+    <div data-include="components/footer.html"></div>
     <!-- js -->
 
 </body>

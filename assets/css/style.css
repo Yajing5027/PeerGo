@@ -45,7 +45,7 @@ button {
 }
 
 button:hover {
-    background-color:var(--primary-light)
+    background-color:var(--primary-light);
 }
 
 
@@ -54,9 +54,21 @@ input, select {
     padding: 8px 10px;
     color: var(--text-dark);
     background: var(--bg-color);
-    border: 1px solid var(--text-dark / 20%);
+    border: 1px solid var(--text-dark);
     border-radius: 4px;
     width: 100%;
+}
+
+input[type="checkbox"], input[type="radio"] {
+    width: auto;
+    margin-right: 4px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
+p {
+    margin-bottom: 16px;
 }
 
 
@@ -71,13 +83,13 @@ th {
     padding: 10px;
     color: var(--text-light);
     background-color: var(--primary-color);
-    border-bottom: 1px solid var(--text-dark / 20%);
+    border-bottom: 1px solid var(--text-dark);
 }
 
 td {
     padding: 10px;
     color: var(--text-dark);
-    border-bottom: 1px solid var(--text-dark / 20%);
+    border-bottom: 1px solid var(--text-dark);
 }
 
 ul, ol {
@@ -100,6 +112,11 @@ main {
 header{
     padding: 16px;
     text-align: center;
+}
+
+header img{
+    height: 60px;
+    width: 120px;
 }
 
 
@@ -134,4 +151,14 @@ nav img{
     padding: 20px;
     background-color: var(--bg-light);
     border-radius: 4px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
 }
