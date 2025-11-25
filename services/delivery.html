@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mutual Assistance</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
-        <div></div>
     <header>
         <h1>Mutual Assistance</h1>
     </header>
 
+    <div data-include="components/navbar.html"></div>
+
     <main>
         <section id="filter-section" aria-labelledby="filter-title">
-            <h2 id="filter-title" class="sr-only">Filter</h2>
+            <h2 id="filters-title" class="sr-only">Filter</h2>
             <div>
                 <label for="request-type">Type</label>
                 <select name="request-type" id="request-type">
@@ -153,7 +154,8 @@
     </main>
 
     <div data-include="components/footer.html"></div>
-    <!-- js -->
+
+    <script src="/assets/js/include.js"></script>
 
 </body>
 </html>

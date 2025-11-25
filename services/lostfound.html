@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lost and Found</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
     <header>
-
+        <h1>Lost and Found</h1>
     </header>
+
+    <div data-include="components/navbar.html"></div>
 
     <main>
         <section id="filter-section" aria-labelledby="filter-title">
@@ -60,6 +62,7 @@
             </div>
 
             <div>
+                <button type="button">Filter</button>
                 <button type="button">Post</button>
             </div>
 
@@ -102,7 +105,8 @@
     </main>
 
     <div data-include="components/footer.html"></div>
-    <!-- js -->
+    
+    <script src="/assets/js/include.js"></script>
 
 </body>
 </html>
