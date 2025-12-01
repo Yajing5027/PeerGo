@@ -4,59 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mutual Assistance</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
     <header>
+        <div data-include="components/navbar.html"></div>
         <h1>Mutual Assistance</h1>
     </header>
 
-    <div data-include="components/navbar.html"></div>
-
     <main>
+        <section id="introduction" aria-labelledby="intro-title">
+            <h2 id="intro-title" class="sr-only">Introduction</h2>
+            <p>Welcome to our Campus Mutual Assistance Service! As you journey to the supermarket, library, or other campus destinations, consider checking if any fellow students need assistance bringing back items. This thoughtful gesture not only saves precious time for everyone but also cultivates a warm, supportive community spirit across our campus.</p>
+        </section>
         <section id="filter-section" aria-labelledby="filter-title">
             <h2 id="filters-title" class="sr-only">Filter</h2>
             <div>
                 <label for="request-type">Type</label>
                 <select name="request-type" id="request-type">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
+                    <option value="">All</option>
+                    <option value="Shopping">Shopping</option>
+                    <option value="Delivery">Delivery</option>
+                    <option value="Printing">Printing</option>
                 </select>
             </div>
 
             <div>
                 <label for="pickup-location">Pickup Location</label>
                 <select name="pickup-location" id="pickup-location">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
+                    <option value="">All</option>
+                    <option value="Dorm">Dorm</option>
+                    <option value="Library">Library</option>
+                    <option value="Office">Office</option>
+                    <option value="Parking Lot">Parking Lot</option>
+                    <option value="Dining Hall">Dining Hall</option>
+                    <option value="Gym">Gym</option>
+                    <option value="Other">Other</option>
                 </select>
+                <input type="text" id="custom-pickup" name="custom-pickup" style="display:none;" placeholder="Enter custom pickup location">
             </div>
 
             <div>
                 <label for="delivery-location">Delivery Location</label>
                 <select name="delivery-location" id="delivery-location">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
+                    <option value="">All</option>
+                    <option value="Dorm">Dorm</option>
+                    <option value="Library">Library</option>
+                    <option value="Office">Office</option>
+                    <option value="Parking Lot">Parking Lot</option>
+                    <option value="Dining Hall">Dining Hall</option>
+                    <option value="Gym">Gym</option>
+                    <option value="Other">Other</option>
                 </select>
+                <input type="text" id="custom-delivery" name="custom-delivery" style="display:none;" placeholder="Enter custom delivery location">
             </div>
 
             <div>
                 <label for="state">State</label>
                 <select name="state" id="state">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
+                    <option value="">All</option>
+                    <option value="enable">Enable</option>
+                    <option value="unable">Unable</option>
                 </select>
             </div>
 
             <button type="submit">Filter</button>
 
-            <button type="button">Post</button>
+            <button type="button" id="post-button">Post</button>
         </section>
 
         <section id="request-table-section" aria-labelledby="request-table">
@@ -64,84 +78,18 @@
             <table id="request-table" title="request-table">
                 <thead>
                     <tr>
+                        <th>Time</th>
                         <th>Type</th>
                         <th>Request Content</th>
                         <th>Pickup Location</th>
                         <th>Delivery Location</th>
                         <th>Inspire</th>
                         <th>State</th>
-                        <th>Time</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td rowspan="3">A</td>
-                        <td>1</td>
-                        <td>N</td>
-                        <td>N</td>
-                        <td>N</td>
-                        <td>Enable</td>
-                        <td>N</td>
-                        <td><button type="button">Accept</button></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>N</td>
-                        <td>N</td>
-                        <td>N</td>
-                        <td>Enable</td>
-                        <td>N</td>
-                        <td><button type="button">Accept</button></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>N</td>
-                        <td>N</td>
-                        <td>N</td>
-                        <td>Enable</td>
-                        <td>N</td>
-                        <td><button type="button">Accept</button></td>
-                    </tr>
-                    <tr>
-                        <td>B</td>
-                        <td>4</td>
-                        <td>N</td>
-                        <td>N</td>
-                        <td>N</td>
-                        <td>Enable</td>
-                        <td>N</td>
-                        <td><button type="button">Accept</button></td>
-                    </tr>
-                    <tr>
-                        <td rowspan="2">C</td>
-                        <td>5</td>
-                        <td>N</td>
-                        <td>N</td>
-                        <td>N</td>
-                        <td>Enable</td>
-                        <td>N</td>
-                        <td><button type="button">Accept</button></td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>N</td>
-                        <td>N</td>
-                        <td>N</td>
-                        <td>Enable</td>
-                        <td>N</td>
-                        <td><button type="button">Accept</button></td>
-                    </tr>
-                    <tr>
-                        <td>D</td>
-                        <td>7</td>
-                        <td>N</td>
-                        <td>N</td>
-                        <td>N</td>
-                        <td>Enable</td>
-                        <td>N</td>
-                        <td><button type="button">Accept</button></td>
-                    </tr>
+                    <!-- Data will be generated by JavaScript -->
                 </tbody>
                 <tfoot>
                     <tr>
@@ -155,7 +103,42 @@
 
     <div data-include="components/footer.html"></div>
 
-    <script src="/assets/js/include.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/table.js"></script>
+    <script>
+        // Handle custom location inputs
+        document.addEventListener('DOMContentLoaded', function() {
+            const pickupSelect = document.getElementById('pickup-location');
+            const deliverySelect = document.getElementById('delivery-location');
+            const customPickup = document.getElementById('custom-pickup');
+            const customDelivery = document.getElementById('custom-delivery');
+            const postButton = document.getElementById('post-button');
+
+            function toggleCustomInput(select, input) {
+                if (select.value === 'Other') {
+                    input.style.display = 'block';
+                } else {
+                    input.style.display = 'none';
+                    input.value = '';
+                }
+            }
+
+            pickupSelect.addEventListener('change', function() {
+                toggleCustomInput(pickupSelect, customPickup);
+            });
+
+            deliverySelect.addEventListener('change', function() {
+                toggleCustomInput(deliverySelect, customDelivery);
+            });
+
+            if (postButton) {
+                postButton.addEventListener('click', function() {
+                    window.location.href = '/add.html?from=services/delivery.html';
+                });
+            }
+        });
+    </script>
+    <script src="../assets/js/main.js"></script>
 
 </body>
 </html>

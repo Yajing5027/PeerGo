@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign in / Sign up</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
     <header>
-        <img src="/assets/images/logo.jpeg" alt="Platform logo" title="Platform logo">
+        <img src="assets/images/logo.jpeg" alt="Platform logo" title="Platform logo">
         <h1>PeerGo</h1>
         <p>introduction area</p>
     </header>
@@ -36,10 +36,10 @@
 
                 <div>
                     <button type="submit">Login</button> 
-                    <button type="button">Forgot Password</button> 
                 </div>
 
-                <p>No account? Go to register.</p>
+                <p>No account? Go to <span class="link-text" id="switch-to-register">register</span>.</p>
+                <p>Forgot password? <span class="link-text" id="switch-to-reset">reset</span>.</p>
                 <!-- Js: switch to register -->
             </form>
         </section>
@@ -49,7 +49,7 @@
             <form action="" method="post" autocomplete="on">
                 <div>
                     <label for="register-email">Email</label>
-                    <input id="register-email" name="email" type="email" placeholder="must end with @mnsu.edu" autocomplete="email" required>
+                    <input id="register-email" name="email" type="email" placeholder="example@mnsu.edu" autocomplete="email" required>
                 </div>
 
                 <div>
@@ -72,7 +72,7 @@
                     <button type="submit">Sign up</button>
                 </div>
 
-                <p>Already have an account? Go to login.</p>
+                <p>Already have an account? Go to <span class="link-text" id="switch-to-login">login</span>.</p>
                 <!-- Js: switch to login -->
             </form>
         </section>
@@ -82,7 +82,7 @@
             <form action="" method="post" autocomplete="on">
                 <div>
                     <label for="reset-email">Email</label>
-                    <input id="reset-email" name="email" type="email" placeholder="Enter your email end with @mnsu.edu" autocomplete="email" required>
+                    <input id="reset-email" name="email" type="email" placeholder="example@mnsu.edu" autocomplete="email" required>
                 </div>
 
                 <div>
@@ -104,9 +104,9 @@
         </section>
     </main>
 
-    <div data-include="/components/footer.html"></div>
+    <div data-include="components/footer.html"></div>
 
-    <script src="/assets/js/include.js"></script>
+    <script src="assets/js/form.js"></script>
 
 </body>
 </html>

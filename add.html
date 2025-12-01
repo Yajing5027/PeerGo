@@ -1,54 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Add new employee</title>
-        <link rel="stylesheet" href="/assets/css/style.css">
-    </head>
-    <body>
-        <div>
-            <form action="">
-                Username
-                <input type="text" placeholder="Enter username (2-20 chars, must be unique)">
-                <br><br>
-                Employee name
-                <input type="text" placeholder="Enter employee name (2-20 chars, must be unique)">
-                <br><br>
-                <label>Female<input type="radio" name="Gender" checked></label>
-                <label>Male<input type="radio" name="Gender"></label>
-                <br><br>
-                Image
-                <img src="https://www.bing.com/th/id/OIP.n8yfVc0PcP-aBfOiIxGUqQHaNK?w=160&h=211&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2" alt="cat" title="cute cat">
-                <br><br>
-                Position
-                <select name="" id="">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
-                <br><br>
-                Hire Date
-                <!-- lack -->
-                <br><br>
-                Department
-                <select name="" id="">
-                    <option value="a">A</option>
-                    <option value="b">B</option>
-                    <option value="c">C</option>
-                    <option value="d">D</option>
-                </select>
-                <br><br>
-                <button type="submit">Save</button>
-                <button type="reset">Reset</button>
-                <button type="button">Cancel</button>
-                <!-- Cancel achieve -->
-            </form>
-        </div>
-        
-        <div data-include="/components/footer.html"></div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Post</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header>
+        <div data-include="components/navbar.html"></div>
+        <h1>Add New Post</h1>
+    </header>
 
-        <script src="/assets/js/include.js"></script>
-    </body>
-</html>
+    <main>
+        <form id="add-post-form">
+
+            <!-- Delivery Form Fields (shown when delivery is selected) -->
+            <div id="delivery-fields" style="display: none;">
+                <h3>Mutual Assistance Request</h3>
+
+                <div>
+                    <label for="request-content">Request Content</label>
+                    <input id="request-content" name="content" type="text" placeholder="Describe your request">
+                </div>
+
+                <div>
+                    <label for="pickup-location">Pickup Location</label>
+                    <select name="pickup-location" id="pickup-location">
+                        <option value="">Select Location</option>
+                        <option value="Dorm">Dorm</option>
+                        <option value="Library">Library</option>
+                        <option value="Office">Office</option>
+                        <option value="Parking Lot">Parking Lot</option>
+                        <option value="Dining Hall">Dining Hall</option>
+                        <option value="Gym">Gym</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <input type="text" id="custom-pickup" name="custom-pickup" style="display:none;" placeholder="Enter custom pickup location">
+                </div>
+
+                <div>
+                    <label for="delivery-location">Delivery Location</label>
+                    <select name="delivery-location" id="delivery-location">
+                        <option value="">Select Location</option>
+                        <option value="Dorm">Dorm</option>
+                        <option value="Library">Library</option>
+                        <option value="Office">Office</option>
+                        <option value="Parking Lot">Parking Lot</option>
+                        <option value="Dining Hall">Dining Hall</option>
+                        <option value="Gym">Gym</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <input type="text" id="custom-delivery" name="custom-delivery" style="display:none;" placeholder="Enter custom delivery location">
+                </div>
+
+                <div>
+                    <label for="inspire">Reward</label>
+                    <input id="inspire" name="inspire" type="text" placeholder="e.g., $5">
+                </div>
+            </div>
+
+            <!-- Lost & Found Form Fields (shown when lostfound is selected) -->
+            <div id="lostfound-fields" style="display: none;">
+                <h3>Lost & Found Item</h3>
+                <div>
+                    <label for="item-type">Item Type</label>
+                    <select name="item-type" id="item-type" required>
+                        <option value="">Select Type</option>
+                        <option value="lost">Lost Item</option>
+                        <option value="found">Found Item</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="item-name">Item Name</label>
+                    <input id="item-name" name="itemName" type="text" placeholder="What item?" required>
+                </div>
+
+                <div>
+                    <label for="item-location">Location</label>
+                    <select name="item-location" id="item-location" required>
+                        <option value="">Select Location</option>
+                        <option value="Dorm">Dorm</option>
+                        <option value="Library">Library</option>
+                        <option value="Office">Office</option>
+                        <option value="Parking Lot">Parking Lot</option>
+                        <option value="Dining Hall">Dining Hall</option>
+                        <option value="Gym">Gym</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <input type="text" id="custom-item-location" name="custom-item-location" style="display:none;" placeholder="Enter custom location">
+                </div>
+
+                <div>
+                    <label>Color (select all that apply):</label><br>
+                    <input type="checkbox" id="color-white" name="color" value="White">
+                    <label for="color-white">White</label>
+
+                    <input type="checkbox" id="color-black" name="color" value="Black">
+                    <label for="color-black">Black</label>
+
+                    <input type="checkbox" id="color-grey" name="color" value="Grey">
+                    <label for="color-grey">Grey</label>
+
+                    <input type="checkbox" id="color-yellow" name="color" value="Yellow">
+                    <label for="color-yellow">Yellow</label>
+
+                    <input type="checkbox" id="color-red" name="color" value="Red">
+                    <label for="color-red">Red</label>
+
+                    <input type="checkbox" id="color-blue" name="color" value="Blue">
+                    <label for="color-blue">Blue</label>
+
+                    <input type="checkbox" id="color-green" name="color" value="Green">
+                    <label for="color-green">Green</label>
+
+                    <input type="checkbox" id="color-purple" name="color" value="Purple">
+                    <label for="color-purple">Purple</label>
+
+                    <input type="checkbox" id="color-orange" name="color" value="Orange">
+                    <label for="color-orange">Orange</label>
+
+                    <input type="checkbox" id="color-pink" name="color" value="Pink">
+                    <label for="color-pink">Pink</label>
+
+                    <input type="checkbox" id="color-brown" name="color" value="Brown">
+                    <label for="color-brown">Brown</label>
+
+                    <input type="checkbox" id="color-silver" name="color" value="Silver">
+                    <label for="color-silver">Silver</label>
+
+                    <input type="checkbox" id="color-gold" name="color" value="Gold">
+                    <label for="color-gold">Gold</label>
+                </div>
+
+                <div>
+                    <label for="item-description">Description</label>
+                    <textarea id="item-description" name="description" placeholder="Detailed description" required></textarea>
+                </div>
+
+                <div>
+                    <label for="contact-email">Contact Email</label>
+                    <input id="contact-email" name="contact" type="email" placeholder="example@mnsu.edu" required>
+                </div>
+            </div>
+
+            <div>
+                <button type="submit">Post</button>
+                <button type="reset">Reset</button>
+                <button type="button" id="cancel-button">Cancel</button>
+            </div>
+        </form>
+    </main>
+
+    <div data-include="components/footer.html"></div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/add.js"></script>

@@ -8,12 +8,11 @@
     --bg-color: white;
     --bg-light: #f2ecfa;
     --text-dark: black;
-    --text-light:white;
-    
+    --text-light: white;
 }
 
 .dark-mode {
-    --bg-color:#121212;
+    --bg-color: #121212;
     --bg-light: #1e1e1e;
     --text-dark: white;
 }
@@ -110,7 +109,7 @@ main {
 
 
 header{
-    padding: 16px;
+    padding: 0;
     text-align: center;
 }
 
@@ -124,35 +123,43 @@ footer {
     margin: 40px 0;
     padding: 20px;
     text-align: center;
-    background-color: var(--primary-light);
+    background-color: var(--primary-color);
     color: white;
 }
 
 
 nav {
     padding: 12px 24px;
-    background-color: var(--primary-light);    
+    background-color: var(--primary-color);
+    color: white;
 }
 
 nav ul{
+    color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    list-style: none; /* 去掉列表圆点 */
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    color: white;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
 }
 
 nav img{
-    height: 40px;
+    height: 50px; /* 从40px增加到50px */
     width: auto;
-}
-
-
-#filter-section {
-    margin: 24px 0;
-    padding: 20px;
-    background-color: var(--bg-light);
-    border-radius: 4px;
-    display: flex;
-    justify-content: space-around;
 }
 
 .sr-only {
@@ -161,4 +168,25 @@ nav img{
     height: 1px;
     overflow: hidden;
     clip: rect(0 0 0 0);
+}
+
+/* Link text styles for form switching */
+.link-text {
+    text-decoration: underline;
+    color: #007bff;
+    cursor: pointer;
+}
+
+.link-text:hover {
+    color: #0056b3;
+}
+
+.dashboard-header {
+    padding: 12px 24px;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.dashboard-header h1 {
+    color: var(--primary-light);
 }

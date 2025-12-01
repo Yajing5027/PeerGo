@@ -4,15 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
     <header>
-
+        <div data-include="components/navbar.html"></div>
     </header>
-
-    <div data-include="components/navbar.html"></div>
-
 
     <main>
         <section></section>
@@ -22,9 +19,13 @@
 
     <div data-include="components/footer.html"></div>   
 
-    <script> alert("Feature under development. Coming soon.") </script>
-
-    <script src="/assets/js/include.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            showUnderDevelopmentAlert();
+        });
+    </script>
 
 </body>
 </html>

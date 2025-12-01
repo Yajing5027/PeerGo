@@ -4,33 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lost and Found</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
     <header>
+        <div data-include="components/navbar.html"></div>
         <h1>Lost and Found</h1>
     </header>
 
-    <div data-include="components/navbar.html"></div>
-
     <main>
+        <!-- Tab Navigation -->
+        <div class="tab-navigation">
+            <button class="tab-button active" id="lost-tab">Lost Items</button>
+            <button class="tab-button" id="found-tab">Found Items</button>
+        </div>
+
         <section id="filter-section" aria-labelledby="filter-title">
             <h2 id="filter-title" class="sr-only">Filter</h2>
-            <div>
-                <label for="lofo-type">Type</label>
-                <select name="lofo-type" id="lofo-type">
-                    <option value="lost">Lost</option>
-                    <option value="found">Found</option>
-                </select>
-            </div>
 
             <div>
                 <label for="lofo-location">Location</label>
                 <select name="lofo-location" id="lofo-location">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
+                    <option value="">All</option>
+                    <option value="Dorm">Dorm</option>
+                    <option value="Library">Library</option>
+                    <option value="Office">Office</option>
+                    <option value="Parking Lot">Parking Lot</option>
+                    <option value="Dining Hall">Dining Hall</option>
+                    <option value="Gym">Gym</option>
+                    <option value="Other">Other</option>
                 </select>
             </div>
 
@@ -59,54 +61,128 @@
 
                 <input type="checkbox" id="color-purple" name="info-color" value="purple">
                 <label for="color-purple">Purple</label>
+
+                <input type="checkbox" id="color-orange" name="info-color" value="orange">
+                <label for="color-orange">Orange</label>
+
+                <input type="checkbox" id="color-pink" name="info-color" value="pink">
+                <label for="color-pink">Pink</label>
+
+                <input type="checkbox" id="color-brown" name="info-color" value="brown">
+                <label for="color-brown">Brown</label>
+
+                <input type="checkbox" id="color-silver" name="info-color" value="silver">
+                <label for="color-silver">Silver</label>
+
+                <input type="checkbox" id="color-gold" name="info-color" value="gold">
+                <label for="color-gold">Gold</label>
             </div>
 
             <div>
                 <button type="button">Filter</button>
-                <button type="button">Post</button>
+                <button type="button" id="post-button">Post</button>
             </div>
 
         </section>
 
         <section id="lofo-table-section" aria-labelledby="lofo-table-title">
             <h2 id="lofo-table-title" class="sr-only">Lost and Found Table</h2>
-            <table id="lofo-table">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Item name</th>
-                        <th>Location</th>
-                        <th>Color</th>
-                        <th>Describe</th>
-                        <th>Contact</th>
-                    </tr>
-                </thead>
-                
-                <tbody>
-                    <tr>
-                        <td>2025-11-16</td>
-                        <td>key</td>
-                        <td>A</td>
-                        <td>red</td>
-                        <td>with a cat pendent</td>
-                        <td><a href="mailto:bob@mnsu.edu" target="_blank">email</a></td>
-                    </tr>
-                    <tr>
-                        <td>2025-11-15</td>
-                        <td>watch</td>
-                        <td>B</td>
-                        <td>blue</td>
-                        <td>screen have a tiny part black</td>
-                        <td><a href="mailto:amy@mnsu.edu" target="_blank">email</a></td>
-                    </tr>
-                </tbody>
-            </table>
+            
+            <!-- Lost Items Table -->
+            <div id="lost-table-container" class="table-container">
+                <h3>Lost Items</h3>
+                <table id="lost-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Item name</th>
+                            <th>Location</th>
+                            <th>Color</th>
+                            <th>Description</th>
+                            <th>Contact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be generated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Found Items Table -->
+            <div id="found-table-container" class="table-container" style="display: none;">
+                <h3>Found Items</h3>
+                <table id="found-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Item name</th>
+                            <th>Location</th>
+                            <th>Color</th>
+                            <th>Description</th>
+                            <th>Contact</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data will be generated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
         </section>
     </main>
 
     <div data-include="components/footer.html"></div>
     
-    <script src="/assets/js/include.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/table.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Tab switching functionality
+        function showLostFoundTab(tabType) {
+            const lostContainer = document.getElementById('lost-table-container');
+            const foundContainer = document.getElementById('found-table-container');
+            const tabButtons = document.querySelectorAll('.tab-button');
+            
+            // Remove active class from all buttons
+            tabButtons.forEach(button => button.classList.remove('active'));
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            // Show/hide tables
+            if (tabType === 'lost') {
+                lostContainer.style.display = 'block';
+                foundContainer.style.display = 'none';
+            } else if (tabType === 'found') {
+                lostContainer.style.display = 'none';
+                foundContainer.style.display = 'block';
+            }
+        }
+
+        // Initialize event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            const lostTab = document.getElementById('lost-tab');
+            const foundTab = document.getElementById('found-tab');
+            const postButton = document.getElementById('post-button');
+
+            if (lostTab) {
+                lostTab.addEventListener('click', function() {
+                    showLostFoundTab('lost');
+                });
+            }
+
+            if (foundTab) {
+                foundTab.addEventListener('click', function() {
+                    showLostFoundTab('found');
+                });
+            }
+
+            if (postButton) {
+                postButton.addEventListener('click', function() {
+                    window.location.href = '/add.html?from=services/lostfound.html';
+                });
+            }
+        });
+    </script>
 
 </body>
 </html>
