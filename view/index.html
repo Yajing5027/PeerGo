@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeerGo Login</title>
+    <link rel="stylesheet" href="../style/theme.css">
+    <link rel="stylesheet" href="../style/view.css">
+</head>
+<body>
+    <header>
+        <span class="hero-logo" aria-hidden="true"></span>
+        <h1>PeerGo</h1>
+        <p>Campus errand platform. Sign in with your school account to post or accept requests.</p>
+    </header>
+
+    <main>
+        <section id="login-section" aria-labelledby="login-title">
+            <h2 id="login-title">Login</h2>
+            <form id="login-form" autocomplete="on">
+                <div>
+                    <label for="login-email">School Email</label>
+                    <input id="login-email" name="email" type="email" placeholder="example@mnsu.edu" autocomplete="email" required>
+                </div>
+
+                <div>
+                    <label for="login-password">Password</label>
+                    <input id="login-password" name="password" type="password" minlength="8" maxlength="20" placeholder="Enter your password" required>
+                </div>
+
+                <div>
+                    <label for="remember">
+                        <input id="remember" name="remember" type="checkbox" checked>
+                        Remember me
+                    </label>
+                </div>
+
+                <div>
+                    <button type="submit">Login</button>
+                </div>
+
+                <p>Don't have an account? Go to <span class="link-text" id="switch-to-register">Register</span>.</p>
+                <p>Test admin account: admin@mnsu.edu / Admin1234</p>
+                <p id="auth-message" aria-live="polite"></p>
+            </form>
+        </section>
+
+        <section id="register-section" aria-labelledby="register-title" hidden>
+            <h2 id="register-title">Register</h2>
+            <form id="register-form" autocomplete="on">
+                <div>
+                    <label for="register-email">School Email</label>
+                    <input id="register-email" name="email" type="email" placeholder="example@mnsu.edu" autocomplete="email" required>
+                </div>
+
+                <div>
+                    <label for="register-password1">Create Password</label>
+                    <input id="register-password1" name="password1" type="password" minlength="8" maxlength="20" placeholder="8-20 chars, include letters and numbers" required>
+                </div>
+
+                <div>
+                    <label for="register-password2">Confirm Password</label>
+                    <input id="register-password2" name="password2" type="password" minlength="8" maxlength="20" placeholder="Re-enter your password" required>
+                </div>
+
+                <div>
+                    <button type="submit">Create Account</button>
+                </div>
+
+                <p>Already have an account? Go to <span class="link-text" id="switch-to-login">Login</span>.</p>
+                <p>This is running in front-end demo mode, and account data is stored in your browser.</p>
+                <p id="register-message" aria-live="polite"></p>
+            </form>
+        </section>
+    </main>
+
+    <div data-include="/components/footer.html"></div>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/form.js"></script>
+</body>
+</html>

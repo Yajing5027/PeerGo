@@ -1,111 +1,219 @@
-const campusLocations = ['Dorm', 'Library', 'Office', 'Parking Lot', 'Dining Hall', 'Gym', 'Other'];
-const deliveryTypes = ['Shopping', 'Delivery', 'Printing'];
+const DELIVERY_STORAGE_KEY = 'peergoDeliveryPosts';
+const postPagePath = '/view/add.html';
 
 const defaultDeliveryData = [
-  { time: '2025-11-29', type: 'Shopping', content: 'Grocery shopping', pickupLocation: 'Parking Lot', deliveryLocation: 'Dorm', inspire: '$12', state: 'Enable' },
-  { time: '2025-11-29', type: 'Delivery', content: 'Pick up package', pickupLocation: 'Library', deliveryLocation: 'Dorm', inspire: '$3', state: 'Unable' },
-  { time: '2025-11-28', type: 'Delivery', content: 'Send documents', pickupLocation: 'Office', deliveryLocation: 'Library', inspire: '$7', state: 'Enable' },
-  { time: '2025-11-28', type: 'Delivery', content: 'Take out food', pickupLocation: 'Dining Hall', deliveryLocation: 'Dorm', inspire: '$5', state: 'Unable' },
-  { time: '2025-11-27', type: 'Delivery', content: 'Deliver mail', pickupLocation: 'Library', deliveryLocation: 'Dorm', inspire: '$4', state: 'Unable' },
-  { time: '2025-11-26', type: 'Printing', content: 'Print documents', pickupLocation: 'Library', deliveryLocation: 'Dorm', inspire: '$2', state: 'Enable' },
-  { time: '2025-11-25', type: 'Delivery', content: 'Delivery meals', pickupLocation: 'Dining Hall', deliveryLocation: 'Dorm', inspire: '4', state: 'Enable' }
+    { id: 'd-1', time: '2026-03-31', type: 'Shopping', content: 'Buy snacks from campus store', pickupLocation: 'Library', deliveryLocation: 'Dorm', reward: '$5', state: 'Open' },
+    { id: 'd-2', time: '2026-03-31', type: 'Delivery', content: 'Pick up parcel', pickupLocation: 'Office', deliveryLocation: 'Dorm', reward: '$3', state: 'Open' },
+    { id: 'd-3', time: '2026-03-30', type: 'Printing', content: 'Print assignment', pickupLocation: 'Library', deliveryLocation: 'Dining Hall', reward: '$2', state: 'Accepted' }
 ];
 
-const defaultLostFoundData = [
-  { type: 'lost', date: '2025-11-29', itemName: 'Key', location: 'Library', color: 'Red', description: 'With cat pendant', contact: 'bob@mnsu.edu' },
-  { type: 'lost', date: '2025-11-28', itemName: 'Watch', location: 'Office', color: 'Blue', description: 'Tiny black part on screen', contact: 'amy@mnsu.edu' },
-  { type: 'found', date: '2025-11-27', itemName: 'Glasses', location: 'Dorm', color: 'Black', description: 'Broken frame', contact: 'tom@mnsu.edu' },
-  { type: 'found', date: '2025-11-26', itemName: 'Wallet', location: 'Parking Lot', color: 'Brown', description: 'Leather wallet with ID', contact: 'john@mnsu.edu' },
-  { type: 'lost', date: '2025-11-25', itemName: 'Phone', location: 'Gym', color: 'Silver', description: 'iPhone with blue case', contact: 'jane@mnsu.edu' },
-  { type: 'found', date: '2025-11-24', itemName: 'Book', location: 'Dining Hall', color: 'Green', description: 'Math textbook', contact: 'sam@mnsu.edu' }
-];
-
-const deliveryData = defaultDeliveryData;
-const lostFoundData = defaultLostFoundData;
-
-function generateDeliveryTable() {
-  const table = document.getElementById('request-table');
-  if (!table) return;
-  const tableBody = table.getElementsByTagName('tbody')[0];
-  const tableFoot = table.getElementsByTagName('tfoot')[0];
-  
-  tableBody.innerHTML = '';
-  
-  for (let i = 0; i < deliveryData.length; i++) {
-    const item = deliveryData[i];
-    let inspireDisplay;
-    if (item.inspire.startsWith('$')) {
-      inspireDisplay = item.inspire;
-    } else {
-      inspireDisplay = '$' + item.inspire;
-    }
-    const row = '<tr><td>' + item.time + '</td><td>' + item.type + '</td><td>' + item.content + '</td><td>' + item.pickupLocation + '</td><td>' + item.deliveryLocation + '</td><td>' + inspireDisplay + '</td><td>' + item.state + '</td><td><button type="button">Accept</button></td></tr>';
-    
-    tableBody.innerHTML += row;
-  }
-  
-  if (tableFoot) {
-    const totalRow = tableFoot.querySelector('tr td[colspan]');
-    if (totalRow) {
-      totalRow.textContent = deliveryData.length;
-    }
-  }
+function normalizeText(value) {
+    return String(value || '').trim().toLowerCase();
 }
 
-function generateLostFoundTable() {
-  generateLostTable();
-  generateFoundTable();
-}
+function normalizeState(value) {
+    const state = normalizeText(value);
 
-function generateLostTable() {
-  const table = document.getElementById('lost-table');
-  if (!table) return;
-  const tableBody = table.getElementsByTagName('tbody')[0];
-  
-  tableBody.innerHTML = '';
-  
-  const lostItems = [];
-  let lostIndex = 0;
-  for (let i = 0; i < lostFoundData.length; i++) {
-    if (lostFoundData[i].type === 'lost') {
-      lostItems[lostIndex] = lostFoundData[i];
-      lostIndex++;
+    if (state === 'accepted' || state === '已接单' || state === '已接受') {
+        return 'accepted';
     }
-  }
-  
-  for (let i = 0; i < lostItems.length; i++) {
-    const item = lostItems[i];
-    const row = '<tr><td>' + item.date + '</td><td>' + item.itemName + '</td><td>' + item.location + '</td><td>' + item.color + '</td><td>' + item.description + '</td><td><a href="mailto:' + item.contact + '" target="_blank">email</a></td></tr>';
-    
-    tableBody.innerHTML += row;
-  }
-}
 
-function generateFoundTable() {
-  const table = document.getElementById('found-table');
-  if (!table) return;
-  const tableBody = table.getElementsByTagName('tbody')[0];
-  
-  tableBody.innerHTML = '';
-  
-  const foundItems = [];
-  let foundIndex = 0;
-  for (let i = 0; i < lostFoundData.length; i++) {
-    if (lostFoundData[i].type === 'found') {
-      foundItems[foundIndex] = lostFoundData[i];
-      foundIndex++;
+    if (state === 'open' || state === '待接单' || state === '开放') {
+        return 'open';
     }
-  }
-  
-  for (let i = 0; i < foundItems.length; i++) {
-    const item = foundItems[i];
-    const row = '<tr><td>' + item.date + '</td><td>' + item.itemName + '</td><td>' + item.location + '</td><td>' + item.color + '</td><td>' + item.description + '</td><td><a href="mailto:' + item.contact + '" target="_blank">email</a></td></tr>';
-    
-    tableBody.innerHTML += row;
-  }
+
+    return state;
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  generateDeliveryTable();
-  generateLostFoundTable();
-});
+function pickValue(item, candidates) {
+    for (let i = 0; i < candidates.length; i++) {
+        const key = candidates[i];
+        if (item && item[key] !== undefined && item[key] !== null && item[key] !== '') {
+            return item[key];
+        }
+    }
+    return '';
+}
+
+function normalizeItem(item) {
+    const normalizedState = normalizeState(pickValue(item, ['state', 'status']));
+
+    return {
+        id: pickValue(item, ['id']) || createRequestId(),
+        time: pickValue(item, ['time', 'createdAt']) || '-',
+        type: pickValue(item, ['type', 'requestType', 'category']) || '-',
+        content: pickValue(item, ['content', 'requestContent', 'description']) || '-',
+        pickupLocation: pickValue(item, ['pickupLocation', 'pickup', 'pickupPoint', 'pickup_site']) || '-',
+        deliveryLocation: pickValue(item, ['deliveryLocation', 'delivery', 'dropoff', 'deliveryPoint', 'delivery_site']) || '-',
+        reward: pickValue(item, ['reward', 'price', 'amount']) || '$0',
+        state: normalizedState === 'accepted' ? 'Accepted' : 'Open'
+    };
+}
+
+function createRequestId() {
+    return 'd-' + Date.now() + '-' + Math.floor(Math.random() * 1000);
+}
+
+function ensureIds(items) {
+    let changed = false;
+    const normalized = items.map(function(item) {
+        const normalizedItem = normalizeItem(item);
+        if (!item || item.id !== normalizedItem.id || item.state !== normalizedItem.state) {
+            changed = true;
+        }
+        return normalizedItem;
+    });
+
+    return { normalized: normalized, changed: changed };
+}
+
+function readDeliveryData() {
+    const raw = localStorage.getItem(DELIVERY_STORAGE_KEY);
+    if (!raw) {
+        localStorage.setItem(DELIVERY_STORAGE_KEY, JSON.stringify(defaultDeliveryData));
+        return defaultDeliveryData.slice();
+    }
+
+    try {
+        const parsed = JSON.parse(raw);
+        if (!Array.isArray(parsed)) {
+            return defaultDeliveryData.slice();
+        }
+
+        const idCheck = ensureIds(parsed);
+        if (idCheck.changed) {
+            writeDeliveryData(idCheck.normalized);
+        }
+        return idCheck.normalized;
+    } catch (error) {
+        console.error('Failed to parse delivery data from storage:', error);
+        return defaultDeliveryData.slice();
+    }
+}
+
+function writeDeliveryData(data) {
+    localStorage.setItem(DELIVERY_STORAGE_KEY, JSON.stringify(data));
+}
+
+function normalizeReward(reward) {
+    if (!reward) return '$0';
+    return reward.startsWith('$') ? reward : ('$' + reward);
+}
+
+function renderDeliveryTable(data) {
+    const table = document.getElementById('request-table');
+    if (!table) return;
+
+    const tableBody = table.querySelector('tbody');
+    const totalCell = table.querySelector('tfoot td[colspan]');
+
+    tableBody.innerHTML = '';
+
+    if (!data.length) {
+        const emptyRow = document.createElement('tr');
+        emptyRow.innerHTML = '<td colspan="8">No matching errands found. Try another filter.</td>';
+        tableBody.appendChild(emptyRow);
+    }
+
+    data.forEach(function(item) {
+        const isAccepted = item.state === 'Accepted';
+        const stateClass = isAccepted ? 'state-accepted' : 'state-open';
+        const actionLabel = isAccepted ? 'Accepted' : 'Accept';
+        const disabledAttr = isAccepted ? ' disabled' : '';
+
+        const row = document.createElement('tr');
+        row.innerHTML =
+            '<td>' + item.time + '</td>' +
+            '<td>' + item.type + '</td>' +
+            '<td>' + item.content + '</td>' +
+            '<td>' + item.pickupLocation + '</td>' +
+            '<td>' + item.deliveryLocation + '</td>' +
+            '<td>' + normalizeReward(item.reward) + '</td>' +
+            '<td class="state-cell ' + stateClass + '">' + item.state + '</td>' +
+            '<td><button type="button" class="accept-button" data-id="' + item.id + '"' + disabledAttr + '>' + actionLabel + '</button></td>';
+
+        tableBody.appendChild(row);
+    });
+
+    if (totalCell) {
+        totalCell.textContent = String(data.length);
+    }
+}
+
+function acceptRequest(requestId) {
+    const allItems = readDeliveryData();
+    let changed = false;
+
+    const updated = allItems.map(function(item) {
+        if (item.id === requestId && item.state !== 'Accepted') {
+            changed = true;
+            return Object.assign({}, item, { state: 'Accepted' });
+        }
+        return item;
+    });
+
+    if (changed) {
+        writeDeliveryData(updated);
+        applyFilters();
+    }
+}
+
+function applyFilters() {
+    const allItems = readDeliveryData();
+    const typeValue = normalizeText(document.getElementById('request-type') ? document.getElementById('request-type').value : '');
+    const pickupValue = normalizeText(document.getElementById('pickup-location') ? document.getElementById('pickup-location').value : '');
+    const deliveryValue = normalizeText(document.getElementById('delivery-location') ? document.getElementById('delivery-location').value : '');
+    const stateValue = normalizeState(document.getElementById('state') ? document.getElementById('state').value : '');
+
+    const filtered = allItems.filter(function(item) {
+        const normalized = normalizeItem(item);
+        const typeMatched = !typeValue || normalizeText(normalized.type) === typeValue;
+        const pickupMatched = !pickupValue || normalizeText(normalized.pickupLocation) === pickupValue;
+        const deliveryMatched = !deliveryValue || normalizeText(normalized.deliveryLocation) === deliveryValue;
+        const stateMatched = !stateValue || normalizeState(normalized.state) === stateValue;
+        return typeMatched && pickupMatched && deliveryMatched && stateMatched;
+    });
+
+    renderDeliveryTable(filtered);
+}
+
+function initializeDeliveryPage() {
+    const filterButton = document.getElementById('filter-button');
+    const postButton = document.getElementById('post-button');
+    const table = document.getElementById('request-table');
+    const typeSelect = document.getElementById('request-type');
+    const pickupSelect = document.getElementById('pickup-location');
+    const deliverySelect = document.getElementById('delivery-location');
+    const stateSelect = document.getElementById('state');
+    const allItems = readDeliveryData();
+    writeDeliveryData(allItems);
+    renderDeliveryTable(allItems);
+
+    if (filterButton) {
+        filterButton.addEventListener('click', applyFilters);
+    }
+
+    [typeSelect, pickupSelect, deliverySelect, stateSelect].forEach(function(selectElement) {
+        if (!selectElement) return;
+        selectElement.addEventListener('change', applyFilters);
+    });
+
+    if (postButton) {
+        postButton.addEventListener('click', function() {
+            window.location.href = postPagePath;
+        });
+    }
+
+    if (table) {
+        table.addEventListener('click', function(event) {
+            const button = event.target.closest('.accept-button');
+            if (!button) return;
+
+            const requestId = button.getAttribute('data-id');
+            if (!requestId) return;
+            acceptRequest(requestId);
+        });
+    }
+}
+
+document.addEventListener('DOMContentLoaded', initializeDeliveryPage);

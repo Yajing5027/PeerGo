@@ -1,140 +1,200 @@
-// To-do list:
-// - [ ] Missing: navigation page jump
+const loginSection = document.getElementById('login-section');
+const registerSection = document.getElementById('register-section');
 
+const loginForm = document.getElementById('login-form');
+const registerForm = document.getElementById('register-form');
 
-// Declare sections
-const loginSection = document.querySelector('#login-section');
-const registerSection = document.querySelector('#register-section');
-const resetSection = document.querySelector('#reset-section');
+const switchToRegister = document.getElementById('switch-to-register');
+const switchToLogin = document.getElementById('switch-to-login');
 
-// Declare form elements
-const loginForm = loginSection.querySelector('form');
-const registerForm = registerSection.querySelector('form');
-const resetForm = resetSection.querySelector('form');
+const loginMessage = document.getElementById('auth-message');
+const registerMessage = document.getElementById('register-message');
 
-// Declare switch links
-const switchToRegister = document.querySelector('#switch-to-register');
-const switchToReset = document.querySelector('#switch-to-reset');
-const switchToLoginFromRegister = document.querySelector('#switch-to-login');
-const returnToLoginFromReset = document.querySelector('#reset-section button[type="button"]');
+const USER_STORAGE_KEY = 'peergoUsers';
+const USER_ROLE_STORAGE_KEY = 'peergoUserRole';
+const ADMIN_USER_EMAIL = 'admin@mnsu.edu';
+const ADMIN_USER_PASSWORD = 'Admin1234';
+const dashboardPagePath = '/view/dashboard.html';
 
-// Declare form input elements
-const loginUsername = document.querySelector('#login-username');
-const loginPassword = document.querySelector('#login-password');
-const registerEmail = document.querySelector('#register-email');
-const registerUsername = document.querySelector('#register-username');
-const registerPassword1 = document.querySelector('#register-password1');
-const registerPassword2 = document.querySelector('#register-password2');
-const resetEmail = document.querySelector('#reset-email');
-const resetPassword1 = document.querySelector('#reset-password1');
-const resetPassword2 = document.querySelector('#reset-password2');
-
-// Function: show specified section, hide others
 function showSection(sectionToShow) {
     loginSection.hidden = true;
     registerSection.hidden = true;
-    resetSection.hidden = true;
     sectionToShow.hidden = false;
 }
+
+function isSchoolEmail(email) {
+    return /^[A-Za-z0-9._%+-]+@mnsu\.edu$/i.test(email);
+}
+
+function isStrongPassword(password) {
+    if (password.length < 8 || password.length > 20) {
+        return false;
+    }
+    const hasLetter = /[A-Za-z]/.test(password);
+    const hasNumber = /[0-9]/.test(password);
+    return hasLetter && hasNumber;
+}
+
+function ensureAdminUser(users) {
+    const nextUsers = users && typeof users === 'object' ? users : {};
+    let changed = false;
+    const existingAdmin = nextUsers[ADMIN_USER_EMAIL];
+
+    if (!existingAdmin || typeof existingAdmin !== 'object') {
+        nextUsers[ADMIN_USER_EMAIL] = {
+            password: ADMIN_USER_PASSWORD,
+            role: 'admin',
+            createdAt: new Date().toISOString(),
+            isSeededAdmin: true
+        };
+        changed = true;
+    } else {
+        if (existingAdmin.password !== ADMIN_USER_PASSWORD) {
+            existingAdmin.password = ADMIN_USER_PASSWORD;
+            changed = true;
+        }
+
+        if (existingAdmin.role !== 'admin') {
+            existingAdmin.role = 'admin';
+            changed = true;
+        }
+
+        if (!existingAdmin.createdAt) {
+            existingAdmin.createdAt = new Date().toISOString();
+            changed = true;
+        }
+
+        if (existingAdmin.isSeededAdmin !== true) {
+            existingAdmin.isSeededAdmin = true;
+            changed = true;
+        }
+    }
+
+    return {
+        users: nextUsers,
+        changed: changed
+    };
+}
+
+function readUsers() {
+    const raw = localStorage.getItem(USER_STORAGE_KEY);
+    if (!raw) {
+        const initialState = ensureAdminUser({});
+        writeUsers(initialState.users);
+        return initialState.users;
+    }
+
+    try {
+        const users = JSON.parse(raw);
+        const safeUsers = users && typeof users === 'object' ? users : {};
+        const withAdmin = ensureAdminUser(safeUsers);
+
+        if (withAdmin.changed) {
+            writeUsers(withAdmin.users);
+        }
+
+        return withAdmin.users;
+    } catch (error) {
+        console.error('Failed to parse local users:', error);
+        const fallbackState = ensureAdminUser({});
+        writeUsers(fallbackState.users);
+        return fallbackState.users;
+    }
+}
+
+function writeUsers(users) {
+    localStorage.setItem(USER_STORAGE_KEY, JSON.stringify(users));
+}
+
+function setMessage(target, message, isError) {
+    if (!target) return;
+    target.textContent = message;
+    target.classList.remove('msg-error', 'msg-success');
+
+    if (message) {
+        target.classList.add(isError ? 'msg-error' : 'msg-success');
+    }
+}
+
 switchToRegister.addEventListener('click', function() {
     showSection(registerSection);
-});
-switchToReset.addEventListener('click', function() {
-    showSection(resetSection);
-});
-switchToLoginFromRegister.addEventListener('click', function() {
-    showSection(loginSection);
-});
-returnToLoginFromReset.addEventListener('click', function() {
-    showSection(loginSection);
+    setMessage(loginMessage, '', false);
 });
 
-
-// Validation functions
-function validateUsername(username) {
-    if (username.length < 2 || username.length > 20) {
-        alert('Username must be 2-20 characters');
-        return false;
-    }
-    return true;
-}
-function validatePasswordLength(password) {
-    if (password.length < 8 || password.length > 20) {
-        alert('Password must be 8-20 characters');
-        return false;
-    }
-    return true;
-}
-function validatePasswordContent(password) {
-    const letters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const numbers = '0123456789';
-    let hasLetter = false;
-    let hasNumber = false;
-    for (let char of password) {
-        if (letters.includes(char)) {
-            hasLetter = true;
-        }
-        if (numbers.includes(char)) {
-            hasNumber = true;
-        }
-    }
-    if (!hasLetter || !hasNumber) {
-        alert('Password must include both letters and numbers');
-        return false;
-    }
-    return true;
-}
-function validatePasswordMatch(pwd1, pwd2) {
-    if (pwd1 !== pwd2) {
-        alert('Passwords do not match');
-        return false;
-    }
-    return true;
-}
-function validateEmail(email) {
-    if (email.slice(-10) !== '@mnsu.edu') {
-        alert('Email must end with @mnsu.edu');
-        return false;
-    }
-    return true;
-}
-
-// Login form submit event
-loginForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const username = loginUsername.value;
-    const password = loginPassword.value;
-    if (!validateUsername(username)) return;
-    if (!validatePasswordLength(password)) return;
-    if (!validatePasswordContent(password)) return;
-    // Missing navigation page jump, temporarily use alert for login success
-    alert('Login successful! (跳转功能暂时注释)');
-});
-// Register form submit event
-registerForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const email = registerEmail.value;
-    const username = registerUsername.value;
-    const password1 = registerPassword1.value;
-    const password2 = registerPassword2.value;
-    if (!validateEmail(email)) return;
-    if (!validateUsername(username)) return;
-    if (!validatePasswordLength(password1)) return;
-    if (!validatePasswordContent(password1)) return;
-    if (!validatePasswordMatch(password1, password2)) return;
-    alert('Registration successful!');
+switchToLogin.addEventListener('click', function() {
     showSection(loginSection);
+    setMessage(registerMessage, '', false);
 });
-// Reset form submit event
-resetForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const email = resetEmail.value;
-    const password1 = resetPassword1.value;
-    const password2 = resetPassword2.value;
-    if (!validateEmail(email)) return;
-    if (!validatePasswordLength(password1)) return;
-    if (!validatePasswordContent(password1)) return;
-    if (!validatePasswordMatch(password1, password2)) return;
-    alert('Password reset successful!');
-    showSection(loginSection);
+
+registerForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const email = document.getElementById('register-email').value.trim();
+    const password1 = document.getElementById('register-password1').value;
+    const password2 = document.getElementById('register-password2').value;
+
+    if (!isSchoolEmail(email)) {
+        setMessage(registerMessage, 'Only @mnsu.edu email can register.', true);
+        return;
+    }
+
+    if (!isStrongPassword(password1)) {
+        setMessage(registerMessage, 'Password must be 8-20 chars and contain letters and numbers.', true);
+        return;
+    }
+
+    if (password1 !== password2) {
+        setMessage(registerMessage, 'Passwords do not match.', true);
+        return;
+    }
+
+    const users = readUsers();
+    if (users[email]) {
+        setMessage(registerMessage, 'This email is already registered. Please login.', true);
+        return;
+    }
+
+    users[email] = {
+        password: password1,
+        createdAt: new Date().toISOString()
+    };
+    writeUsers(users);
+
+    setMessage(registerMessage, 'Registration successful. Please login.', false);
+    registerForm.reset();
+    setTimeout(function() {
+        showSection(loginSection);
+    }, 500);
+});
+
+loginForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const email = document.getElementById('login-email').value.trim();
+    const password = document.getElementById('login-password').value;
+
+    if (!isSchoolEmail(email)) {
+        setMessage(loginMessage, 'Please use your @mnsu.edu school email.', true);
+        return;
+    }
+
+    if (!isStrongPassword(password)) {
+        setMessage(loginMessage, 'Password format is invalid.', true);
+        return;
+    }
+
+    const users = readUsers();
+    const currentUser = users[email];
+
+    if (!currentUser || currentUser.password !== password) {
+        setMessage(loginMessage, 'Invalid email or password.', true);
+        return;
+    }
+
+    localStorage.setItem('peergoUserEmail', email);
+    localStorage.setItem(USER_ROLE_STORAGE_KEY, currentUser.role || 'user');
+    setMessage(loginMessage, 'Login successful. Redirecting...', false);
+    setTimeout(function() {
+        window.location.href = dashboardPagePath;
+    }, 400);
 });

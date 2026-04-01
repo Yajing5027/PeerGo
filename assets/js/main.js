@@ -1,43 +1,84 @@
-// To-do list:
-// - [ ] Load navbar and footer using fetch
+const protectedPaths = [
+    '/view/dashboard.html',
+    '/view/delivery.html',
+    '/view/add.html',
+    '/view/account.html',
+    '/dashboard.html',
+    '/services/delivery.html',
+    '/add.html',
+    '/account.html'
+];
 
-// Declare elements for undeveloped features
-const companionshipLink = document.querySelector('#companionship-link');
-const profileLink = document.querySelector('#profile-link');
-const settingLink = document.querySelector('#setting-link');
+const loginPagePath = '/view/index.html';
 
-// Function to show under development alert
-function showUnderDevelopmentAlert(e) {
-    e.preventDefault();
-    alert("Feature under development. Coming soon.");
-}
-// Add event listeners for undeveloped features
-if (companionshipLink) {
-    companionshipLink.addEventListener('click', showUnderDevelopmentAlert);
-}
-if (profileLink) {
-    profileLink.addEventListener('click', showUnderDevelopmentAlert);
-}
-if (settingLink) {
-    settingLink.addEventListener('click', showUnderDevelopmentAlert);
+function isProtectedPage(pathname) {
+    return protectedPaths.some(function(path) {
+        return pathname.endsWith(path);
+    });
 }
 
+function ensureLoginState() {
+    const pathname = window.location.pathname;
+    const userEmail = localStorage.getItem('peergoUserEmail');
 
-// HTML includes content
-const navbarHTML = `<nav class="navbar"><div class="navbar-brand"><a href="index.html">PeerGo</a></div><ul class="navbar-nav"><li><a href="dashboard.html" id="dashboard-link">Dashboard</a></li><li><a href="companionship.html" id="companionship-link">Companionship</a></li><li><a href="delivery.html" id="delivery-link">Delivery</a></li><li><a href="lostfound.html" id="lostfound-link">Lost & Found</a></li><li><a href="add.html" id="add-link">Add</a></li><li><a href="#" id="profile-link">Profile</a></li><li><a href="#" id="setting-link">Setting</a></li></ul></nav>`;
-const footerHTML = `<footer class="footer"><small>© 2025 PeerGo</small></footer>`;
-// Function to load HTML includes
-function loadIncludes() {
-    const navbarElement = document.querySelector('[data-include="components/navbar.html"]');
-    const footerElement = document.querySelector('[data-include="components/footer.html"]');
-    if (navbarElement) {
-        navbarElement.innerHTML = navbarHTML;
-    }
-    if (footerElement) {
-        footerElement.innerHTML = footerHTML;
+    if (isProtectedPage(pathname) && !userEmail) {
+        window.location.href = loginPagePath;
     }
 }
-// Load components after page loads
-document.addEventListener('DOMContentLoaded', loadIncludes);
+
+function markActiveNavLink() {
+    const pathname = window.location.pathname;
+    const links = document.querySelectorAll('nav a[href]');
+
+    links.forEach(function(link) {
+        const href = link.getAttribute('href');
+        if (!href) return;
+        link.classList.remove('active-link');
+        if (pathname === href || pathname.endsWith(href)) {
+            link.classList.add('active-link');
+        }
+    });
+}
+
+function bindLogoutLink() {
+    const logoutLink = document.getElementById('logout-link');
+    if (!logoutLink) return;
+
+    logoutLink.addEventListener('click', function(event) {
+        event.preventDefault();
+        localStorage.removeItem('peergoUserEmail');
+        localStorage.removeItem('peergoUserRole');
+        window.location.href = loginPagePath;
+    });
+}
+
+async function loadIncludes() {
+    const includeElements = document.querySelectorAll('[data-include]');
+
+    for (let i = 0; i < includeElements.length; i++) {
+        const element = includeElements[i];
+        const includePath = element.getAttribute('data-include');
+        if (!includePath) continue;
+
+        try {
+            const response = await fetch(includePath, { cache: 'no-store' });
+            if (!response.ok) {
+                throw new Error('Failed to load include: ' + includePath);
+            }
+            element.innerHTML = await response.text();
+        } catch (error) {
+            console.error(error);
+            element.innerHTML = '';
+        }
+    }
+
+    markActiveNavLink();
+    bindLogoutLink();
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    ensureLoginState();
+    loadIncludes();
+});
 
 

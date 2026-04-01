@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeerGo Errand Hall</title>
+    <link rel="stylesheet" href="../style/theme.css">
+    <link rel="stylesheet" href="../style/view.css">
+</head>
+<body>
+    <header>
+        <div data-include="/components/navbar.html"></div>
+        <h1>Errand Hall</h1>
+    </header>
+
+    <main>
+        <section id="introduction" aria-labelledby="intro-title">
+            <h2 id="intro-title" class="sr-only">Page Introduction</h2>
+            <p>Filter and browse currently open errand requests. Status updates immediately after acceptance.</p>
+        </section>
+
+        <section id="filter-section" aria-labelledby="filter-title">
+            <h2 id="filter-title" class="sr-only">Filter Area</h2>
+            <div>
+                <label for="request-type">Type</label>
+                <select name="request-type" id="request-type">
+                    <option value="">All</option>
+                    <option value="Shopping">Shopping</option>
+                    <option value="Delivery">Delivery</option>
+                    <option value="Printing">Printing</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="pickup-location">Pickup Location</label>
+                <select name="pickup-location" id="pickup-location">
+                    <option value="">All</option>
+                    <option value="Dorm">Dorm</option>
+                    <option value="Library">Library</option>
+                    <option value="Office">Office</option>
+                    <option value="Parking Lot">Parking Lot</option>
+                    <option value="Dining Hall">Dining Hall</option>
+                    <option value="Gym">Gym</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="delivery-location">Delivery Location</label>
+                <select name="delivery-location" id="delivery-location">
+                    <option value="">All</option>
+                    <option value="Dorm">Dorm</option>
+                    <option value="Library">Library</option>
+                    <option value="Office">Office</option>
+                    <option value="Parking Lot">Parking Lot</option>
+                    <option value="Dining Hall">Dining Hall</option>
+                    <option value="Gym">Gym</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="state">Status</label>
+                <select name="state" id="state">
+                    <option value="">All</option>
+                    <option value="Open">Open</option>
+                    <option value="Accepted">Accepted</option>
+                </select>
+            </div>
+
+            <button type="button" id="filter-button">Filter</button>
+            <button type="button" id="post-button">Post Request</button>
+        </section>
+
+        <section id="map-section" aria-labelledby="map-title">
+            <h2 id="map-title">Campus Mini Map</h2>
+            <p id="map-help">Load a local map manifest to quickly check routes and buildings during deliveries.</p>
+
+            <div class="map-toolbar">
+                <div class="map-toolbar-field">
+                    <label for="campus-map-select">Map Selection</label>
+                    <select id="campus-map-select" name="campus-map-select">
+                        <option value="">Loading map manifest...</option>
+                    </select>
+                </div>
+
+                <button type="button" id="map-refresh-button">Refresh Map List</button>
+                <a id="official-map-link" class="map-link" href="https://mankato.mnsu.edu/about-the-university/maps-and-transportation/maps-and-directions/" target="_blank" rel="noopener noreferrer">Open Official Campus Maps</a>
+            </div>
+
+            <div class="map-preview">
+                <iframe id="campus-map-frame" title="Campus map preview" loading="lazy"></iframe>
+            </div>
+
+            <p id="map-meta">Map source: local downloads / official map page</p>
+        </section>
+
+        <section id="request-table-section" aria-labelledby="request-table-title">
+            <h2 id="request-table-title" class="sr-only">Request Table</h2>
+            <table id="request-table" title="request-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Pickup</th>
+                        <th>Delivery</th>
+                        <th>Reward</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                <tfoot>
+                    <tr>
+                        <td>Total</td>
+                        <td colspan="7">0</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+    </main>
+
+    <div data-include="/components/footer.html"></div>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/table.js"></script>
+    <script src="../assets/js/maps.js"></script>
+</body>
+</html>
