@@ -8,7 +8,11 @@ function normalizePath(input) {
         return '';
     }
 
-    if (raw.indexOf('http://') === 0 || raw.indexOf('https://') === 0) {
+    if (raw.indexOf('http://') === 0) {
+        return 'https://' + raw.slice('http://'.length);
+    }
+
+    if (raw.indexOf('https://') === 0) {
         return raw;
     }
 
