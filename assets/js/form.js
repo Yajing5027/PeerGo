@@ -14,6 +14,8 @@ const USER_STORAGE_KEY = 'mavsideUsers';
 const USER_ROLE_STORAGE_KEY = 'mavsideUserRole';
 const ADMIN_USER_EMAIL = 'admin@mnsu.edu';
 const ADMIN_USER_PASSWORD = 'Admin1234';
+const MAVACCESS_USER_EMAIL = 'mavaccess@mnsu.edu';
+const MAVACCESS_USER_PASSWORD = 'Access123';
 const dashboardPagePath = '/view/dashboard.html';
 
 function showSection(sectionToShow) {
@@ -76,27 +78,66 @@ function ensureAdminUser(users) {
     };
 }
 
+function ensureMavAccessUser(users) {
+    const nextUsers = users && typeof users === 'object' ? users : {};
+    let changed = false;
+    const existingMav = nextUsers[MAVACCESS_USER_EMAIL];
+
+    if (!existingMav || typeof existingMav !== 'object') {
+        nextUsers[MAVACCESS_USER_EMAIL] = {
+            password: MAVACCESS_USER_PASSWORD,
+            role: 'user',
+            createdAt: new Date().toISOString(),
+            isMavAccessTest: true
+        };
+        changed = true;
+    } else {
+        if (existingMav.password !== MAVACCESS_USER_PASSWORD) {
+            existingMav.password = MAVACCESS_USER_PASSWORD;
+            changed = true;
+        }
+
+        if (!existingMav.createdAt) {
+            existingMav.createdAt = new Date().toISOString();
+            changed = true;
+        }
+
+        if (existingMav.isMavAccessTest !== true) {
+            existingMav.isMavAccessTest = true;
+            changed = true;
+        }
+    }
+
+    return {
+        users: nextUsers,
+        changed: changed
+    };
+}
+
 function readUsers() {
     const raw = localStorage.getItem(USER_STORAGE_KEY);
     if (!raw) {
-        const initialState = ensureAdminUser({});
-        writeUsers(initialState.users);
-        return initialState.users;
+        let initState = ensureAdminUser({});
+        initState = ensureMavAccessUser(initState.users);
+        writeUsers(initState.users);
+        return initState.users;
     }
 
     try {
         const users = JSON.parse(raw);
         const safeUsers = users && typeof users === 'object' ? users : {};
-        const withAdmin = ensureAdminUser(safeUsers);
+        let withAdmin = ensureAdminUser(safeUsers);
+        let withMav = ensureMavAccessUser(withAdmin.users);
 
-        if (withAdmin.changed) {
-            writeUsers(withAdmin.users);
+        if (withAdmin.changed || withMav.changed) {
+            writeUsers(withMav.users);
         }
 
-        return withAdmin.users;
+        return withMav.users;
     } catch (error) {
         console.error('Failed to parse local users:', error);
-        const fallbackState = ensureAdminUser({});
+        let fallbackState = ensureAdminUser({});
+        fallbackState = ensureMavAccessUser(fallbackState.users);
         writeUsers(fallbackState.users);
         return fallbackState.users;
     }
@@ -193,6 +234,7 @@ loginForm.addEventListener('submit', function(event) {
 
     localStorage.setItem('mavsideUserEmail', email);
     localStorage.setItem(USER_ROLE_STORAGE_KEY, currentUser.role || 'user');
+
     setMessage(loginMessage, 'Login successful. Redirecting...', false);
     setTimeout(function() {
         window.location.href = dashboardPagePath;

@@ -1,0 +1,367 @@
+{
+  "generatedAt": "2026-04-15T00:02:14.615Z",
+  "totalCandidates": 45,
+  "success": [
+    {
+      "shopId": "taco-bell",
+      "categoryId": "best-sellers",
+      "itemName": "Cheesy Gordita Crunch",
+      "source": "https://www.tacobell.com/images/22813_cheesy_gordita_crunch_750x340.jpg",
+      "webPath": "/assets/images/shops/taco-bell/best-sellers-1-cheesy-gordita-crunch.jpg",
+      "bytes": 76102
+    },
+    {
+      "shopId": "taco-bell",
+      "categoryId": "best-sellers",
+      "itemName": "Crunchwrap Supreme",
+      "source": "https://www.tacobell.com/images/22362_crunchwrap_supreme_750x340.jpg",
+      "webPath": "/assets/images/shops/taco-bell/best-sellers-2-crunchwrap-supreme.jpg",
+      "bytes": 83231
+    },
+    {
+      "shopId": "taco-bell",
+      "categoryId": "best-sellers",
+      "itemName": "Chicken Quesadilla",
+      "source": "https://www.tacobell.com/images/22321_quesadilla_750x340.jpg",
+      "webPath": "/assets/images/shops/taco-bell/best-sellers-3-chicken-quesadilla.jpg",
+      "bytes": 73107
+    },
+    {
+      "shopId": "taco-bell",
+      "categoryId": "best-sellers",
+      "itemName": "Nachos BellGrande",
+      "source": "https://www.tacobell.com/images/22502_nachos_bellgrande_750x340.jpg",
+      "webPath": "/assets/images/shops/taco-bell/best-sellers-4-nachos-bellgrande.jpg",
+      "bytes": 76260
+    },
+    {
+      "shopId": "taco-bell",
+      "categoryId": "best-sellers",
+      "itemName": "Chalupa Supreme",
+      "source": "https://www.tacobell.com/images/22850_chalupa_supreme_750x340.jpg",
+      "webPath": "/assets/images/shops/taco-bell/best-sellers-5-chalupa-supreme.jpg",
+      "bytes": 76134
+    },
+    {
+      "shopId": "taco-bell",
+      "categoryId": "tacos-and-burritos",
+      "itemName": "Soft Taco",
+      "source": "https://www.tacobell.com/images/22110_soft_taco_750x340.jpg",
+      "webPath": "/assets/images/shops/taco-bell/tacos-and-burritos-1-soft-taco.jpg",
+      "bytes": 66697
+    },
+    {
+      "shopId": "taco-bell",
+      "categoryId": "tacos-and-burritos",
+      "itemName": "Crunchy Taco",
+      "source": "https://www.tacobell.com/images/22100_crunchy_taco_750x340.jpg",
+      "webPath": "/assets/images/shops/taco-bell/tacos-and-burritos-2-crunchy-taco.jpg",
+      "bytes": 74646
+    },
+    {
+      "shopId": "taco-bell",
+      "categoryId": "tacos-and-burritos",
+      "itemName": "Spicy Potato Soft Taco",
+      "source": "https://www.tacobell.com/images/22259_spicy_potato_soft_taco_750x340.jpg",
+      "webPath": "/assets/images/shops/taco-bell/tacos-and-burritos-3-spicy-potato-soft-taco.jpg",
+      "bytes": 65489
+    },
+    {
+      "shopId": "taco-bell",
+      "categoryId": "tacos-and-burritos",
+      "itemName": "Beefy 5-Layer Burrito",
+      "source": "https://www.tacobell.com/images/22167_beefy_5_layer_burrito_750x340.jpg",
+      "webPath": "/assets/images/shops/taco-bell/tacos-and-burritos-4-beefy-5-layer-burrito.jpg",
+      "bytes": 67354
+    },
+    {
+      "shopId": "taco-bell",
+      "categoryId": "tacos-and-burritos",
+      "itemName": "Cheesy Bean and Rice Burrito",
+      "source": "https://www.tacobell.com/images/22283_cheesy_bean_and_rice_burrito_750x340.jpg",
+      "webPath": "/assets/images/shops/taco-bell/tacos-and-burritos-5-cheesy-bean-and-rice-burrito.jpg",
+      "bytes": 65075
+    },
+    {
+      "shopId": "taco-bell",
+      "categoryId": "fries-and-drinks",
+      "itemName": "Nacho Fries",
+      "source": "https://www.tacobell.com/images/28095_nacho_fries_750x340.jpg",
+      "webPath": "/assets/images/shops/taco-bell/fries-and-drinks-1-nacho-fries.jpg",
+      "bytes": 50611
+    },
+    {
+      "shopId": "taco-bell",
+      "categoryId": "fries-and-drinks",
+      "itemName": "Large Nacho Fries",
+      "source": "https://www.tacobell.com/images/28183_nacho_fries_large_750x340.jpg",
+      "webPath": "/assets/images/shops/taco-bell/fries-and-drinks-2-large-nacho-fries.jpg",
+      "bytes": 51487
+    },
+    {
+      "shopId": "taco-bell",
+      "categoryId": "fries-and-drinks",
+      "itemName": "Seasoned Fries",
+      "source": "https://www.tacobell.com/images/28068_seasoned_fries_640x650.jpg",
+      "webPath": "/assets/images/shops/taco-bell/fries-and-drinks-3-seasoned-fries.jpg",
+      "bytes": 147583
+    },
+    {
+      "shopId": "taco-bell",
+      "categoryId": "fries-and-drinks",
+      "itemName": "Premium Hot Coffee",
+      "source": "https://www.tacobell.com/images/1527_premium_hot_coffee_750x340.jpg",
+      "webPath": "/assets/images/shops/taco-bell/fries-and-drinks-4-premium-hot-coffee.jpg",
+      "bytes": 47642
+    },
+    {
+      "shopId": "taco-bell",
+      "categoryId": "fries-and-drinks",
+      "itemName": "Regular Iced Coffee",
+      "source": "https://www.tacobell.com/images/1534_iced_regular_coffee_750x340.jpg",
+      "webPath": "/assets/images/shops/taco-bell/fries-and-drinks-5-regular-iced-coffee.jpg",
+      "bytes": 61947
+    },
+    {
+      "shopId": "chick-fil-a",
+      "categoryId": "breakfast",
+      "itemName": "Sausage, Egg & Cheese Biscuit",
+      "source": "https://www.chick-fil-a.com/wp-content/uploads/sites/2/2026/03/CFA_Spring26_Bacon-Egg-Cheese_Sausage-Egg-Cheese_Biscuit_Meal_US_Beauty.tif_cfa_web_ready_52e233.jpg",
+      "webPath": "/assets/images/shops/chick-fil-a/breakfast-1-sausage-egg-cheese-biscuit.jpg",
+      "bytes": 317384
+    },
+    {
+      "shopId": "chick-fil-a",
+      "categoryId": "breakfast",
+      "itemName": "Bacon, Egg & Cheese Biscuit",
+      "source": "https://www.chick-fil-a.com/wp-content/uploads/sites/2/2026/03/CFA_Spring26_Bacon-Egg-Cheese_Sausage-Egg-Cheese_Biscuit_Meal_US_Beauty.tif_cfa_web_ready.jpg",
+      "webPath": "/assets/images/shops/chick-fil-a/breakfast-2-bacon-egg-cheese-biscuit.jpg",
+      "bytes": 317384
+    },
+    {
+      "shopId": "chick-fil-a",
+      "categoryId": "breakfast",
+      "itemName": "Hash Browns",
+      "source": "https://www.chick-fil-a.com/wp-content/uploads/sites/2/2025/04/menu-item-breakfast.png?w=100",
+      "webPath": "/assets/images/shops/chick-fil-a/breakfast-3-hash-browns.png",
+      "bytes": 6362
+    },
+    {
+      "shopId": "chick-fil-a",
+      "categoryId": "breakfast",
+      "itemName": "Breakfast Biscuit Meal",
+      "source": "https://www.chick-fil-a.com/wp-content/uploads/sites/2/2026/03/CFA_Spring26_Bacon-Egg-Cheese_Sausage-Egg-Cheese_Biscuit_Meal_US_Beauty.tif_cfa_web_ready_52e233.jpg?resize=1024,778",
+      "webPath": "/assets/images/shops/chick-fil-a/breakfast-4-breakfast-biscuit-meal.jpg",
+      "bytes": 24536
+    },
+    {
+      "shopId": "chick-fil-a",
+      "categoryId": "breakfast",
+      "itemName": "Iced Coffee",
+      "source": "https://www.chick-fil-a.com/wp-content/uploads/sites/2/2026/03/CFA_Spring26_Bacon-Egg-Cheese_Sausage-Egg-Cheese_Biscuit_Meal_US_Beauty.tif_cfa_web_ready.jpg?resize=744,565",
+      "webPath": "/assets/images/shops/chick-fil-a/breakfast-5-iced-coffee.jpg",
+      "bytes": 14668
+    },
+    {
+      "shopId": "chick-fil-a",
+      "categoryId": "entrees",
+      "itemName": "Chick-fil-A Chicken Sandwich",
+      "source": "https://www.chick-fil-a.com/wp-content/uploads/sites/2/2025/04/menu-item-entrees.png?w=100",
+      "webPath": "/assets/images/shops/chick-fil-a/entrees-1-chick-fil-a-chicken-sandwich.png",
+      "bytes": 8306
+    },
+    {
+      "shopId": "chick-fil-a",
+      "categoryId": "entrees",
+      "itemName": "Chick-fil-A Nuggets",
+      "source": "https://www.chick-fil-a.com/wp-content/uploads/sites/2/2026/02/CFA_Spring26_JalapenoRanchClub_Meal_Beauty_US_MenuLP_Entrees_D_649x742.jpg",
+      "webPath": "/assets/images/shops/chick-fil-a/entrees-2-chick-fil-a-nuggets.jpg",
+      "bytes": 45260
+    },
+    {
+      "shopId": "chick-fil-a",
+      "categoryId": "entrees",
+      "itemName": "8 ct Chick-fil-A Nuggets",
+      "source": "https://www.chick-fil-a.com/wp-content/uploads/sites/2/2026/02/CFA_Spring26_JalapenoRanchClub_Meal_Beauty_US_MenuLP_Entrees_D_649x742.jpg?resize=420,480",
+      "webPath": "/assets/images/shops/chick-fil-a/entrees-3-8-ct-chick-fil-a-nuggets.jpg",
+      "bytes": 18788
+    },
+    {
+      "shopId": "chick-fil-a",
+      "categoryId": "entrees",
+      "itemName": "Jalapeno Ranch Club",
+      "source": "https://www.chick-fil-a.com/wp-content/uploads/sites/2/2026/02/CFA_Spring26_JalapenoRanchClub-Platform_Beauty_US_The-Feed_StoryHeader_D_1274x664.jpg",
+      "webPath": "/assets/images/shops/chick-fil-a/entrees-4-jalapeno-ranch-club.jpg",
+      "bytes": 97444
+    },
+    {
+      "shopId": "chick-fil-a",
+      "categoryId": "entrees",
+      "itemName": "Spicy Filet Sandwich",
+      "source": "https://www.chick-fil-a.com/wp-content/uploads/sites/2/2026/02/CFA_Spring26_JalapenoRanchClub-Platform_Beauty_US_The-Feed_StoryHeader_D_1274x664.jpg?resize=768,400",
+      "webPath": "/assets/images/shops/chick-fil-a/entrees-5-spicy-filet-sandwich.jpg",
+      "bytes": 35108
+    },
+    {
+      "shopId": "chick-fil-a",
+      "categoryId": "sides-and-treats",
+      "itemName": "Waffle Potato Fries",
+      "source": "https://www.chick-fil-a.com/wp-content/themes/cfa/patterns/images/sides.jpeg",
+      "webPath": "/assets/images/shops/chick-fil-a/sides-and-treats-1-waffle-potato-fries.jpeg",
+      "bytes": 347844
+    },
+    {
+      "shopId": "chick-fil-a",
+      "categoryId": "sides-and-treats",
+      "itemName": "Side Salad",
+      "source": "https://www.chick-fil-a.com/wp-content/themes/cfa/patterns/images/salads.jpg",
+      "webPath": "/assets/images/shops/chick-fil-a/sides-and-treats-2-side-salad.jpg",
+      "bytes": 66244
+    },
+    {
+      "shopId": "chick-fil-a",
+      "categoryId": "sides-and-treats",
+      "itemName": "Garden Salad",
+      "source": "https://www.chick-fil-a.com/wp-content/themes/cfa/patterns/images/salads.jpg",
+      "webPath": "/assets/images/shops/chick-fil-a/sides-and-treats-3-garden-salad.jpg",
+      "bytes": 66244
+    },
+    {
+      "shopId": "chick-fil-a",
+      "categoryId": "sides-and-treats",
+      "itemName": "Milkshake Treat",
+      "source": "https://www.chick-fil-a.com/wp-content/uploads/sites/2/2025/04/menu-item-treats.png?w=100",
+      "webPath": "/assets/images/shops/chick-fil-a/sides-and-treats-4-milkshake-treat.png",
+      "bytes": 3352
+    },
+    {
+      "shopId": "chick-fil-a",
+      "categoryId": "sides-and-treats",
+      "itemName": "Fresh Lemonade",
+      "source": "https://www.chick-fil-a.com/wp-content/uploads/sites/2/2025/04/menu-item-beverages.png?w=100",
+      "webPath": "/assets/images/shops/chick-fil-a/sides-and-treats-5-fresh-lemonade.png",
+      "bytes": 4990
+    },
+    {
+      "shopId": "einstein-bros-bagels",
+      "categoryId": "bagels-and-shmear",
+      "itemName": "Half Dozen Bagel Box",
+      "source": "https://www.einsteinbros.com/wp-content/uploads/2023/10/EBB-Half-Dozen-Bagel-Box.jpg",
+      "webPath": "/assets/images/shops/einstein-bros-bagels/bagels-and-shmear-1-half-dozen-bagel-box.jpg",
+      "bytes": 49356
+    },
+    {
+      "shopId": "einstein-bros-bagels",
+      "categoryId": "bagels-and-shmear",
+      "itemName": "Gourmet Green Chile Bagel",
+      "source": "https://www.einsteinbros.com/wp-content/uploads/2023/10/EBB-Bagel-Gourmet-Green-Chile.jpg",
+      "webPath": "/assets/images/shops/einstein-bros-bagels/bagels-and-shmear-2-gourmet-green-chile-bagel.jpg",
+      "bytes": 72408
+    },
+    {
+      "shopId": "einstein-bros-bagels",
+      "categoryId": "bagels-and-shmear",
+      "itemName": "Signature Asiago Bagel",
+      "source": "https://www.einsteinbros.com/wp-content/uploads/2023/10/EBB-Bagel-Signature-Asiago.jpg",
+      "webPath": "/assets/images/shops/einstein-bros-bagels/bagels-and-shmear-3-signature-asiago-bagel.jpg",
+      "bytes": 54901
+    },
+    {
+      "shopId": "einstein-bros-bagels",
+      "categoryId": "bagels-and-shmear",
+      "itemName": "Classic Plain Bagel",
+      "source": "https://www.einsteinbros.com/wp-content/uploads/2023/10/EBB-Bagel-Classic-Plain.jpg",
+      "webPath": "/assets/images/shops/einstein-bros-bagels/bagels-and-shmear-4-classic-plain-bagel.jpg",
+      "bytes": 52963
+    },
+    {
+      "shopId": "einstein-bros-bagels",
+      "categoryId": "bagels-and-shmear",
+      "itemName": "Hot Honey Shmear",
+      "source": "https://www.einsteinbros.com/wp-content/uploads/2026/02/HotHoneyShmear_Hand_NEW_2048x2048-1-1024x1024.jpg",
+      "webPath": "/assets/images/shops/einstein-bros-bagels/bagels-and-shmear-5-hot-honey-shmear.jpg",
+      "bytes": 98759
+    },
+    {
+      "shopId": "einstein-bros-bagels",
+      "categoryId": "breakfast-and-lunch",
+      "itemName": "Farmhouse Signature Egg Sandwich",
+      "source": "https://www.einsteinbros.com/wp-content/uploads/2023/10/EBB-SignatureEgg-Farmhouse-650x6501-1.jpg",
+      "webPath": "/assets/images/shops/einstein-bros-bagels/breakfast-and-lunch-1-farmhouse-signature-egg-sandwich.jpg",
+      "bytes": 68428
+    },
+    {
+      "shopId": "einstein-bros-bagels",
+      "categoryId": "breakfast-and-lunch",
+      "itemName": "Hot Honey Egg Sandwich",
+      "source": "https://www.einsteinbros.com/wp-content/uploads/2026/02/HotHoneyEgg_NEW_2048x2048-1-1024x1024.jpg",
+      "webPath": "/assets/images/shops/einstein-bros-bagels/breakfast-and-lunch-2-hot-honey-egg-sandwich.jpg",
+      "bytes": 114278
+    },
+    {
+      "shopId": "einstein-bros-bagels",
+      "categoryId": "breakfast-and-lunch",
+      "itemName": "Brunch Box",
+      "source": "https://www.einsteinbros.com/wp-content/uploads/2025/05/EBB-BrunchBox-480x480-1.png",
+      "webPath": "/assets/images/shops/einstein-bros-bagels/breakfast-and-lunch-3-brunch-box.png",
+      "bytes": 105274
+    },
+    {
+      "shopId": "einstein-bros-bagels",
+      "categoryId": "breakfast-and-lunch",
+      "itemName": "Hot Honey Nova Lox",
+      "source": "https://www.einsteinbros.com/wp-content/uploads/2026/02/HotHoneyNovaLox_NEW_2048x2048-1-1024x1024.jpg",
+      "webPath": "/assets/images/shops/einstein-bros-bagels/breakfast-and-lunch-4-hot-honey-nova-lox.jpg",
+      "bytes": 119240
+    },
+    {
+      "shopId": "einstein-bros-bagels",
+      "categoryId": "breakfast-and-lunch",
+      "itemName": "Pepperoni Pizza Bagel",
+      "source": "https://www.einsteinbros.com/wp-content/uploads/2023/10/EBB-Pepperoni-Pizza-Bagel.jpg",
+      "webPath": "/assets/images/shops/einstein-bros-bagels/breakfast-and-lunch-5-pepperoni-pizza-bagel.jpg",
+      "bytes": 43545
+    },
+    {
+      "shopId": "einstein-bros-bagels",
+      "categoryId": "beverages-and-sweets",
+      "itemName": "Mocha",
+      "source": "https://www.einsteinbros.com/wp-content/uploads/2023/10/EBB-Mocha-650c6501.jpg",
+      "webPath": "/assets/images/shops/einstein-bros-bagels/beverages-and-sweets-1-mocha.jpg",
+      "bytes": 24376
+    },
+    {
+      "shopId": "einstein-bros-bagels",
+      "categoryId": "beverages-and-sweets",
+      "itemName": "Iced Coffee",
+      "source": "https://www.einsteinbros.com/wp-content/uploads/2023/10/EBB-Iced-Coffee-1.jpg",
+      "webPath": "/assets/images/shops/einstein-bros-bagels/beverages-and-sweets-2-iced-coffee.jpg",
+      "bytes": 26364
+    },
+    {
+      "shopId": "einstein-bros-bagels",
+      "categoryId": "beverages-and-sweets",
+      "itemName": "Caramel Coldbrew Shake",
+      "source": "https://www.einsteinbros.com/wp-content/uploads/2025/06/EBB-Coldbrew-Shake-Caramel-1-1.jpg",
+      "webPath": "/assets/images/shops/einstein-bros-bagels/beverages-and-sweets-3-caramel-coldbrew-shake.jpg",
+      "bytes": 26124
+    },
+    {
+      "shopId": "einstein-bros-bagels",
+      "categoryId": "beverages-and-sweets",
+      "itemName": "Blueberry Muffin",
+      "source": "https://www.einsteinbros.com/wp-content/uploads/2023/10/EBB-Sweets-BlueberryMuffin-650x6501-1.jpg",
+      "webPath": "/assets/images/shops/einstein-bros-bagels/beverages-and-sweets-4-blueberry-muffin.jpg",
+      "bytes": 45580
+    },
+    {
+      "shopId": "einstein-bros-bagels",
+      "categoryId": "beverages-and-sweets",
+      "itemName": "Chocolate Chip Cookie",
+      "source": "https://www.einsteinbros.com/wp-content/uploads/2023/10/EBB-Sweets-ChocolateChipCookie-650x6501-1.jpg",
+      "webPath": "/assets/images/shops/einstein-bros-bagels/beverages-and-sweets-5-chocolate-chip-cookie.jpg",
+      "bytes": 157876
+    }
+  ],
+  "failed": []
+}

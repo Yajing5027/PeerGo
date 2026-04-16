@@ -1,0 +1,81 @@
+## **Section: Match-Route Engine: Spatiotemporal Constrained Scheduling Algorithm**
+
+### **I. Matching Decision Flowchart (Core Visualization)**
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│              MavSide Match-Route Decision Process               │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   [START] Bringer Activates Match-Route Mode                    │
+│           (Requires mnsu.edu Authentication)                    │
+│                    │                                            │
+│                    ↓                                            │
+│   ┌─────────────────────────────────────────┐                   │
+│   │ Input: Scheduled Path (Origin A → Dest B)│                  │
+│   └─────────────────────────────────────────┘                   │
+│                    │                                            │
+│                    ↓                                            │
+│   ┌─────────────────────────────────────────┐                   │
+│   │  Step 1: Spatial Constraint - Deviation  │                  │
+│   │  Δ = (|AP| + |PD| + |DB| - |AB|) / |AB| │                   │
+│   │  If Δ > 15% → Filter Out                │                   │
+│   └─────────────────────────────────────────┘                   │
+│                    │ Δ ≤ 15%                                    │
+│                    ↓                                            │
+│   ┌─────────────────────────────────────────┐                   │
+│   │  Step 2: Temporal Constraint - ETA      │                   │
+│   │  T_extra = T_detour + T_pickup          │                   │
+│   │  If T_extra > Tolerance → Filter Out    │                   │
+│   └─────────────────────────────────────────┘                   │
+│                    │ Verified                                   │
+│                    ↓                                            │
+│   ┌─────────────────────────────────────────┐                   │
+│   │  Step 3: Context-Aware Path Re-weighting│                   │
+│   │  If Weather = Severe → Buff Indoor Edge │                   │
+│   │  Re-calculate Δ and T_extra             │                   │
+│   └─────────────────────────────────────────┘                   │
+│                    │                                            │
+│                    ↓                                            │
+│   ★ [ACTION] Push Task to Verified Bringer                     │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### **II. Core Algorithm Modules**
+
+#### **Module 1: Path Deviation Ratio (Spatial Feasibility)**
+* **Academic Concept**: Space-Time Prism Constraint
+* **Calculation**: For a scheduled route A→B, with pickup P and delivery D:
+    **Δ = (Dist(A,P) + Dist(P,D) + Dist(D,B) - Dist(A,B)) / Dist(A,B)**
+* **Threshold**: **Δ ≤ 15%** (Ensures "Zero Marginal Cost" for the Bringer)
+* **Academic Support**: Derived from Time Geography, this ratio quantifies the "micro-perturbation" of a user's trajectory, ensuring the service remains a byproduct of an existing trip rather than a dedicated delivery.
+
+#### **Module 2: Dynamic ETA Estimation (Temporal Modeling)**
+* **Academic Concept**: Queuing Theory & Dynamic Traffic Assignment
+* **Calculation**: **ETA = (Distance / Speed) + T_pickup + P_density**
+* **Correction Factors**:
+    * **Class Schedule Driven**: Speed reduced by 30-50% near academic buildings 5-15 mins after class ends (via Campus API).
+    * **Pickup Latency**: Historical wait times at campus stores (Avg. 4 mins peak / 2 mins off-peak).
+    * **Building Transition**: Fixed time penalties for door-opening, ID swiping, and vertical movement (elevators).
+
+#### **Module 3: Unified Indoor-Outdoor Routing (Context-Awareness)**
+* **Academic Concept**: Multi-layer Weighted Graph Navigation
+* **Modeling Strategy**: The campus is modeled as a **Multi-layer Weighted Graph** where edges have attributes: `indoor`, `semi-indoor`, and `outdoor`.
+* **Adaptive Mechanism**:
+    * When Temperature < -10°C or Snowing:
+    * **`outdoor` weight × 1.5** (Penalty) | **`indoor` weight × 0.8** (Incentive)
+* **Significance**: Specifically optimized for the Minnesota climate (Skyways/Tunnels), prioritizing user comfort and mobility accessibility.
+
+### **III. Algorithm Roadmap**
+
+| Phase | Timeline | Objective | Key Technology |
+| :--- | :--- | :--- | :--- |
+| **Prototype** | Current | Haversine Deviation + Static ETA | Full-stack Interaction |
+| **Network Match**| Next Gen | Real Walking Path Distance | Mapbox / OSRM Integration |
+| **Smart Dispatch**| Future | Multi-layer Graph + Climate-Adaptive | Custom Campus Graph API |
+
+### **IV. Summary Statement**
+> **MavSide’s engine transforms "on-the-way" intent into computable spatiotemporal constraints. By integrating deviation thresholds, dynamic ETA correction, and unified indoor-outdoor modeling, it ensures every match is a seamless, low-impact reuse of existing campus mobility.**
+
+---

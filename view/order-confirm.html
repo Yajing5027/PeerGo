@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Order</title>
+    <link rel="stylesheet" href="../style/theme.css">
+    <link rel="stylesheet" href="../style/view.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+        <div data-include="/components/navbar.html"></div>
+        <div class="page-title-row">
+            <h1>Confirm Your Order</h1>
+        </div>
+        <p class="hall-slogan">Review your order details and confirm your purchase.</p>
+    </header>
+
+    <main id="main-content" role="main" aria-label="Confirm Order">
+        <form id="confirm-order-form">
+            <h2>Order Details</h2>
+
+            <div id="confirm-order-summary"></div>
+
+            <div id="order-pickup-location-component"></div>
+
+            <div id="order-delivery-location-component"></div>
+
+            <div id="order-reward-component"></div>
+
+            <div id="order-merchant-note-component"></div>
+
+            <div id="order-courier-note-component"></div>
+
+            <div>
+                <button type="submit">Confirm Payment</button>
+                <button type="reset">Reset</button>
+            </div>
+
+            <p id="confirm-order-message" aria-live="polite"></p>
+        </form>
+    </main>
+
+    <div data-include="/components/footer.html"></div>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/account.js"></script>
+    <script src="../assets/js/notification-center.js"></script>
+    <script src="../assets/js/form-components.js"></script>
+    <script src="../assets/js/shopdata.js"></script>
+    <script src="../assets/js/shops-fixed-data.js"></script>
+    <script src="../assets/js/shops.js"></script>
+    <script src="../assets/js/cart.js"></script>
+    <script src="../assets/js/errands-model.js"></script>
+    <script src="../assets/js/orders.js"></script>
+    <script src="../assets/js/order-confirm.js"></script>
+</body>
+</html>

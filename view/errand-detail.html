@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Errand Delivery Detail</title>
+    <link rel="stylesheet" href="../style/theme.css">
+    <link rel="stylesheet" href="../style/view.css">
+</head>
+<body>
+    <header>
+        <div data-include="/components/navbar.html"></div>
+        <h1>Delivery Detail</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Task Overview</h2>
+            <div id="errand-detail-overview"></div>
+        </section>
+
+        <section>
+            <h2>User Note</h2>
+            <div id="errand-detail-note"></div>
+        </section>
+
+        <section>
+            <h2>Actions</h2>
+            <div id="errand-detail-progress" style="margin-bottom:10px;"></div>
+            <div class="cart-buttons">
+                <button id="errand-detail-back" type="button">Back</button>
+            </div>
+        </section>
+    </main>
+
+    <div data-include="/components/footer.html"></div>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/task-progress.js"></script>
+    <script src="../assets/js/errands-model.js"></script>
+    <script src="../assets/js/errand-detail.js"></script>
+</body>
+</html>

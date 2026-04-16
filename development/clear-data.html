@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MavSide Dev - Clear Data</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-top: 0;
+        }
+        .section {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 6px;
+            border-left: 4px solid #007bff;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px 5px 5px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .btn-primary {
+            background: #007bff;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #0056b3;
+        }
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+        .btn-danger:hover {
+            background: #c82333;
+        }
+        .btn-warning {
+            background: #ffc107;
+            color: #333;
+        }
+        .btn-warning:hover {
+            background: #ffb300;
+        }
+        .msg {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            display: none;
+        }
+        .msg.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        .msg.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+            display: block;
+        }
+        .msg.warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+            display: block;
+        }
+        .key-item {
+            padding: 8px;
+            margin: 5px 0;
+            background: white;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .key-name {
+            font-family: monospace;
+            color: #666;
+        }
+        .key-val {
+            font-size: 12px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧹 MavSide Data Management</h1>
+
+        <div class="section">
+            <h2>Quick Clear</h2>
+            <p>Clear all test data in one click:</p>
+            <button class="btn-danger" onclick="clearAllData()">Clear All LocalStorage</button>
+            <div id="msg-all" class="msg"></div>
+        </div>
+
+        <div class="section">
+            <h2>Clear Specific Categories</h2>
+            <p>
+                <button class="btn-warning" onclick="clearUsers()">Clear Users & Auth</button>
+                <button class="btn-warning" onclick="clearOrders()">Clear Orders & Tasks</button>
+                <button class="btn-warning" onclick="clearWallet()">Clear Wallet & Account</button>
+            </p>
+            <div id="msg-category" class="msg"></div>
+        </div>
+
+        <div class="section">
+            <h2>Current LocalStorage Keys</h2>
+            <div id="keys-list"></div>
+        </div>
+
+        <div class="section">
+            <h2>Admin Reset</h2>
+            <p>Reinitialize admin account and reset all data to defaults:</p>
+            <button class="btn-primary" onclick="resetEverything()">Reset Everything</button>
+            <div id="msg-reset" class="msg"></div>
+        </div>
+    </div>
+
+    <script>
+        function showMsg(elementId, text, type = 'success') {
+            const el = document.getElementById(elementId);
+            if (el) {
+                el.textContent = text;
+                el.className = 'msg ' + type;
+            }
+            console.log(`[${type}] ${text}`);
+        }
+
+        function listKeys() {
+            const keysList = document.getElementById('keys-list');
+            const allKeys = Object.keys(localStorage).sort();
+            
+            if (allKeys.length === 0) {
+                keysList.innerHTML = '<p style="color: #999;">No localStorage keys found.</p>';
+                return;
+            }
+
+            keysList.innerHTML = allKeys.map(key => {
+                const value = localStorage.getItem(key) || '';
+                let display = value.length > 50 ? value.substring(0, 50) + '...' : value;
+                return `<div class="key-item">
+                            <div>
+                                <div class="key-name">${key}</div>
+                                <div class="key-val">${display}</div>
+                            </div>
+                        </div>`;
+            }).join('');
+        }
+
+        function clearAllData() {
+            if (!confirm('⚠️ This will clear ALL localStorage data. Continue?')) {
+                return;
+            }
+            localStorage.clear();
+            showMsg('msg-all', '✓ All localStorage data cleared!', 'success');
+            setTimeout(() => {
+                listKeys();
+            }, 300);
+        }
+
+        function clearUsers() {
+            const keys = ['mavsideUsers', 'mavsideUserEmail', 'mavsideUserRole'];
+            keys.forEach(key => localStorage.removeItem(key));
+            showMsg('msg-category', `✓ Cleared: ${keys.join(', ')}`, 'success');
+            setTimeout(() => listKeys(), 300);
+        }
+
+        function clearOrders() {
+            const keys = ['mavsideDeliveryPosts', 'mavsideOrders', 'mavsidePendingOrderDraft', 'mavsideNavPickup', 'mavsideNavDelivery'];
+            keys.forEach(key => localStorage.removeItem(key));
+            showMsg('msg-category', `✓ Cleared: ${keys.join(', ')}`, 'success');
+            setTimeout(() => listKeys(), 300);
+        }
+
+        function clearWallet() {
+            const keys = ['mavsideWallet', 'mavsideAddresses', 'mavsidePaymentMethods', 'mavsideAccountNotifications'];
+            keys.forEach(key => localStorage.removeItem(key));
+            showMsg('msg-category', `✓ Cleared: ${keys.join(', ')}`, 'success');
+            setTimeout(() => listKeys(), 300);
+        }
+
+        function resetEverything() {
+            if (!confirm('⚠️ This will completely reset the app. Continue?')) {
+                return;
+            }
+            
+            localStorage.clear();
+            
+            // Initialize admin account
+            const adminUser = {
+                'admin@mnsu.edu': {
+                    password: 'Admin1234',
+                    role: 'admin',
+                    createdAt: new Date().toISOString(),
+                    isSeededAdmin: true
+                },
+                'mavaccess@mnsu.edu': {
+                    password: 'Access123',
+                    role: 'user',
+                    createdAt: new Date().toISOString(),
+                    isMavAccessTest: true
+                }
+            };
+            
+            localStorage.setItem('mavsideUsers', JSON.stringify(adminUser));
+            
+            showMsg('msg-reset', '✓ Everything reset to defaults. Admin account ready.', 'success');
+            setTimeout(() => {
+                listKeys();
+            }, 300);
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', function() {
+            listKeys();
+        });
+    </script>
+</body>
+</html>

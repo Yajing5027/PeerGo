@@ -1,0 +1,40 @@
+{
+  "generatedAt": "2026-04-15T02:28:43.382Z",
+  "mappings": [
+    {
+      "item": "Caffe Latte",
+      "from": "Caffè Latte.png",
+      "to": "assets\\images\\shops\\starbucks\\products\\drinks\\drinks-1-caffe-latte.png"
+    },
+    {
+      "item": "Caramel Macchiato",
+      "from": "Caramel Macchiato.png",
+      "to": "assets\\images\\shops\\starbucks\\products\\drinks\\drinks-2-caramel-macchiato.png"
+    },
+    {
+      "item": "Cappuccino",
+      "from": "Cappuccino.png",
+      "to": "assets\\images\\shops\\starbucks\\products\\drinks\\drinks-3-cappuccino.png"
+    },
+    {
+      "item": "Cold Brew",
+      "from": "Cold Brew.png",
+      "to": "assets\\images\\shops\\starbucks\\products\\drinks\\drinks-4-cold-brew.png"
+    },
+    {
+      "item": "Iced Shaken Espresso",
+      "from": "Iced Shaken Espresso.png",
+      "to": "assets\\images\\shops\\starbucks\\products\\drinks\\drinks-5-iced-shaken-espresso.png"
+    },
+    {
+      "item": "Butter Croissant",
+      "from": "Butter Croissant.png",
+      "to": "assets\\images\\shops\\starbucks\\products\\food\\food-1-butter-croissant.png"
+    },
+    {
+      "item": "Spinach, Feta & Egg White Wrap",
+      "from": "Spinach, Feta & Egg White Wrap.png",
+      "to": "assets\\images\\shops\\starbucks\\products\\food\\food-4-spinach-feta-egg-white-wrap.png"
+    }
+  ]
+}

@@ -3,126 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MavSide Errand Hall</title>
+    <title>MavSide Task Hall</title>
     <link rel="stylesheet" href="../style/theme.css">
     <link rel="stylesheet" href="../style/view.css">
+    <style>
+        .delivery-layout {
+            display: grid;
+            grid-template-columns: 280px minmax(0, 1fr);
+            gap: 12px;
+            align-items: start;
+        }
+
+        .delivery-map-panel,
+        .delivery-list-panel {
+            background: var(--color-surface-soft);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-soft);
+            padding: 12px;
+        }
+
+        .delivery-map-panel h2,
+        .delivery-list-panel h2 {
+            margin-bottom: 8px;
+        }
+
+        .delivery-map-panel iframe {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            height: auto;
+            max-height: 280px;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            background: var(--color-surface);
+        }
+
+        .delivery-map-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+
+        .delivery-map-actions a {
+            text-decoration: none;
+        }
+
+        @media (max-width: 980px) {
+            .delivery-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .delivery-map-panel iframe {
+                max-height: 320px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <header>
         <div data-include="/components/navbar.html"></div>
-        <h1>Errand Hall</h1>
+        <h1>Task Hall</h1>
+        <p class="hall-slogan">Unlocking the hidden value of every Maverick's trip.</p>
     </header>
 
-    <main>
-        <section id="introduction" aria-labelledby="intro-title">
-            <h2 id="intro-title" class="sr-only">Page Introduction</h2>
-            <p>Filter and browse currently open errand requests. Status updates immediately after acceptance.</p>
-        </section>
-
-        <section id="filter-section" aria-labelledby="filter-title">
-            <h2 id="filter-title" class="sr-only">Filter Area</h2>
-            <div>
-                <label for="request-type">Type</label>
-                <select name="request-type" id="request-type">
-                    <option value="">All</option>
-                    <option value="Shopping">Shopping</option>
-                    <option value="Delivery">Delivery</option>
-                    <option value="Printing">Printing</option>
-                </select>
-            </div>
-
-            <div>
-                <label for="pickup-location">Pickup Location</label>
-                <select name="pickup-location" id="pickup-location">
-                    <option value="">All</option>
-                    <option value="Dorm">Dorm</option>
-                    <option value="Library">Library</option>
-                    <option value="Office">Office</option>
-                    <option value="Parking Lot">Parking Lot</option>
-                    <option value="Dining Hall">Dining Hall</option>
-                    <option value="Gym">Gym</option>
-                </select>
-            </div>
-
-            <div>
-                <label for="delivery-location">Delivery Location</label>
-                <select name="delivery-location" id="delivery-location">
-                    <option value="">All</option>
-                    <option value="Dorm">Dorm</option>
-                    <option value="Library">Library</option>
-                    <option value="Office">Office</option>
-                    <option value="Parking Lot">Parking Lot</option>
-                    <option value="Dining Hall">Dining Hall</option>
-                    <option value="Gym">Gym</option>
-                </select>
-            </div>
-
-            <div>
-                <label for="state">Status</label>
-                <select name="state" id="state">
-                    <option value="">All</option>
-                    <option value="Open">Open</option>
-                    <option value="Accepted">Accepted</option>
-                </select>
-            </div>
-
-            <button type="button" id="filter-button">Filter</button>
-            <button type="button" id="post-button">Post Request</button>
-        </section>
-
-        <section id="map-section" aria-labelledby="map-title">
-            <h2 id="map-title">Campus Mini Map</h2>
-            <p id="map-help">Load a local map manifest to quickly check routes and buildings during deliveries.</p>
-
-            <div class="map-toolbar">
-                <div class="map-toolbar-field">
-                    <label for="campus-map-select">Map Selection</label>
-                    <select id="campus-map-select" name="campus-map-select">
-                        <option value="">Loading map manifest...</option>
-                    </select>
+    <main id="main-content" role="main" aria-label="Task Hall">
+        <section class="delivery-layout" aria-label="Task Hall Layout">
+            <aside class="delivery-map-panel" id="map-section" aria-labelledby="map-title">
+                <h2 id="map-title">Campus Map</h2>
+                <iframe id="campus-map-frame" title="3D perspective map" loading="lazy" src="/assets/maps/mnsu/128-3d-perspective-map-18492e45.pdf"></iframe>
+                <div class="delivery-map-actions">
+                    <a href="/assets/maps/mnsu/128-3d-perspective-map-18492e45.pdf" target="_blank" rel="noopener noreferrer">
+                        <button type="button">Expand Map</button>
+                    </a>
+                    <a href="https://mankato.mnsu.edu/about-the-university/maps-and-transportation/maps-and-directions/university-area-map/building-floor-plans/" target="_blank" rel="noopener noreferrer">
+                        <button type="button">More Maps</button>
+                    </a>
                 </div>
+            </aside>
 
-                <button type="button" id="map-refresh-button">Refresh Map List</button>
-                <a id="official-map-link" class="map-link" href="https://mankato.mnsu.edu/about-the-university/maps-and-transportation/maps-and-directions/" target="_blank" rel="noopener noreferrer">Open Official Campus Maps</a>
+            <div class="delivery-list-panel">
+                <section id="filter-section" aria-labelledby="filter-title">
+                    <h2 id="filter-title" class="sr-only">Filter Area</h2>
+                    <div>
+                        <label for="request-type">Type</label>
+                        <select name="request-type" id="request-type">
+                            <option value="">All</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Delivery">Delivery</option>
+                            <option value="Printing">Printing</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="pickup-location">Pickup Location</label>
+                        <select name="pickup-location" id="pickup-location">
+                            <option value="">All</option>
+                            <option value="Dorm">Dorm</option>
+                            <option value="Library">Library</option>
+                            <option value="Office">Office</option>
+                            <option value="Parking Lot">Parking Lot</option>
+                            <option value="Dining Hall">Dining Hall</option>
+                            <option value="Gym">Gym</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="delivery-location">Delivery Location</label>
+                        <select name="delivery-location" id="delivery-location">
+                            <option value="">All</option>
+                            <option value="Dorm">Dorm</option>
+                            <option value="Library">Library</option>
+                            <option value="Office">Office</option>
+                            <option value="Parking Lot">Parking Lot</option>
+                            <option value="Dining Hall">Dining Hall</option>
+                            <option value="Gym">Gym</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="state">Status</label>
+                        <select name="state" id="state">
+                            <option value="">All</option>
+                            <option value="Open">Open</option>
+                            <option value="Accepted">Accepted</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="sort-by">Sort By</label>
+                        <select name="sort-by" id="sort-by">
+                            <option value="time">Published Time</option>
+                            <option value="reward">Reward</option>
+                            <option value="mavPoint">MavPoint</option>
+                            <option value="routeMatch">Route Match</option>
+                            <option value="deliverAt">Deliver By</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="sort-dir">Order</label>
+                        <select name="sort-dir" id="sort-dir">
+                            <option value="desc">Descending</option>
+                            <option value="asc">Ascending</option>
+                        </select>
+                    </div>
+                </section>
+
+                <section id="request-table-section" aria-labelledby="request-table-title">
+                    <h2 id="request-table-title" class="sr-only">Request Table</h2>
+                    <table id="request-table" title="request-table">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Description</th>
+                                <th>Pickup</th>
+                                <th>Delivery</th>
+                                <th>Route Match</th>
+                                <th>Reward</th>
+                                <th>Status</th>
+                                <th>Date</th>
+                                <th>Deliver By</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                        <tfoot>
+                            <tr>
+                                <td>Total</td>
+                                <td colspan="9">0</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </section>
             </div>
-
-            <div class="map-preview">
-                <iframe id="campus-map-frame" title="Campus map preview" loading="lazy"></iframe>
-            </div>
-
-            <p id="map-meta">Map source: local downloads / official map page</p>
-        </section>
-
-        <section id="request-table-section" aria-labelledby="request-table-title">
-            <h2 id="request-table-title" class="sr-only">Request Table</h2>
-            <table id="request-table" title="request-table">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Type</th>
-                        <th>Description</th>
-                        <th>Pickup</th>
-                        <th>Delivery</th>
-                        <th>Reward</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-                <tfoot>
-                    <tr>
-                        <td>Total</td>
-                        <td colspan="7">0</td>
-                    </tr>
-                </tfoot>
-            </table>
         </section>
     </main>
 
     <div data-include="/components/footer.html"></div>
 
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/logger.js"></script>
+    <script src="../assets/js/modal.js"></script>
+    <script src="../assets/js/notification-center.js"></script>
+    <script src="../assets/js/errands-model.js"></script>
     <script src="../assets/js/table.js"></script>
-    <script src="../assets/js/maps.js"></script>
+    <!-- maps.js not needed on this simplified delivery view -->
 </body>
 </html>

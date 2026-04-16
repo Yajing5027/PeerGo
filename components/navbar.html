@@ -1,16 +1,40 @@
 <nav class="top-nav">
     <ul class="top-nav-list">
-        <li class="nav-left"><a id="dashboard-link" href="/view/dashboard.html">Dashboard</a></li>
-        <li class="nav-center">
-            <a href="/view/dashboard.html" aria-label="MavSide Home">
-                <span class="nav-logo" aria-hidden="true"></span>
+        <li class="nav-left">
+            <a href="/view/dashboard.html" aria-label="MavSide Home" class="nav-home-link">
+                <span class="nav-logo"><img src="/assets/images/mavside-logo.png" alt="MavSide"></span>
             </a>
         </li>
-        <li class="nav-links">
-            <a id="delivery-link" href="/view/delivery.html">Errands</a>
-            <a id="add-link" href="/view/add.html">Post</a>
-            <a id="account-link" href="/view/account.html">Account</a>
-            <a id="logout-link" href="/view/index.html">Logout</a>
+
+        <li class="nav-center nav-route-center">
+            <span class="nav-location-icon" aria-hidden="true">📍</span>
+            <div class="nav-route-wrap">
+                <label for="nav-pickup-select" class="sr-only">Pickup Location</label>
+                <select id="nav-pickup-select" aria-label="Pickup Location"></select>
+            </div>
+            <span class="nav-route-arrow">to</span>
+            <div class="nav-route-wrap">
+                <label for="nav-delivery-select" class="sr-only">Delivery Location</label>
+                <select id="nav-delivery-select" aria-label="Delivery Location"></select>
+            </div>
+        </li>
+
+        <li class="nav-links nav-right-tools">
+            <button type="button" id="nav-notification-button" class="nav-icon-btn" aria-label="Notifications">🔔<span id="nav-notification-dot" class="nav-notification-dot" aria-hidden="true"></span></button>
+            <a id="account-link" class="nav-icon-btn nav-account-link" href="/view/account.html" aria-label="Account">👤</a>
         </li>
     </ul>
 </nav>
+
+<div id="nav-notification-modal" class="mavside-modal-overlay" aria-hidden="true">
+    <div class="mavside-modal nav-notification-modal-card" role="dialog" aria-modal="true" aria-labelledby="nav-notification-title">
+        <div class="nav-notification-modal-head">
+            <h3 id="nav-notification-title" class="nav-popover-title">Notifications</h3>
+            <button type="button" id="nav-notification-close" class="mavside-modal-btn">Close</button>
+        </div>
+        <div id="nav-notification-list"><p>No notifications</p></div>
+        <div class="nav-popover-actions">
+            <button type="button" id="nav-mark-all-read" class="nav-popover-mini-btn">Mark all read</button>
+        </div>
+    </div>
+</div>

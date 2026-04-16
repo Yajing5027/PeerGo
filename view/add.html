@@ -3,64 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MavSide Post Request</title>
+    <title>MavSide Post Task</title>
     <link rel="stylesheet" href="../style/theme.css">
     <link rel="stylesheet" href="../style/view.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <header>
         <div data-include="/components/navbar.html"></div>
-        <h1>Post an Errand Request</h1>
+        <div class="page-title-row">
+            <h1>Post Task</h1>
+        </div>
+        <p class="hall-slogan">Paths cross. Things arrive. Campus, closer.</p>
     </header>
 
-    <main>
+    <main id="main-content" role="main" aria-label="Post Task">
         <form id="add-post-form">
-            <h2>Request Details</h2>
+            <h2>Task Details</h2>
 
             <div>
-                <label for="request-content">Request Content</label>
+                <label for="request-content">Title</label>
                 <input id="request-content" name="content" type="text" placeholder="e.g., Pick up my package" required>
             </div>
 
-            <div>
-                <label for="pickup-location">Pickup Location</label>
-                <select name="pickup-location" id="pickup-location" required>
-                    <option value="">Please select</option>
-                    <option value="Dorm">Dorm</option>
-                    <option value="Library">Library</option>
-                    <option value="Office">Office</option>
-                    <option value="Parking Lot">Parking Lot</option>
-                    <option value="Dining Hall">Dining Hall</option>
-                    <option value="Gym">Gym</option>
-                    <option value="Other">Other</option>
-                </select>
-                <input type="text" id="custom-pickup" name="custom-pickup" hidden placeholder="Enter a custom pickup location">
-            </div>
+            <div id="type-component"></div>
+
+            <div id="pickup-location-component"></div>
+
+            <div id="delivery-location-component"></div>
+
+            <div id="reward-component"></div>
+
+            <div id="note-component"></div>
 
             <div>
-                <label for="delivery-location">Delivery Location</label>
-                <select name="delivery-location" id="delivery-location" required>
-                    <option value="">Please select</option>
-                    <option value="Dorm">Dorm</option>
-                    <option value="Library">Library</option>
-                    <option value="Office">Office</option>
-                    <option value="Parking Lot">Parking Lot</option>
-                    <option value="Dining Hall">Dining Hall</option>
-                    <option value="Gym">Gym</option>
-                    <option value="Other">Other</option>
-                </select>
-                <input type="text" id="custom-delivery" name="custom-delivery" hidden placeholder="Enter a custom delivery location">
-            </div>
-
-            <div>
-                <label for="reward">Reward</label>
-                <input id="reward" name="reward" type="text" placeholder="e.g., 5" required>
+                <label for="deliver-at">Deliver By</label>
+                <input id="deliver-at" name="deliver-at" type="datetime-local" placeholder="Select date and time">
             </div>
 
             <div>
                 <button type="submit">Post</button>
                 <button type="reset">Reset</button>
-                <button type="button" id="cancel-button">Cancel</button>
             </div>
         </form>
     </main>
@@ -68,6 +51,8 @@
     <div data-include="/components/footer.html"></div>
 
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/account.js"></script>
+    <script src="../assets/js/form-components.js"></script>
     <script src="../assets/js/add.js"></script>
 </body>
 </html>

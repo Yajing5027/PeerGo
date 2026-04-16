@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Tracking</title>
+    <link rel="stylesheet" href="../style/theme.css">
+    <link rel="stylesheet" href="../style/view.css">
+</head>
+<body>
+    <header>
+        <div data-include="/components/navbar.html"></div>
+        <h1>Task Tracking</h1>
+        <p>Follow matching, pickup and delivery progress for both orders and errands.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Current Status</h2>
+            <div id="tracking-overview"></div>
+        </section>
+
+        <section>
+            <h2>Timeline</h2>
+            <div id="tracking-history" class="tracking-history"></div>
+        </section>
+
+        <section aria-labelledby="verify-heading">
+            <h2 id="verify-heading">Verification Code</h2>
+            <div id="tracking-code" role="region" aria-live="polite"></div>
+        </section>
+
+        <div class="cart-buttons">
+            <button type="button" id="tracking-back-btn" aria-label="Go back to previous page">Back</button>
+        </div>
+    </main>
+
+    <div data-include="/components/footer.html"></div>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/task-progress.js"></script>
+    <script src="../assets/js/notification-center.js"></script>
+    <script src="../assets/js/orders.js"></script>
+    <script src="../assets/js/order-tracking.js"></script>
+</body>
+</html>

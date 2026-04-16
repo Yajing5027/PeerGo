@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>MavSide | MNSU Campus Poster</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f6f2ff 0%, #efe4ff 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        /* landscape poster: wide, no scroll, horizontally arranged */
+        .poster {
+            width: 100%;
+            max-width: 1400px;
+            height: auto;
+            max-height: 90vh;
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2);
+            padding: 1.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.2s;
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+
+        /* brand area - compact and prominent */
+        .brand {
+            text-align: center;
+            margin-bottom: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .mavside {
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #5b21b6;
+            background: #f3eaff;
+            display: inline-block;
+            padding: 0.2rem 1.4rem;
+            border-radius: 40px;
+            margin-top: 0.3rem;
+            letter-spacing: -0.2px;
+        }
+
+        .live-badge {
+            display: inline-block;
+            background: #7c3aed;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            border-radius: 30px;
+            padding: 0.2rem 1rem;
+            margin-left: 0.8rem;
+            vertical-align: middle;
+            letter-spacing: 0.5px;
+        }
+
+        .sub {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #5b21b6;
+            margin-top: 0.25rem;
+        }
+
+        /* horizontal layout: flex row, wrapping if needed but designed for wide screen */
+        .horizontal-grid {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            gap: 1.2rem;
+            justify-content: space-between;
+            align-items: stretch;
+            flex: 1;
+            min-height: 0;
+        }
+
+        /* each column – flexible, equal width */
+        .col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            min-width: 0; /* avoid overflow */
+        }
+
+        /* card style – clean, compact */
+        .card {
+            background: white;
+            border-radius: 1.2rem;
+            padding: 0.9rem 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e9f0;
+            transition: all 0.1s ease;
+            height: auto;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #4b2a7f;
+            border-left: 4px solid #8b5cf6;
+            padding-left: 0.7rem;
+            margin-bottom: 0.7rem;
+            letter-spacing: -0.2px;
+        }
+
+        .list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .list li {
+            font-size: 0.78rem;
+            margin-bottom: 0.5rem;
+            padding-left: 1.2rem;
+            position: relative;
+            line-height: 1.35;
+            color: #1e3a4d;
+            font-weight: 500;
+        }
+
+        .list li::before {
+            content: "✦";
+            position: absolute;
+            left: 0;
+            color: #8b5cf6;
+            font-size: 0.7rem;
+        }
+
+        .badge-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin: 0.5rem 0 0.2rem;
+        }
+
+        .badge {
+            background: #f4eefc;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            font-size: 0.68rem;
+            font-weight: 600;
+            color: #4b2a7f;
+        }
+
+        .highlight-badge {
+            background: #efe4ff;
+            font-weight: 700;
+        }
+
+        .economy-block {
+            background: #f7f1ff;
+            border-radius: 1rem;
+            padding: 0.5rem 0.7rem;
+            margin-top: 0.6rem;
+            text-align: center;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #4b2a7f;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.5rem;
+        }
+
+        .tech {
+            background: #f3eaff;
+            font-family: monospace;
+            font-size: 0.65rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            color: #4b2a7f;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            border-top: 1px solid #e9e0ff;
+            padding-top: 0.7rem;
+            margin-top: 0.8rem;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #4b2a7f;
+            flex-shrink: 0;
+        }
+
+        /* no right black badge, removed */
+        .footer .left-motto {
+            font-weight: 500;
+        }
+
+        /* make everything fit without scroll on typical laptop 1920x1080 */
+        @media (max-width: 1100px) {
+            .poster {
+                padding: 1.2rem 1.5rem;
+            }
+            .mavside {
+                font-size: 2.6rem;
+            }
+            .tagline {
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 1rem;
+            }
+            .list li {
+                font-size: 0.72rem;
+            }
+        }
+
+        @media (max-height: 800px) {
+            .card {
+                padding: 0.7rem 0.9rem;
+            }
+            .list li {
+                margin-bottom: 0.4rem;
+            }
+            .brand {
+                margin-bottom: 0.8rem;
+            }
+            .horizontal-grid {
+                gap: 0.9rem;
+            }
+        }
+
+        /* ensure no vertical scrollbar appears on normal screens */
+        @media (min-height: 700px) {
+            .poster {
+                max-height: 92vh;
+                overflow-y: visible;
+            }
+            body {
+                overflow: hidden;
+            }
+        }
+
+        .strong {
+            font-weight: 700;
+            color: #4b2a7f;
+        }
+
+        .now-live {
+            background: #f7f1ff;
+            border-left: 3px solid #8b5cf6;
+            padding: 0.5rem 0.7rem;
+            border-radius: 0.8rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #4b2a7f;
+        }
+    </style>
+</head>
+<body>
+<div class="poster">
+    <!-- BRAND with live emphasis -->
+    <div class="brand">
+        <div class="mavside">
+            MAVSIDE
+            <span class="live-badge">LIVE NOW</span>
+        </div>
+        <div class="tagline">“Unlocking the hidden value of every Maverick’s trip.”</div>
+        <div class="sub">🔐 Exclusive MNSU community · mnsu.edu verified · trust-first ecosystem</div>
+    </div>
+
+    <!-- HORIZONTAL LAYOUT: 3 columns for landscape orientation -->
+    <div class="horizontal-grid">
+        <!-- COLUMN 1: problem + solution (immediate, no barriers) -->
+        <div class="col">
+            <div class="card">
+                <div class="section-title">🎯 Core problem</div>
+                <ul class="list">
+                    <li>Tight class schedules → urgent needs (meals, prints, packages) but zero time to pick up</li>
+                    <li>Countless “on‑the‑way” trips across campus go completely unused</li>
+                    <li><strong>Limited on‑campus jobs</strong> – scarce positions leave many students without opportunities</li>
+                    <li>No lightweight, trust‑based bridge between students with matching routes</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="section-title">⚡ MavSide solution · <span style="color:#2c7cb6;">READY NOW</span></div>
+                <div class="now-live">
+                    ✅ <strong>Already live & operational</strong> — start using immediately, no waiting
+                </div>
+                <ul class="list">
+                    <li><strong>Campus-only ecosystem</strong> – authentication via <strong>mnsu.edu email</strong> → built‑in trust circle</li>
+                    <li><strong>Hyperlocal mutual aid platform</strong> for immediate help: pickups, urgent errands</li>
+                    <li><strong>Zero barriers: no interview, no English requirement</strong> – just your Maverick identity</li>
+                    <li><strong>Trust‑based bridge:</strong> connect instantly with fellow students heading your way</li>
+                    <li>Turn <strong>“already heading there”</strong> into real value for both sides – <strong>start today</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- COLUMN 2: how it works + circular economy + academic concepts -->
+        <div class="col">
+            <div class="card">
+                <div class="section-title">🔄 How it works · circular loop</div>
+                <ul class="list">
+                    <li><strong>Requesters</strong> post tasks with time, location, fair reward</li>
+                    <li><strong>Helpers</strong> pick tasks exactly along their existing route</li>
+                    <li>Complete → payment released directly → no middlemen, instant value</li>
+                    <li>Every trip becomes an opportunity to help & earn with dignity</li>
+                </ul>
+                <div class="economy-block">
+                    ♻️ <strong class="strong">Circular Economy · Secondary Economy</strong><br>
+                    Unused mobility → micro-earnings · Campus resources flow within Mavericks
+                </div>
+            </div>
+            <div class="card">
+                <div class="section-title">📚 Key academic concepts</div>
+                <div class="badge-group">
+                    <span class="badge highlight-badge">Circular Economy</span>
+                    <span class="badge highlight-badge">Secondary Economy</span>
+                    <span class="badge">Human‑Centered Computing</span>
+                    <span class="badge">Closed‑Community Trust Model</span>
+                </div>
+                <ul class="list" style="margin-top: 0.4rem;">
+                    <li><strong>Circular / Secondary Economy:</strong> unlocking hidden value of every Maverick’s trip – a micro‑economy inside campus</li>
+                    <li><strong>Human‑centered design:</strong> tech serving real student vulnerabilities (time, limited jobs)</li>
+                    <li><strong>High‑trust digital ecology:</strong> email verification replaces complex reputation systems</li>
+                    <li>Low‑cost front‑end solutions optimize hyperlocal resource allocation</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- COLUMN 3: technical backbone + future scalability -->
+        <div class="col">
+            <div class="card">
+                <div class="section-title">⚙️ Technical backbone</div>
+                <ul class="list">
+                    <li><strong>Lightweight front‑end architecture</strong> – HTML/CSS/JS, modular views</li>
+                    <li>Local storage for user & task management → rapid prototype, zero backend latency</li>
+                    <li>Smart campus map integration (local cache + fallback to official MNSU map)</li>
+                    <li>Theme tokens & component‑based → easily extend to full‑stack (DB + API)</li>
+                </ul>
+                <div class="tech-stack">
+                    <span class="tech">HTML5</span>
+                    <span class="tech">CSS3 (tokens)</span>
+                    <span class="tech">JavaScript</span>
+                    <span class="tech">localStorage</span>
+                    <span class="tech">Map caching</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="section-title">🔮 Future vision & scalability</div>
+                <ul class="list">
+                    <li>🔌 <strong>On‑campus merchant integration</strong> – dining, print centers → instant pickups</li>
+                    <li>📱 Migrate to full‑stack (Node/DB) for real‑time matching & notifications</li>
+                    <li>🏛️ <strong>Replicable model</strong> for any university/closed community – replace auth & local map</li>
+                    <li>📊 Data‑driven insights: route optimization, fairness algorithms</li>
+                </ul>
+                <div class="economy-block" style="margin-top: 0.5rem; background: #eaf0f7;">
+                    🌱 Academic extension: smart campus service platform + peer‑to‑peer micro‑economy research
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER: only left side motto, right black badge REMOVED as requested -->
+    <div class="footer">
+        <div class="left-motto">
+            🎓 <strong>Built for Mavericks, by a Maverick</strong><br>
+            <span style="font-size: 0.65rem;">Every trip counts — empowering students with dignity & flexibility · no interview, no language barriers</span>
+        </div>
+    </div>
+    <div style="text-align: center; margin-top: 0.3rem; font-size: 0.7rem; font-weight: 500; color: #2b6a97;">
+        ✨ Let every step create value · Redefining campus connections ✨
+    </div>
+</div>
+</body>
+</html>
