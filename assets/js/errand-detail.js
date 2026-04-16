@@ -1,5 +1,6 @@
 (function(){
   const KEY = 'mavsideDeliveryPosts';
+  var resolvePath = window.mavsideResolvePath ? window.mavsideResolvePath.bind(window) : function(path){ return path; };
 
   function normalizeStatus(value){
     const text = String(value || '').toLowerCase();
@@ -17,7 +18,6 @@
 
   function getBackTarget(){
     const params = new URLSearchParams(window.location.search);
-    var resolvePath = window.mavsideResolvePath ? window.mavsideResolvePath.bind(window) : function(path){ return path; };
     return params.get('from') === 'manage' ? resolvePath('/view/manage.html') : resolvePath('/view/delivery.html');
   }
 

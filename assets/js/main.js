@@ -17,7 +17,7 @@ function detectBasePath() {
         return '';
     }
 
-    if (hostname.endsWith('github.io')) {
+    if (hostname === 'github.io' || hostname.endsWith('.github.io')) {
         return '/' + first;
     }
 
@@ -25,7 +25,7 @@ function detectBasePath() {
 }
 
 function isExternalPath(path) {
-    return /^(?:[a-z]+:)?\/\//i.test(path) || path.startsWith('#') || path.startsWith('mailto:') || path.startsWith('tel:') || path.startsWith('data:') || path.startsWith('javascript:');
+    return /^[a-z][a-z0-9+.-]*:/i.test(path) || path.startsWith('//') || path.startsWith('#');
 }
 
 const mavsideBasePath = detectBasePath();
@@ -471,4 +471,3 @@ document.addEventListener('DOMContentLoaded', function() {
     window.formatUSDate = formatUSDate;
     loadIncludes();
 });
-
