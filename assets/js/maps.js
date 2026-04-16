@@ -9,6 +9,7 @@ function normalizePath(input) {
     }
 
     if (raw.indexOf('http://') === 0) {
+        console.warn('Map URL uses insecure HTTP and is being upgraded to HTTPS:', raw);
         return 'https://' + raw.slice('http://'.length);
     }
 

@@ -17,7 +17,7 @@ function detectBasePath() {
         return '';
     }
 
-    if (hostname === 'github.io' || hostname.endsWith('.github.io')) {
+    if (hostname.endsWith('.github.io')) {
         return '/' + first;
     }
 
