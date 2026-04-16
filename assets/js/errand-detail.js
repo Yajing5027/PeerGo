@@ -17,7 +17,8 @@
 
   function getBackTarget(){
     const params = new URLSearchParams(window.location.search);
-    return params.get('from') === 'manage' ? '/view/manage.html' : '/view/delivery.html';
+    var resolvePath = window.mavsideResolvePath ? window.mavsideResolvePath.bind(window) : function(path){ return path; };
+    return params.get('from') === 'manage' ? resolvePath('/view/manage.html') : resolvePath('/view/delivery.html');
   }
 
   function readAll(){

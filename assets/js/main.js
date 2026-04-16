@@ -1,3 +1,60 @@
+const ROOT_FOLDER_NAMES = ['view', 'assets', 'style', 'components', 'services'];
+
+function detectBasePath() {
+    if (typeof window === 'undefined' || !window.location) return '';
+
+    const configured = typeof window.MAVSIDE_BASE_PATH === 'string' ? window.MAVSIDE_BASE_PATH.trim() : '';
+    if (configured) {
+        return configured === '/' ? '' : configured.replace(/\/+$/, '');
+    }
+
+    const hostname = String(window.location.hostname || '');
+    const pathname = String(window.location.pathname || '/');
+    const parts = pathname.split('/').filter(Boolean);
+    const first = parts[0] || '';
+
+    if (!first || ROOT_FOLDER_NAMES.indexOf(first) >= 0) {
+        return '';
+    }
+
+    if (hostname.endsWith('github.io')) {
+        return '/' + first;
+    }
+
+    return '';
+}
+
+function isExternalPath(path) {
+    return /^(?:[a-z]+:)?\/\//i.test(path) || path.startsWith('#') || path.startsWith('mailto:') || path.startsWith('tel:') || path.startsWith('data:') || path.startsWith('javascript:');
+}
+
+const mavsideBasePath = detectBasePath();
+
+function resolveMavsidePath(path) {
+    const raw = String(path || '').trim();
+    if (!raw || isExternalPath(raw)) return raw;
+    if (raw.startsWith('/')) {
+        return (mavsideBasePath + raw).replace(/\/{2,}/g, '/');
+    }
+    return raw;
+}
+
+function normalizeDomPaths(root) {
+    const host = root || document;
+    if (!host || !host.querySelectorAll) return;
+
+    host.querySelectorAll('[href],[src],[data-include]').forEach(function(node) {
+        ['href', 'src', 'data-include'].forEach(function(attr) {
+            const current = node.getAttribute(attr);
+            if (!current || !current.startsWith('/')) return;
+            node.setAttribute(attr, resolveMavsidePath(current));
+        });
+    });
+}
+
+window.mavsideBasePath = mavsideBasePath;
+window.mavsideResolvePath = resolveMavsidePath;
+
 const protectedPaths = [
     '/view/dashboard.html',
     '/view/delivery.html',
@@ -14,7 +71,7 @@ const protectedPaths = [
     '/account.html'
 ];
 
-const loginPagePath = '/view/index.html';
+const loginPagePath = resolveMavsidePath('/view/index.html');
 
 function migrateLocalStorageKeys() {
     const mapping = [
@@ -377,17 +434,19 @@ async function loadIncludes() {
         if (!includePath) continue;
 
         try {
-            const response = await fetch(includePath, { cache: 'no-store' });
+            const response = await fetch(resolveMavsidePath(includePath), { cache: 'no-store' });
             if (!response.ok) {
                 throw new Error('Failed to load include: ' + includePath);
             }
             element.innerHTML = await response.text();
+            normalizeDomPaths(element);
         } catch (error) {
             console.error(error);
             element.innerHTML = '';
         }
     }
 
+    normalizeDomPaths(document);
     markActiveNavLink();
     bindLogoutLink();
     initNavbarWidgets();
@@ -403,6 +462,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Force document language to English to ensure browser validation messages are in English.
     try { document.documentElement.lang = 'en'; } catch (e) {}
 
+    normalizeDomPaths(document);
     ensureLoginState();
     if (window.AccountManager && window.AccountManager.ensureMavAccessMonthlyGrant) {
         window.AccountManager.ensureMavAccessMonthlyGrant();
@@ -411,5 +471,4 @@ document.addEventListener('DOMContentLoaded', function() {
     window.formatUSDate = formatUSDate;
     loadIncludes();
 });
-
 

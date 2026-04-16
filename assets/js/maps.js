@@ -1,4 +1,4 @@
-const MAP_MANIFEST_PATH = '/assets/maps/manifest.json';
+const MAP_MANIFEST_PATH = window.mavsideResolvePath ? window.mavsideResolvePath('/assets/maps/manifest.json') : '/assets/maps/manifest.json';
 const OFFICIAL_MAP_PORTAL_URL = 'https://mankato.mnsu.edu/about-the-university/maps-and-transportation/maps-and-directions/';
 const FALLBACK_MAP_URL = 'https://mankato.mnsu.edu/globalassets/maps/university/campus-map.pdf';
 
@@ -8,11 +8,16 @@ function normalizePath(input) {
         return '';
     }
 
-    if (raw.indexOf('http://') === 0 || raw.indexOf('https://') === 0 || raw.indexOf('/') === 0) {
+    if (raw.indexOf('http://') === 0 || raw.indexOf('https://') === 0) {
         return raw;
     }
 
-    return '/' + raw.replace(/^\.\//, '');
+    if (raw.indexOf('/') === 0) {
+        return window.mavsideResolvePath ? window.mavsideResolvePath(raw) : raw;
+    }
+
+    const normalized = '/' + raw.replace(/^\.\//, '');
+    return window.mavsideResolvePath ? window.mavsideResolvePath(normalized) : normalized;
 }
 
 function normalizeMapEntry(item, index) {

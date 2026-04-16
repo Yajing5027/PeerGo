@@ -164,7 +164,7 @@
       });
       localStorage.removeItem('mavsidePendingOrderDraft');
       if(window.clearCart) window.clearCart();
-      window.location.href = '/view/order-tracking.html?orderId=' + encodeURIComponent(order.orderId);
+      window.location.href = (window.mavsideResolvePath ? window.mavsideResolvePath('/view/order-tracking.html') : '/view/order-tracking.html') + '?orderId=' + encodeURIComponent(order.orderId);
     }catch(err){
       setMessage('Order creation failed', true);
     }
@@ -178,7 +178,9 @@
     if(back){
       back.addEventListener('click', function(){
         const draft = getDraft();
-        const target = draft && draft.storeId ? '/view/shop.html?store=' + encodeURIComponent(draft.storeId) : '/view/shops.html';
+        const target = draft && draft.storeId
+          ? (window.mavsideResolvePath ? window.mavsideResolvePath('/view/shop.html') : '/view/shop.html') + '?store=' + encodeURIComponent(draft.storeId)
+          : (window.mavsideResolvePath ? window.mavsideResolvePath('/view/shops.html') : '/view/shops.html');
         window.location.href = target;
       });
     }

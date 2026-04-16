@@ -1,6 +1,7 @@
 (function(){
   var editingAddressId = null;
   var walletMode = 'topup';
+  var resolvePath = window.mavsideResolvePath ? window.mavsideResolvePath.bind(window) : function(path){ return path; };
 
   function byId(id){ return document.getElementById(id); }
 
@@ -103,7 +104,7 @@
         mode: 'link',
         counts: counts,
         activeStatus: 'in-progress',
-        baseHref: '/view/manage.html?status='
+        baseHref: resolvePath('/view/manage.html?status=')
       });
     }
   }
@@ -400,7 +401,7 @@
       logoutButton.addEventListener('click', function(){
         localStorage.removeItem('mavsideUserEmail');
         localStorage.removeItem('mavsideUserRole');
-        window.location.href = '/view/index.html';
+        window.location.href = resolvePath('/view/index.html');
       });
     }
 

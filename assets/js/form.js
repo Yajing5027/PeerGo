@@ -16,7 +16,7 @@ const ADMIN_USER_EMAIL = 'admin@mnsu.edu';
 const ADMIN_USER_PASSWORD = 'Admin1234';
 const MAVACCESS_USER_EMAIL = 'mavaccess@mnsu.edu';
 const MAVACCESS_USER_PASSWORD = 'Access123';
-const dashboardPagePath = '/view/dashboard.html';
+const dashboardPagePath = window.mavsideResolvePath ? window.mavsideResolvePath('/view/dashboard.html') : '/view/dashboard.html';
 
 function showSection(sectionToShow) {
     loginSection.hidden = true;

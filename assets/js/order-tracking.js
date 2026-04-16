@@ -447,7 +447,7 @@
         window.history.back();
         return;
       }
-      window.location.href = '/view/manage.html';
+      window.location.href = window.mavsideResolvePath ? window.mavsideResolvePath('/view/manage.html') : '/view/manage.html';
     });
   }
 

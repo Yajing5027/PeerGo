@@ -7,7 +7,7 @@
   const PAYMENT_METHODS_STORAGE_KEY = 'mavsidePaymentMethods';
   const MAV_ACCESS_STORAGE_KEY = 'mavsideMavAccess';
   const NOTIFICATION_STORAGE_KEY = 'mavsideAccountNotifications';
-  const LOGIN_PAGE_PATH = '/view/index.html';
+  const LOGIN_PAGE_PATH = window.mavsideResolvePath ? window.mavsideResolvePath('/view/index.html') : '/view/index.html';
 
   function readJson(key, fallback) {
     const raw = localStorage.getItem(key);

@@ -93,7 +93,7 @@
           return;
         }
         cartToDraftOrder(current);
-        window.location.href = '/view/order-confirm.html';
+        window.location.href = window.mavsideResolvePath ? window.mavsideResolvePath('/view/order-confirm.html') : '/view/order-confirm.html';
         return;
       }
 

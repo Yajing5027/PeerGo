@@ -2,7 +2,7 @@
     --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
     --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Segoe UI", sans-serif;
 
-    --asset-logo: url("/assets/images/mavside-logo.png");
+    --asset-logo: url("../assets/images/mavside-logo.png");
 
     --color-bg: #f6f2ff;
     --color-bg-alt: #ece6fb;
