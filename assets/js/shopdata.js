@@ -2,9 +2,9 @@
   var CAMPUS_ADDRESS = '7 Centennial Student Union, Mankato, MN 56001';
 
   var SHOP_LOGOS = {
-    tacoBell: 'assets/images/brands/TacoBell.png',
-    starbucks: 'assets/images/brands/Starbucks_Corporation_Logo_2011.svg.webp',
-    chickFilA: 'assets/images/brands/Chick-fil-A-Logo.png',
+    tacoBell: 'assets/images/brands/taco-bell-logo.png',
+    starbucks: 'assets/images/brands/starbucks-logo.webp',
+    chickFilA: 'assets/images/brands/chick-fil-a-logo.png',
     einstein: 'assets/images/brands/einstein-bros-logo.png'
   };
 
