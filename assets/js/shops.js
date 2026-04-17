@@ -1,7 +1,7 @@
 (function(){
   const SHOP_STORAGE_KEY = 'mavsideShops';
   // 升级版本号，触发本地商铺缓存重建，确保 logo 重命名和图片更新立即生效。
-  const SHOPS_DATA_VERSION = 'v7';
+  const SHOPS_DATA_VERSION = 'v8';
   const SHOPS_VERSION_KEY = 'mavsideShopsVersion';
 
   const SEED_SHOPS = Array.isArray(window.MAVSIDE_FIXED_SHOPS) ? window.MAVSIDE_FIXED_SHOPS : [];

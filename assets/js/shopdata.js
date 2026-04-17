@@ -183,13 +183,49 @@
     }
   ];
 
-  // 为避免页面在运行时去请求外部图片，将每个菜品的 image 指向商家本地 logo（如有需要可替换为更细粒度的本地图片）
+  function slugify(value){
+    return String(value || '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '');
+  }
+
+  function extFromValue(value){
+    var source = String(value || '');
+    try{
+      var parsed = new URL(source);
+      source = parsed.pathname || source;
+    }catch(e){}
+
+    var clean = source.split('?')[0].split('#')[0].toLowerCase();
+    var m = clean.match(/\.(jpg|jpeg|png|webp|gif|avif|svg)$/);
+    return m ? m[0] : '.jpg';
+  }
+
+  function buildLocalMenuImagePath(shopId, categoryId, itemIndex, itemName, source){
+    var shop = slugify(shopId);
+    var category = slugify(categoryId);
+    var item = slugify(itemName);
+    var ext = extFromValue(source);
+    var fileName = category + '-' + (itemIndex + 1) + '-' + item + ext;
+    return 'assets/images/shops/' + shop + '/products/' + category + '/' + fileName;
+  }
+
+  // 将菜品图统一指向已下载的本地图片，避免外链图片在部署环境中失效。
   try{
     CRAWLED_SHOPS_RAW.forEach(function(shop){
-      var logo = shop.logoUrl || '';
-      (shop.categories || []).forEach(function(cat){
-        (cat.items || []).forEach(function(item){
-          try{ item.image = logo; }catch(e){}
+      (shop.categories || []).forEach(function(cat, catIndex){
+        var categoryId = cat.id || cat.name || ('category-' + (catIndex + 1));
+        (cat.items || []).forEach(function(item, itemIndex){
+          try{
+            item.image = buildLocalMenuImagePath(
+              shop.id,
+              categoryId,
+              itemIndex,
+              item.name,
+              item.image
+            );
+          }catch(e){}
         });
       });
     });
