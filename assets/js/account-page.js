@@ -103,7 +103,7 @@
         mode: 'link',
         counts: counts,
         activeStatus: 'in-progress',
-        baseHref: '/manage.html?status='
+        baseHref: 'manage.html?status='
       });
     }
   }

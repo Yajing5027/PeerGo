@@ -178,7 +178,7 @@
     if(back){
       back.addEventListener('click', function(){
         const draft = getDraft();
-        const target = draft && draft.storeId ? '/shop.html?store=' + encodeURIComponent(draft.storeId) : '/shops.html';
+        const target = draft && draft.storeId ? 'shop.html?store=' + encodeURIComponent(draft.storeId) : 'shops.html';
         window.location.href = target;
       });
     }

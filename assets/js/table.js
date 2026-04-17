@@ -1,7 +1,7 @@
 const DELIVERY_STORAGE_KEY = 'mavsideDeliveryPosts';
 const DELIVERY_DATA_VERSION_KEY = 'mavsideDeliveryDataVersion';
 const DELIVERY_DATA_VERSION = '2026-04-15-v3';
-const postPagePath = '/add.html';
+const postPagePath = 'add.html';
 
 const defaultDeliveryData = [
     { id: 'd-201', time: '2026-04-14', deliverAt: '2026-04-16T12:10', type: 'Shopping', taskType: 'general', content: 'Buy stationery set', pickupLocation: 'Centennial Student Union', deliveryLocation: 'Preska Residence Community', reward: '$4.20', state: 'Open', owner: 'admin@mnsu.edu', acceptedBy: '', depositAmount: 4.2, depositPaid: false, depositReleased: false, delivered: false, sourceType: 'post', sourceOrderId: '', history: [{ when: Date.parse('2026-04-14T09:00:00Z'), who: 'admin@mnsu.edu', action: 'created' }] },

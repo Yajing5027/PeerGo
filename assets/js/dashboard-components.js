@@ -65,7 +65,7 @@
       '<div class="dashboard-route-content">📦 ' + content + '</div>' +
       '<div class="dashboard-route-foot">' +
         '<span>💰 ' + reward + ' · <span class="dashboard-route-highlight">🚶 On route ' + routeMatchPercent(idx + 2) + '%</span></span>' +
-        '<a class="dashboard-view-more" href="/delivery.html">Take Along</a>' +
+        '<a class="dashboard-view-more" href="delivery.html">Take Along</a>' +
       '</div>' +
     '</article>';
   }
@@ -82,13 +82,13 @@
         icon: '📦',
         title: 'Post Task',
         subtitle: 'I need help',
-        href: '/add.html'
+        href: 'add.html'
       },
       {
         icon: '🚶',
         title: 'Take Along',
         subtitle: 'I can bring it on my route',
-        href: '/delivery.html'
+        href: 'delivery.html'
       }
     ];
 
@@ -107,7 +107,7 @@
       '<section class="dashboard-block" aria-labelledby="dashboard-shops-title">' +
         '<div class="dashboard-block-head">' +
           '<h2 id="dashboard-shops-title">Campus Merchants</h2>' +
-          '<a class="dashboard-view-more" href="/shops.html">See More</a>' +
+          '<a class="dashboard-view-more" href="shops.html">See More</a>' +
         '</div>' +
         '<div class="dashboard-merchant-scroll">' +
           (shops.length ? shops.map(renderMerchantLiteCard).join('') : '<p>No merchants available.</p>') +
@@ -116,7 +116,7 @@
       '<section class="dashboard-block" aria-labelledby="dashboard-route-title">' +
         '<div class="dashboard-block-head">' +
           '<h2 id="dashboard-route-title">Route Picks</h2>' +
-          '<a class="dashboard-view-more" href="/delivery.html">See More</a>' +
+          '<a class="dashboard-view-more" href="delivery.html">See More</a>' +
         '</div>' +
         '<p class="account-muted">From ' + route.pickup + ' to ' + route.delivery + '</p>' +
         '<div class="dashboard-route-list">' +

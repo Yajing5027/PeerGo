@@ -1,4 +1,4 @@
-const MAP_MANIFEST_PATH = '/assets/maps/manifest.json';
+const MAP_MANIFEST_PATH = 'assets/maps/manifest.json';
 const OFFICIAL_MAP_PORTAL_URL = 'https://mankato.mnsu.edu/about-the-university/maps-and-transportation/maps-and-directions/';
 const FALLBACK_MAP_URL = 'https://mankato.mnsu.edu/globalassets/maps/university/campus-map.pdf';
 
