@@ -48,7 +48,7 @@
       reward: formatRewardDisplay(order.reward),
       state: window.orderStatusLabel ? window.orderStatusLabel(order.status) : String(order.status || '-'),
       actionText: 'View',
-      actionUrl: '/view/order-tracking.html?orderId=' + encodeURIComponent(order.orderId || '') + '&role=' + encodeURIComponent(role)
+      actionUrl: '/order-tracking.html?orderId=' + encodeURIComponent(order.orderId || '') + '&role=' + encodeURIComponent(role)
     };
   }
 
@@ -70,9 +70,9 @@
     var role = model.owner === user ? 'poster' : 'bringer';
 
     var bucket = statusBucket(model.state);
-    var actionUrl = '/view/order-tracking.html?kind=errand&id=' + encodeURIComponent(model.id || '') + '&role=' + encodeURIComponent(role);
+    var actionUrl = '/order-tracking.html?kind=errand&id=' + encodeURIComponent(model.id || '') + '&role=' + encodeURIComponent(role);
     if (model.sourceType === 'order' && model.sourceOrderId) {
-      actionUrl = '/view/order-tracking.html?orderId=' + encodeURIComponent(model.sourceOrderId) + '&kind=order&role=' + encodeURIComponent(role);
+      actionUrl = '/order-tracking.html?orderId=' + encodeURIComponent(model.sourceOrderId) + '&kind=order&role=' + encodeURIComponent(role);
     }
 
     return {

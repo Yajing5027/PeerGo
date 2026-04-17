@@ -103,7 +103,7 @@
         mode: 'link',
         counts: counts,
         activeStatus: 'in-progress',
-        baseHref: '/view/manage.html?status='
+        baseHref: '/manage.html?status='
       });
     }
   }
@@ -400,7 +400,7 @@
       logoutButton.addEventListener('click', function(){
         localStorage.removeItem('mavsideUserEmail');
         localStorage.removeItem('mavsideUserRole');
-        window.location.href = '/view/index.html';
+        window.location.href = '/index.html';
       });
     }
 

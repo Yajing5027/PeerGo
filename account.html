@@ -2,11 +2,619 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=/view/account.html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting...</title>
+    <title>MavSide - My Account</title>
+    <link rel="stylesheet" href="style/theme.css">
+    <link rel="stylesheet" href="style/view.css">
+    <style>
+        .account-shell {
+            display: grid;
+            gap: 14px;
+        }
+
+        .account-profile {
+            display: grid;
+            grid-template-columns: 92px 1fr;
+            gap: 14px;
+            align-items: center;
+        }
+
+        .account-avatar-btn {
+            width: 92px;
+            height: 92px;
+            border-radius: 999px;
+            border: 2px solid var(--color-brand);
+            background: var(--color-surface);
+            overflow: hidden;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            padding: 0;
+        }
+
+        .account-avatar-btn img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .account-avatar-fallback {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--color-brand-strong);
+        }
+
+        .account-name-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+
+        .account-name-row h2 {
+            margin: 0;
+        }
+
+        .account-heart-badge {
+            color: #8c52ff;
+            font-size: 1rem;
+            display: none;
+        }
+
+        .account-heart-inline {
+            color: var(--color-text-secondary);
+        }
+
+        .account-meta {
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+            margin: 2px 0;
+        }
+
+        .account-wallet {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .account-wallet-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 10px;
+            padding: 12px;
+        }
+
+        .account-wallet-card strong {
+            font-size: 1.15rem;
+        }
+
+        .account-wallet-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .account-mini {
+            width: auto;
+            padding: 8px 12px;
+        }
+
+        .account-summary-item {
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 8px;
+            background: var(--color-surface);
+            text-align: center;
+        }
+
+        .account-summary-link {
+            width: 100%;
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            background: var(--color-surface);
+            text-align: center;
+            padding: 12px;
+            cursor: pointer;
+        }
+
+        .account-summary-link:hover {
+            border-color: var(--color-brand);
+            transform: translateY(-1px);
+        }
+
+        .account-mav-card {
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            background: var(--color-surface);
+            padding: 12px;
+            display: grid;
+            gap: 8px;
+        }
+
+        .account-mav-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 700;
+        }
+
+        .account-settings-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid var(--color-border);
+            background: var(--color-surface);
+            border-radius: 10px;
+            padding: 8px 10px;
+            color: var(--color-text-secondary);
+            font-weight: 600;
+        }
+
+        .account-settings-logo img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+        }
+
+        .account-collapsible summary {
+            list-style: none;
+            cursor: pointer;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid var(--color-border);
+            border-radius: 10px;
+            background: var(--color-surface);
+        }
+
+        .account-collapsible[open] summary {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        .account-collapsible-content {
+            border: 1px solid var(--color-border);
+            border-top: none;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            padding: 10px;
+            background: var(--color-surface-soft);
+        }
+
+        .account-list {
+            display: grid;
+            gap: 8px;
+        }
+
+        .account-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid var(--color-border);
+            background: var(--color-surface);
+            border-radius: 8px;
+            padding: 8px;
+        }
+
+        .account-row-title {
+            font-weight: 700;
+        }
+
+        .account-row-sub {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            word-break: break-word;
+        }
+
+        .account-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .account-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 1200;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+        }
+
+        .account-modal.show {
+            display: flex;
+        }
+
+        .account-modal-card {
+            width: min(560px, 100%);
+            max-height: 92vh;
+            overflow: auto;
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 14px;
+        }
+
+        .account-modal-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .account-close {
+            border: 1px solid var(--color-border);
+            background: var(--color-surface-soft);
+            color: var(--color-text-primary);
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            padding: 0;
+        }
+
+        .account-msg {
+            margin-top: 8px;
+            font-size: 0.92rem;
+            padding: 8px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .account-msg.error {
+            display: block;
+            background: #ffe8ec;
+            color: #a52746;
+        }
+
+        .account-msg.success {
+            display: block;
+            background: #e8f7ef;
+            color: #1a7a4a;
+        }
+
+        .account-muted {
+            color: var(--color-text-secondary);
+        }
+
+        @media (max-width: 780px) {
+            .account-profile {
+                grid-template-columns: 1fr;
+                justify-items: center;
+                text-align: center;
+            }
+
+            .account-wallet {
+                grid-template-columns: 1fr;
+            }
+
+            .account-summary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .account-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
 </head>
 <body>
-    <p>Redirecting to <a href="/view/account.html">/view/account.html</a></p>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+        <div data-include="/components/navbar.html"></div>
+        <h1>Account</h1>
+        <p>Compact account center with modal editing.</p>
+    </header>
+
+    <main id="main-content" role="main" aria-label="Account Management">
+        <section class="account-shell" aria-label="Account Overview">
+            <div class="account-profile">
+                <button type="button" class="account-avatar-btn" id="account-avatar-button" title="Change avatar"></button>
+                <div>
+                    <div class="account-name-row">
+                        <h2 id="account-name">-</h2>
+                        <span id="account-heart" class="account-heart-badge" aria-label="MavAccess verified">❤</span>
+                    </div>
+                    <p class="account-meta" id="account-email">-</p>
+                    <p class="account-meta" id="account-role">Role: -</p>
+                </div>
+            </div>
+
+            <div class="account-wallet">
+                <div class="account-wallet-card">
+                    <div class="account-muted">Balance</div>
+                    <strong id="account-balance">$0.00</strong>
+                    <div class="account-wallet-actions">
+                        <button type="button" class="account-mini" id="wallet-history-btn">History</button>
+                        <button type="button" class="account-mini" id="wallet-topup-btn">Top Up</button>
+                        <button type="button" class="account-mini" id="wallet-withdraw-btn">Withdraw</button>
+                    </div>
+                </div>
+                <div class="account-wallet-card">
+                    <div class="account-muted">MavPoints</div>
+                    <strong id="account-hearts">0</strong>
+                    <div class="account-wallet-actions">
+                        <button type="button" class="account-mini" id="heart-history-btn">History</button>
+                        <button type="button" class="account-mini" id="heart-redeem-btn">Incentive Rewards</button>
+                        <button type="button" class="account-mini" id="heart-certificate-btn">Volunteer Certificate</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="account-status-summary"></div>
+        </section>
+
+        <section>
+            <h2>My Activity</h2>
+
+            <details class="account-collapsible" id="addresses-collapsible">
+                <summary>Saved Addresses <span>View</span></summary>
+                <div class="account-collapsible-content">
+                    <div class="account-actions" style="margin-bottom: 8px;">
+                        <button type="button" id="add-address-btn">Add New Address</button>
+                    </div>
+                    <div id="addresses-list" class="account-list"></div>
+                </div>
+            </details>
+
+            <details class="account-collapsible" id="payments-collapsible">
+                <summary>Payment Methods <span>View</span></summary>
+                <div class="account-collapsible-content">
+                        <div class="account-actions" style="margin-bottom: 8px;">
+                            <button type="button" id="add-payment-btn">Add Payment Method</button>
+                        </div>
+                    <div id="payments-list" class="account-list"></div>
+                </div>
+            </details>
+        </section>
+
+        <section>
+            <div class="account-mav-card" aria-live="polite">
+                <div class="account-muted">MavAccess Verification Status <span class="account-heart-inline">❤</span></div>
+                <div id="account-mav-status" class="account-mav-status">● Not Verified</div>
+                <div class="account-muted">MavAccess is designed for students with disabilities and accessibility support needs.</div>
+                <div class="account-muted">New accounts start with 0 MavPoints. Starting from your verification date, your account receives 30 MavPoints every month, and each supported task uses 1 MavPoint.</div>
+                <div>
+                    <button type="button" id="mav-access-btn">Apply Verification</button>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Account Settings</h2>
+            <div class="account-actions">
+                <button type="button" id="open-profile-modal-btn">Edit Profile</button>
+                <button type="button" id="open-password-modal-btn">Change Password</button>
+                <button type="button" id="open-notification-modal-btn">Notification Settings</button>
+                <button type="button" id="support-btn">Contact Support</button>
+                <button type="button" id="account-reset-btn">Reset Account</button>
+                <button type="button" id="account-logout-btn">Log Out</button>
+            </div>
+        </section>
+    </main>
+
+    <div id="profile-modal" class="account-modal" aria-hidden="true">
+        <div class="account-modal-card">
+            <div class="account-modal-head">
+                <h3>Edit Profile</h3>
+                <button type="button" class="account-close" data-close-modal="profile-modal">×</button>
+            </div>
+            <form id="profile-form">
+                <label for="profile-display-name">Display Name</label>
+                <input id="profile-display-name" type="text" maxlength="40">
+                <label for="profile-avatar-file">Avatar</label>
+                <input id="profile-avatar-file" type="file" accept="image/*">
+                <div class="account-actions">
+                    <button type="submit">Save</button>
+                </div>
+                <div id="profile-msg" class="account-msg"></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="password-modal" class="account-modal" aria-hidden="true">
+        <div class="account-modal-card">
+            <div class="account-modal-head">
+                <h3>Change Password</h3>
+                <button type="button" class="account-close" data-close-modal="password-modal">×</button>
+            </div>
+            <form id="password-form">
+                <label for="current-password">Current Password</label>
+                <input id="current-password" type="password" required>
+                <label for="new-password">New Password</label>
+                <input id="new-password" type="password" required>
+                <label for="confirm-password">Confirm Password</label>
+                <input id="confirm-password" type="password" required>
+                <div class="account-actions">
+                    <button type="submit">Update</button>
+                </div>
+                <div id="password-msg" class="account-msg"></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="notification-modal" class="account-modal" aria-hidden="true">
+        <div class="account-modal-card">
+            <div class="account-modal-head">
+                <h3>Notification Settings</h3>
+                <button type="button" class="account-close" data-close-modal="notification-modal">×</button>
+            </div>
+            <form id="notification-form">
+                <div id="notification-settings-fields" class="account-list"></div>
+                <div class="account-actions">
+                    <button type="submit">Save</button>
+                </div>
+                <div id="notification-msg" class="account-msg"></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="address-modal" class="account-modal" aria-hidden="true">
+        <div class="account-modal-card">
+            <div class="account-modal-head">
+                <h3 id="address-modal-title">Add Address</h3>
+                <button type="button" class="account-close" data-close-modal="address-modal">×</button>
+            </div>
+            <form id="address-form">
+                <label for="address-name">Address Name</label>
+                <input id="address-name" type="text" required>
+                <div id="address-location-component"></div>
+                <div class="account-actions">
+                    <button type="submit">Save</button>
+                </div>
+                <div id="address-msg" class="account-msg"></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="payment-modal" class="account-modal" aria-hidden="true">
+        <div class="account-modal-card">
+            <div class="account-modal-head">
+                <h3>Add Payment Method</h3>
+                <button type="button" class="account-close" data-close-modal="payment-modal">×</button>
+            </div>
+            <form id="payment-form">
+                <label for="payment-type">Type</label>
+                <select id="payment-type">
+                    <option value="card">Bank Card</option>
+                    <option value="campus-card">Campus Card</option>
+                    <option value="wallet">Digital Wallet</option>
+                </select>
+                <label for="payment-last4">Last 4 Digits</label>
+                <input id="payment-last4" type="text" inputmode="numeric" maxlength="4" required>
+                <div class="account-actions">
+                    <button type="submit">Save</button>
+                </div>
+                <div id="payment-msg" class="account-msg"></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="wallet-amount-modal" class="account-modal" aria-hidden="true">
+        <div class="account-modal-card">
+            <div class="account-modal-head">
+                <h3 id="wallet-amount-title">Wallet</h3>
+                <button type="button" class="account-close" data-close-modal="wallet-amount-modal">×</button>
+            </div>
+            <form id="wallet-amount-form">
+                <label for="wallet-amount-input">Amount</label>
+                <input id="wallet-amount-input" type="number" min="0.01" step="0.01" required>
+                <div class="account-actions">
+                    <button type="submit" id="wallet-amount-submit">Submit</button>
+                </div>
+                <div id="wallet-amount-msg" class="account-msg"></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="wallet-history-modal" class="account-modal" aria-hidden="true">
+        <div class="account-modal-card">
+            <div class="account-modal-head">
+                <h3>Wallet History</h3>
+                <button type="button" class="account-close" data-close-modal="wallet-history-modal">×</button>
+            </div>
+            <div id="wallet-history-list" class="account-list"></div>
+        </div>
+    </div>
+
+    <div id="heart-history-modal" class="account-modal" aria-hidden="true">
+        <div class="account-modal-card">
+            <div class="account-modal-head">
+                <h3>MavPoints History</h3>
+                <button type="button" class="account-close" data-close-modal="heart-history-modal">×</button>
+            </div>
+            <div id="heart-history-list" class="account-list"></div>
+        </div>
+    </div>
+
+    <div id="mav-access-modal" class="account-modal" aria-hidden="true">
+        <div class="account-modal-card">
+            <div class="account-modal-head">
+                <h3>MavAccess Verification</h3>
+                <button type="button" class="account-close" data-close-modal="mav-access-modal">×</button>
+            </div>
+            <form id="mav-access-form">
+                <label for="mav-id">Student ID</label>
+                <input id="mav-id" type="text" required>
+                <label for="mav-code">Verification Code</label>
+                <input id="mav-code" type="text" required>
+                <div class="account-actions">
+                    <button type="submit">Verify</button>
+                </div>
+                <div id="mav-access-msg" class="account-msg"></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="support-modal" class="account-modal" aria-hidden="true">
+        <div class="account-modal-card">
+            <div class="account-modal-head">
+                <h3>Contact Support</h3>
+                <button type="button" class="account-close" data-close-modal="support-modal">×</button>
+            </div>
+            <form id="support-form">
+                <label for="support-email">Email</label>
+                <input id="support-email" type="email" required>
+                <label for="support-subject">Subject</label>
+                <input id="support-subject" type="text" required>
+                <label for="support-message">Message</label>
+                <textarea id="support-message" rows="4" required></textarea>
+                <div class="account-actions">
+                    <button type="submit">Send</button>
+                </div>
+                <div id="support-msg" class="account-msg"></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="heart-redeem-modal" class="account-modal" aria-hidden="true">
+        <div class="account-modal-card">
+            <div class="account-modal-head">
+                <h3>Incentive Rewards</h3>
+                <button type="button" class="account-close" data-close-modal="heart-redeem-modal">×</button>
+            </div>
+            <form id="heart-redeem-form">
+                <label for="heart-redeem-points">Points</label>
+                <input id="heart-redeem-points" type="number" min="1" step="1" required>
+                <label for="heart-redeem-note">Request Note</label>
+                <textarea id="heart-redeem-note" rows="3" required></textarea>
+                <div class="account-actions">
+                    <button type="submit">Submit</button>
+                </div>
+                <div id="heart-redeem-msg" class="account-msg"></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="heart-certificate-modal" class="account-modal" aria-hidden="true">
+        <div class="account-modal-card">
+            <div class="account-modal-head">
+                <h3>Volunteer Certificate</h3>
+                <button type="button" class="account-close" data-close-modal="heart-certificate-modal">×</button>
+            </div>
+            <form id="heart-certificate-form">
+                <label for="certificate-hours">Hours</label>
+                <input id="certificate-hours" type="number" min="1" step="1" required>
+                <label for="certificate-purpose">Purpose</label>
+                <textarea id="certificate-purpose" rows="3" required></textarea>
+                <div class="account-actions">
+                    <button type="submit">Submit</button>
+                </div>
+                <div id="heart-certificate-msg" class="account-msg"></div>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/account.js"></script>
+    <script src="assets/js/account-page.js"></script>
+    <script src="assets/js/form-components.js"></script>
+    <script src="assets/js/add.js"></script>
 </body>
 </html>

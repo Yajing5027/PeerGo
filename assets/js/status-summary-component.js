@@ -18,7 +18,7 @@
     var mode = opts.mode || 'tab';
     var counts = opts.counts || {};
     var activeStatus = opts.activeStatus || 'in-progress';
-    var baseHref = opts.baseHref || '/view/manage.html?status=';
+    var baseHref = opts.baseHref || '/manage.html?status=';
 
     var html = '<div class="status-summary-grid">' + ITEMS.map(function(item){
       var count = Number(counts[item.countKey] || 0);

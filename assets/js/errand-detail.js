@@ -17,7 +17,7 @@
 
   function getBackTarget(){
     const params = new URLSearchParams(window.location.search);
-    return params.get('from') === 'manage' ? '/view/manage.html' : '/view/delivery.html';
+    return params.get('from') === 'manage' ? '/manage.html' : '/delivery.html';
   }
 
   function readAll(){

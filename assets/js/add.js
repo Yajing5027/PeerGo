@@ -1,5 +1,5 @@
 const DELIVERY_STORAGE_KEY = 'mavsideDeliveryPosts';
-const deliveryPagePath = '/view/delivery.html';
+const deliveryPagePath = '/delivery.html';
 
 function createRequestId() {
     return 'd-' + Date.now() + '-' + Math.floor(Math.random() * 1000);

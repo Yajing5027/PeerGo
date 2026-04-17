@@ -1,20 +1,20 @@
 const protectedPaths = [
-    '/view/dashboard.html',
-    '/view/delivery.html',
-    '/view/shops.html',
-    '/view/shop.html',
-    '/view/order-confirm.html',
-    '/view/order-tracking.html',
-    '/view/add.html',
-    '/view/manage.html',
-    '/view/account.html',
+    '/dashboard.html',
+    '/delivery.html',
+    '/shops.html',
+    '/shop.html',
+    '/order-confirm.html',
+    '/order-tracking.html',
+    '/add.html',
+    '/manage.html',
+    '/account.html',
     '/dashboard.html',
     '/services/delivery.html',
     '/add.html',
     '/account.html'
 ];
 
-const loginPagePath = '/view/index.html';
+const loginPagePath = '/index.html';
 
 function migrateLocalStorageKeys() {
     const mapping = [

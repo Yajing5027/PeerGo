@@ -1,0 +1,1346 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Match-Route Engine — Academic Poster (36in × 48in)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    @page { size: 36in 48in; margin: 0; }
+
+    :root {
+      --primary-purple: #5E2A84;
+      --accent-gold: #D4AF37;
+      --text-on-purple: #ffffff;
+      --muted: #444444;
+    }
+
+    html, body {
+      width: 36in;
+      height: 48in;
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      color: #222222;
+      -webkit-print-color-adjust: exact;
+      box-sizing: border-box;
+      font-family: 'Inter', Arial, Helvetica, sans-serif;
+    }
+
+    .poster {
+      width: 36in;
+      min-height: 48in;
+      display: flex;
+      flex-direction: column;
+      background: #ffffff;
+      overflow: visible;
+    }
+
+    header.poster-header {
+      height: 14%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 0.25in;
+      background: var(--primary-purple);
+      color: var(--text-on-purple);
+      box-sizing: border-box;
+    }
+
+    .logo-left, .logo-right {
+      width: 4in;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-left img, .logo-right img {
+      height: 2.4in;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .header-center {
+      flex: 1;
+      text-align: center;
+      padding: 0.06in 0.25in 0.02in;
+    }
+
+    .poster-title {
+      margin: 0;
+      font-size: 72pt;
+      font-weight: 800;
+      color: var(--accent-gold);
+      line-height: 0.95;
+      letter-spacing: -1px;
+    }
+
+    .author-info {
+      margin-top: 0.22in;
+      font-size: 40pt;
+      line-height: 1.12;
+      color: var(--text-on-purple);
+    }
+
+    main.poster-body {
+      flex: 1 1 auto;
+      min-height: 0;
+      height: auto;
+      padding: 0.22in 0.28in 0.18in;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 0.16in;
+      overflow: visible;
+    }
+
+    .flow-box {
+      display: block;
+      border: 1pt solid rgba(0,0,0,0.12);
+      border-radius: 6pt;
+      background: #ffffff;
+      padding: 0.16in;
+      margin: 0;
+      break-inside: auto;
+      -webkit-column-break-inside: auto;
+      box-sizing: border-box;
+    }
+
+    .poster-band-top {
+      display: grid;
+      grid-template-columns: 48% 52%;
+      gap: 0.1in;
+      align-items: start;
+    }
+
+    .poster-band-top > .flow-box {
+      height: auto;
+      min-height: 0;
+    }
+
+    .part1-box {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      padding: 0 !important;
+    }
+
+    .part2-box {
+      display: flex;
+      flex-direction: column;
+      min-height: 14in;
+      width: 96%;
+      justify-self: center;
+    }
+
+    .part3-showcase {
+      display: flex;
+      flex-direction: column;
+      gap: 0.08in;
+      padding: 0.16in;
+      border: 1px solid rgba(94,42,132,0.12);
+      border-radius: 6pt;
+      background: #ffffff;
+      box-sizing: border-box;
+      min-height: 7.2in;
+    }
+
+    .part3-showcase .subtitle {
+      margin-bottom: 0.04in;
+    }
+
+    .part3-showcase .module-intro-text {
+      margin: 0.04in 0;
+    }
+
+    .poster-band-pages {
+      break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+    }
+
+    .subtitle {
+      margin: 0 0 0.08in 0;
+      padding-bottom: 0.04in;
+      font-size: 34pt;
+      font-weight: 700;
+      color: var(--primary-purple);
+      border-bottom: 3pt solid var(--accent-gold);
+      line-height: 1.08;
+    }
+
+    .section-heading {
+      margin: 0.04in 0 0.02in 0;
+      font-size: 26pt;
+      font-weight: 800;
+      color: var(--primary-purple);
+      break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+    }
+
+    .small-note {
+      margin: 0;
+      font-size: 24pt;
+      line-height: 1.26;
+      color: #222222;
+      font-weight: 400;
+    }
+
+    .poster-list {
+      margin: 0;
+      padding-left: 0.22in;
+    }
+
+    .poster-list li {
+      margin: 0 0 0.08in 0;
+      font-size: 24pt;
+      line-height: 1.26;
+      break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+      font-weight: 400;
+    }
+
+    .module-block {
+      margin-top: 0.08in;
+      padding-top: 0.08in;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+    }
+
+    .module-block .small-note {
+      margin: 0.11in 0;
+      line-height: 1.52;
+    }
+
+    .module-block .small-note:first-of-type {
+      margin-top: 0.02in;
+    }
+
+    .module-block .small-note:last-of-type {
+      margin-bottom: 0.02in;
+    }
+
+    .module-block .formula-block {
+      margin: 0.14in 0;
+      padding: 0.12in 0.14in;
+      line-height: 1.54;
+    }
+
+    .module-block mjx-container[jax="CHTML"] {
+      display: inline-block;
+      margin: 0 0.08em;
+      padding: 0.06em 0;
+      vertical-align: middle;
+    }
+
+    .module-block .formula-block mjx-container[jax="CHTML"] {
+      display: inline-block;
+      margin: 0.06in 0.03em;
+    }
+
+    .module-block .formula-block br {
+      line-height: 2;
+    }
+
+    .arch-diagram[aria-label="Path deviation calculation diagram"] {
+      padding: 0;
+    }
+
+    .theory-atom {
+      display: flex;
+      gap: 0.14in;
+      align-items: flex-start;
+      margin-bottom: 0.1in;
+      break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+    }
+
+    .atom-icon {
+      width: 0.9in;
+      height: 0.9in;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34pt;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .atom-title {
+      font-size: 22pt;
+      font-weight: 700;
+      color: var(--primary-purple);
+      line-height: 1.14;
+    }
+
+    .atom-desc, .atom-impl {
+      font-size: 22pt;
+      line-height: 1.26;
+      color: #222222;
+      font-weight: 400;
+    }
+
+    .atom-impl { color: #3d3d3d; }
+
+    .formula-block {
+      margin: 0.02in 0;
+      padding: 0.04in 0.08in;
+      border-left: 4px solid var(--accent-gold);
+      background: rgba(94,42,132,0.04);
+      font-size: 22pt;
+      font-weight: 600;
+      break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+    }
+
+    .flowchart {
+      width: 100%;
+      padding: 0;
+      box-sizing: border-box;
+      break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+      margin: 0;
+      height: auto;
+      overflow: hidden;
+      position: relative;
+      z-index: 0;
+    }
+
+    .flowchart svg {
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      display: block;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 6pt;
+      background: #ffffff;
+      transform: none;
+      position: relative;
+      z-index: 0;
+    }
+
+    .arch-diagram {
+      width: 100%;
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 6pt;
+      background: #fcfcff;
+      padding: 0.02in;
+      box-sizing: border-box;
+      break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+      margin: 0;
+      height: auto;
+      overflow: hidden;
+      position: relative;
+      z-index: 0;
+    }
+
+    .arch-diagram svg {
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      display: block;
+      transform: none;
+      position: relative;
+      z-index: 0;
+    }
+
+    .min-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 20pt;
+      margin-top: 0.06in;
+      break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+    }
+
+    .min-table th, .min-table td {
+      padding: 0.07in 0.07in;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+      text-align: left;
+      vertical-align: top;
+      line-height: 1.2;
+    }
+
+    .min-table th {
+      background: rgba(212,175,55,0.08);
+      color: var(--primary-purple);
+      font-weight: 700;
+    }
+
+    .github-strip {
+      height: 1.65in;
+      background: var(--primary-purple);
+      color: var(--text-on-purple);
+      border-top: 4pt solid var(--accent-gold);
+      display: grid;
+      grid-template-columns: 1.5fr 0.8fr 1.7fr;
+      align-items: center;
+      gap: 0.18in;
+      padding: 0.16in 0.28in;
+      box-sizing: border-box;
+    }
+
+    .g-title {
+      font-size: 30pt;
+      font-weight: 800;
+      color: var(--accent-gold);
+      line-height: 1.05;
+    }
+
+    .g-sub {
+      font-size: 19pt;
+      line-height: 1.2;
+    }
+
+    .qr-box {
+      width: 1.2in;
+      height: 1.2in;
+      border: 3pt solid var(--accent-gold);
+      background: #ffffff;
+      color: #333333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16pt;
+      font-weight: 700;
+      margin: 0 auto;
+    }
+
+    .part1-graphic {
+      border: 1px solid rgba(94,42,132,0.18);
+      border-radius: 10px;
+      background: #ffffff;
+      padding: 0;
+      box-sizing: border-box;
+      flex: 0 0 auto;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      overflow: visible;
+      min-height: 0;
+      width: 100%;
+    }
+
+    .part1-graphic svg {
+      width: 100%;
+      max-height: 100%;
+      height: auto;
+      display: block;
+      transform: scale(1);
+      transform-origin: center top;
+    }
+
+    .part1-graphic svg text {
+      dominant-baseline: middle;
+    }
+
+    .part1-graphic svg text[font-size="15"] {
+      font-size: 17px;
+    }
+
+    .part1-graphic svg text[font-size="16"] {
+      font-size: 18px;
+    }
+
+    .part2-theory {
+      column-span: all;
+      -webkit-column-span: all;
+    }
+
+    .theory-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.04in;
+      align-items: stretch;
+      flex: 1 1 auto;
+    }
+
+    .theory-col {
+      border-radius: 10px;
+      border: 1px solid rgba(94,42,132,0.16);
+      padding: 0.06in;
+      box-sizing: border-box;
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 0.02in;
+    }
+
+    .theory-col-blue { background: #eef6ff; }
+    .theory-col-green { background: #effaf1; }
+    .theory-col-purple { background: #f6efff; }
+
+    .theory-col-title {
+      margin: 0;
+      font-size: 20pt;
+      font-weight: 700;
+      line-height: 1.06;
+      color: var(--primary-purple);
+      text-align: left;
+    }
+
+    .theory-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.02in;
+    }
+
+    .theory-card {
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 0.06in;
+      box-sizing: border-box;
+      border: 1px solid rgba(94,42,132,0.12);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 0.02in;
+      min-height: 1.85in;
+    }
+
+    .theory-card-title {
+      margin: 0;
+      font-size: 20pt;
+      font-weight: 700;
+      color: #5E2A84;
+      line-height: 1.06;
+    }
+
+    .theory-def {
+      margin: 0;
+      font-size: 17pt;
+      color: #444444;
+      line-height: 1.12;
+    }
+
+    .theory-map {
+      margin: 0;
+      font-size: 17pt;
+      color: #444444;
+      line-height: 1.12;
+      font-style: normal;
+    }
+
+    .theory-arrow {
+      color: #D4AF37;
+      font-weight: 700;
+      margin-right: 4px;
+    }
+
+    .module-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.12in;
+      margin: 0.08in 0;
+      break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+    }
+
+    .module-card {
+      background: #ffffff;
+      border-radius: 8px;
+      border: 1px solid #5E2A84;
+      padding: 0.1in;
+      box-sizing: border-box;
+      box-shadow: 0 2px 6px rgba(94, 42, 132, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 0.06in;
+    }
+
+    .module-card-icon {
+      font-size: 24pt;
+      line-height: 1;
+      text-align: center;
+      margin-bottom: 0.02in;
+    }
+
+    .module-card-title {
+      margin: 0;
+      font-size: 18pt;
+      font-weight: 700;
+      color: #5E2A84;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .module-card-formula {
+      margin: 0.04in 0;
+      font-size: 16pt;
+      font-weight: 600;
+      color: #2b2b2b;
+      text-align: center;
+      line-height: 1.24;
+      border-left: none;
+      background: transparent;
+      padding: 0;
+    }
+
+    .module-card-threshold {
+      margin: 0.04in 0 0;
+      font-size: 13pt;
+      font-weight: 600;
+      color: #D4AF37;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .module-card-concept {
+      margin: 0.04in 0 0;
+      font-size: 12pt;
+      color: #666666;
+      text-align: center;
+      line-height: 1.22;
+      font-style: italic;
+    }
+
+    .page-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.12in;
+    }
+
+    .page-card {
+      border: 1px solid rgba(94,42,132,0.16);
+      border-radius: 10px;
+      background: #ffffff;
+      box-shadow: 0 2px 10px rgba(94,42,132,0.08);
+      padding: 0.08in;
+      display: flex;
+      flex-direction: column;
+      gap: 0.06in;
+      min-height: 2.5in;
+      box-sizing: border-box;
+    }
+
+    .page-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.06in;
+      background: var(--primary-purple);
+      color: #ffffff;
+      border-radius: 8px;
+      padding: 0.06in 0.08in;
+    }
+
+    .page-card-header h4 {
+      margin: 0;
+      font-size: 18pt;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .page-card-header p {
+      margin: 0;
+      font-size: 10pt;
+      line-height: 1.15;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .page-shell {
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 8px;
+      background: linear-gradient(180deg, #ffffff 0%, #fcfbff 100%);
+      padding: 0.06in;
+      display: grid;
+      gap: 0.06in;
+      min-height: 0;
+      flex: 1 1 auto;
+    }
+
+    .page-shell-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.06in;
+      font-size: 9pt;
+      color: #666666;
+    }
+
+    .page-shell-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.06in;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      padding-top: 0.04in;
+      font-size: 9pt;
+      color: #666666;
+      margin-top: auto;
+    }
+
+    .snapshot-grid {
+      display: grid;
+      gap: 0.06in;
+    }
+
+    .snapshot-grid.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .snapshot-grid.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .snapshot-panel {
+      border: 1px solid rgba(94,42,132,0.12);
+      border-radius: 8px;
+      background: #fafafa;
+      padding: 0.06in;
+      box-sizing: border-box;
+      display: grid;
+      gap: 0.03in;
+    }
+
+    .snapshot-panel h5 {
+      margin: 0;
+      font-size: 12pt;
+      font-weight: 700;
+      color: var(--primary-purple);
+      line-height: 1.15;
+    }
+
+    .snapshot-panel p,
+    .snapshot-panel li {
+      margin: 0;
+      font-size: 10pt;
+      line-height: 1.22;
+      color: #333333;
+    }
+
+    .snapshot-list {
+      margin: 0;
+      padding-left: 0.16in;
+    }
+
+    .snapshot-list li {
+      margin: 0 0 0.03in 0;
+    }
+
+    .snapshot-metric {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.06in;
+      font-size: 10pt;
+    }
+
+    .snapshot-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.02in 0.06in;
+      border-radius: 999px;
+      background: #f7f1ff;
+      color: var(--primary-purple);
+      border: 1px solid rgba(94,42,132,0.16);
+      font-size: 9pt;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .snapshot-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9pt;
+    }
+
+    .snapshot-table th,
+    .snapshot-table td {
+      border: 1px solid rgba(0,0,0,0.08);
+      padding: 0.03in 0.05in;
+      text-align: left;
+      line-height: 1.18;
+    }
+
+    .snapshot-table th {
+      background: rgba(94,42,132,0.06);
+      color: var(--primary-purple);
+      font-weight: 700;
+    }
+
+    .snapshot-map {
+      border: 1px dashed rgba(94,42,132,0.35);
+      border-radius: 8px;
+      background: linear-gradient(135deg, rgba(94,42,132,0.04), rgba(212,175,55,0.08));
+      padding: 0.08in;
+      text-align: center;
+      color: #5a4c67;
+      font-size: 10pt;
+      line-height: 1.24;
+    }
+
+    .snapshot-map strong {
+      display: block;
+      color: var(--primary-purple);
+      margin-bottom: 0.03in;
+      font-size: 11pt;
+    }
+
+    .snapshot-hero {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 0.06in;
+      align-items: center;
+    }
+
+    .snapshot-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 999px;
+      border: 2px solid var(--primary-purple);
+      background: #f7f1ff;
+      display: grid;
+      place-items: center;
+      font-size: 22pt;
+      color: var(--primary-purple);
+      font-weight: 800;
+    }
+
+    .snapshot-timeline {
+      display: grid;
+      gap: 0.04in;
+    }
+
+    .snapshot-step {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.06in;
+      align-items: center;
+      border-left: 3px solid var(--accent-gold);
+      padding-left: 0.06in;
+      font-size: 10pt;
+      color: #333333;
+    }
+
+    .snapshot-step span:last-child {
+      color: var(--primary-purple);
+      font-weight: 600;
+    }
+
+    .snapshot-form-row {
+      display: grid;
+      gap: 0.04in;
+    }
+
+    .snapshot-input {
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 6px;
+      background: #ffffff;
+      padding: 0.05in 0.07in;
+      font-size: 9pt;
+      color: #666666;
+    }
+
+    .module-intro-text {
+      margin: 0.08in 0;
+      font-size: 16pt;
+      color: #555555;
+      text-align: center;
+      font-style: italic;
+      break-inside: avoid;
+      -webkit-column-break-inside: avoid;
+    }
+
+    .poster-band-middle {
+      padding: 0.1in 0.14in;
+      display: flex;
+      flex-direction: column;
+      gap: 0.06in;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .poster-band-middle .subtitle {
+      margin-bottom: 0.04in;
+    }
+
+    .poster-image-row {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.05in;
+      align-items: stretch;
+      justify-items: center;
+      min-height: 7in;
+      flex: 1 1 auto;
+    }
+
+    .poster-image-card {
+      width: 100%;
+      max-width: 100%;
+      display: grid;
+      gap: 0.04in;
+      grid-template-rows: auto 1fr;
+      min-height: 5.5in;
+    }
+
+    .poster-image-card h4 {
+      margin: 0;
+      font-size: 14pt;
+      font-weight: 700;
+      text-align: center;
+      color: var(--primary-purple);
+      line-height: 1.2;
+    }
+
+    .poster-image-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border: 1px solid rgba(0,0,0,0.14);
+      border-radius: 6px;
+      display: block;
+      background: #fafafa;
+    }
+
+    .poster-band-bottom {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.08in;
+      align-items: start;
+    }
+
+    .bottom-col {
+      display: grid;
+      gap: 0.05in;
+      align-content: start;
+    }
+
+    .bottom-col .flow-box {
+      margin: 0;
+    }
+
+    .closing-strip {
+      border: 1pt solid rgba(0,0,0,0.12);
+      border-radius: 6pt;
+      background: #ffffff;
+      padding: 0.1in 0.16in;
+      display: grid;
+      gap: 0.04in;
+    }
+
+    .closing-strip .subtitle {
+      margin-bottom: 0.02in;
+    }
+
+    .closing-strip .small-note {
+      font-size: 22pt;
+      line-height: 1.25;
+    }
+
+    @media (max-width: 1000px) {
+      .poster-title { font-size: 72pt; }
+      main.poster-body { height: auto; }
+      .poster-band-top,
+      .poster-band-bottom,
+      .poster-image-row,
+      .theory-cards,
+      .page-gallery { grid-template-columns: 1fr; }
+      .github-strip { grid-template-columns: 1fr; height: auto; }
+    }
+  </style>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+  <div class="poster">
+    <header class="poster-header">
+      <div class="logo-left"><img src="cadscom_logo.png" alt="CADSCOM Logo"></div>
+      <div class="header-center">
+        <h1 class="poster-title">MavSide: A Campus Micro-Logistics Network Built on Spare Capacity, Circular Economy, and Cross-Subsidized Inclusion</h1>
+        <div class="author-info">Yajing Ren · Minnesota State University, Mankato · yajing.ren@mnsu.edu</div>
+      </div>
+      <div class="logo-right"><img src="acm_logo.png" alt="ACM Logo"></div>
+    </header>
+
+    <main class="poster-body">
+      <section class="poster-band-top" aria-label="Top theory band">
+        <section class="flow-box part1-box">
+          <h3 class="subtitle">Part I — Problem Statement &amp; Project Objectives</h3>
+          <div class="part1-graphic" role="img" aria-label="Integrated Part I funnel diagram">
+            <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="p1arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+                  <path d="M0,0 L10,5 L0,10 z" fill="#5E2A84"/>
+                </marker>
+              </defs>
+
+              <rect x="20" y="20" width="360" height="150" rx="10" fill="#f8f4ff" stroke="#5E2A84" stroke-width="1.5"/>
+              <text x="200" y="48" text-anchor="middle" font-size="22" fill="#5E2A84" font-weight="700">🕐 Spatiotemporal &amp; Physical</text>
+              <text x="200" y="73" text-anchor="middle" font-size="22" fill="#5E2A84" font-weight="700">Constraints</text>
+              <text x="40" y="96" font-size="17" fill="#5E2A84" text-anchor="start">•</text>
+              <text x="70" y="96" font-size="22" fill="#222" text-anchor="start">Time crunch</text>
+              <text x="40" y="120" font-size="17" fill="#5E2A84" text-anchor="start">•</text>
+              <text x="70" y="120" font-size="22" fill="#222" text-anchor="start">Mobility restricted</text>
+              <text x="40" y="144" font-size="17" fill="#5E2A84" text-anchor="start">•</text>
+              <text x="70" y="144" font-size="22" fill="#222" text-anchor="start">Winter exacerbates</text>
+
+              <rect x="420" y="20" width="360" height="150" rx="10" fill="#f8f4ff" stroke="#5E2A84" stroke-width="1.5"/>
+              <text x="600" y="48" text-anchor="middle" font-size="22" fill="#5E2A84" font-weight="700">💼 Work-Study Imbalance</text>
+              <text x="440" y="96" font-size="17" fill="#5E2A84" text-anchor="start">•</text>
+              <text x="470" y="96" font-size="22" fill="#222" text-anchor="start">Scarce jobs</text>
+              <text x="440" y="120" font-size="17" fill="#5E2A84" text-anchor="start">•</text>
+              <text x="470" y="120" font-size="22" fill="#222" text-anchor="start">Rigid shifts</text>
+              <text x="440" y="144" font-size="17" fill="#5E2A84" text-anchor="start">•</text>
+              <text x="470" y="144" font-size="22" fill="#222" text-anchor="start">No zero-threshold income</text>
+
+              <rect x="820" y="20" width="360" height="150" rx="10" fill="#f8f4ff" stroke="#5E2A84" stroke-width="1.5"/>
+              <text x="1000" y="48" text-anchor="middle" font-size="22" fill="#5E2A84" font-weight="700">🔄 Spatiotemporal Mismatch</text>
+              <text x="840" y="96" font-size="17" fill="#5E2A84" text-anchor="start">•</text>
+              <text x="870" y="96" font-size="22" fill="#222" text-anchor="start">Urgent need</text>
+              <text x="840" y="120" font-size="17" fill="#5E2A84" text-anchor="start">•</text>
+              <text x="870" y="120" font-size="22" fill="#222" text-anchor="start">Someone walking by</text>
+              <text x="840" y="144" font-size="17" fill="#5E2A84" text-anchor="start">•</text>
+              <text x="870" y="144" font-size="22" fill="#222" text-anchor="start">Never connected</text>
+
+              <line x1="200" y1="170" x2="540" y2="230" stroke="#5E2A84" stroke-width="2" marker-end="url(#p1arr)"/>
+              <line x1="600" y1="170" x2="600" y2="230" stroke="#5E2A84" stroke-width="2" marker-end="url(#p1arr)"/>
+              <line x1="1000" y1="170" x2="660" y2="230" stroke="#5E2A84" stroke-width="2" marker-end="url(#p1arr)"/>
+
+              <rect x="370" y="232" width="460" height="75" rx="12" fill="#ffffff" stroke="#5E2A84" stroke-width="2"/>
+              <text x="600" y="262" text-anchor="middle" font-size="34" fill="#5E2A84" font-weight="800">MavSide</text>
+              <text x="600" y="290" text-anchor="middle" font-size="18" fill="#222">Incidental Foot Traffic + Spare Capacity</text>
+
+              <line x1="600" y1="318" x2="600" y2="344" stroke="#5E2A84" stroke-width="2"/>
+              <line x1="600" y1="344" x2="220" y2="386" stroke="#5E2A84" stroke-width="2" marker-end="url(#p1arr)"/>
+              <line x1="600" y1="344" x2="600" y2="386" stroke="#5E2A84" stroke-width="2" marker-end="url(#p1arr)"/>
+              <line x1="600" y1="344" x2="980" y2="386" stroke="#5E2A84" stroke-width="2" marker-end="url(#p1arr)"/>
+
+              <rect x="20" y="390" width="360" height="120" rx="10" fill="#f8f4ff" stroke="#5E2A84" stroke-width="1.5"/>
+              <text x="200" y="418" text-anchor="middle" font-size="20" fill="#5E2A84" font-weight="700">🚶 Activate Secondary Value</text>
+              <text x="28" y="448" font-size="17" fill="#5E2A84" text-anchor="start">•</text>
+              <text x="44" y="448" font-size="19" fill="#222" text-anchor="start">Footsteps → Dispatchable Capacity</text>
+              <text x="28" y="470" font-size="17" fill="#5E2A84" text-anchor="start">•</text>
+              <text x="44" y="470" font-size="22" fill="#222" text-anchor="start">Deviation ≤ 15%</text>
+
+              <rect x="420" y="390" width="360" height="120" rx="10" fill="#f8f4ff" stroke="#5E2A84" stroke-width="1.5"/>
+              <text x="600" y="418" text-anchor="middle" font-size="20" fill="#5E2A84" font-weight="700">💰 Inclusive Micro-Economy</text>
+              <text x="428" y="448" font-size="17" fill="#5E2A84" text-anchor="start">•</text>
+              <text x="444" y="448" font-size="22" fill="#222" text-anchor="start">Zero-threshold</text>
+              <text x="428" y="470" font-size="17" fill="#5E2A84" text-anchor="start">•</text>
+              <text x="444" y="470" font-size="22" fill="#222" text-anchor="start">Flexible income</text>
+              <text x="428" y="492" font-size="17" fill="#5E2A84" text-anchor="start">•</text>
+              <text x="444" y="492" font-size="22" fill="#222" text-anchor="start">Compatible with academic life</text>
+
+              <rect x="820" y="390" width="360" height="120" rx="10" fill="#f8f4ff" stroke="#5E2A84" stroke-width="1.5"/>
+              <text x="1000" y="418" text-anchor="middle" font-size="20" fill="#5E2A84" font-weight="700">🤝 Trust-Based Community</text>
+              <text x="828" y="448" font-size="17" fill="#5E2A84" text-anchor="start">•</text>
+              <text x="844" y="448" font-size="22" fill="#222" text-anchor="start">mnsu.edu network</text>
+              <text x="828" y="470" font-size="17" fill="#5E2A84" text-anchor="start">•</text>
+              <text x="844" y="470" font-size="22" fill="#222" text-anchor="start">Low transaction friction</text>
+
+              <line x1="200" y1="510" x2="200" y2="530" stroke="#5E2A84" stroke-width="2"/>
+              <line x1="600" y1="510" x2="600" y2="530" stroke="#5E2A84" stroke-width="2"/>
+              <line x1="1000" y1="510" x2="1000" y2="530" stroke="#5E2A84" stroke-width="2"/>
+              <line x1="200" y1="530" x2="1000" y2="530" stroke="#5E2A84" stroke-width="2"/>
+              <line x1="600" y1="512" x2="600" y2="556" stroke="#5E2A84" stroke-width="2" marker-end="url(#p1arr)"/>
+              <text x="600" y="562" text-anchor="middle" font-size="16" fill="#5E2A84" font-weight="700">Further&#160;Activation</text>
+
+              <rect x="340" y="578" width="520" height="130" rx="10" fill="#f8f4ff" stroke="#5E2A84" stroke-width="1.5"/>
+              <text x="600" y="610" text-anchor="middle" font-size="22" fill="#5E2A84" font-weight="700">♿ Accessible Campus</text>
+              <text x="360" y="656" font-size="17" fill="#5E2A84" text-anchor="start">•</text>
+              <text x="390" y="656" font-size="22" fill="#222" text-anchor="start">Commission → MavPoints Pool</text>
+              <text x="360" y="680" font-size="17" fill="#5E2A84" text-anchor="start">•</text>
+              <text x="390" y="680" font-size="22" fill="#222" text-anchor="start">Fee waiver for Students with Disabilities</text>
+              <text x="360" y="704" font-size="17" fill="#5E2A84" text-anchor="start">•</text>
+              <text x="390" y="704" font-size="22" fill="#222" text-anchor="start">De-stigmatized inclusion</text>
+            </svg>
+          </div>
+        </section>
+
+        <section class="flow-box part2-box">
+          <h3 class="subtitle">Part II — Theory: Core Mechanisms &amp; Framework</h3>
+          <div class="theory-grid">
+            <article class="theory-col theory-col-blue">
+              <h4 class="theory-col-title">I. Secondary Economy &amp; Asset Activation</h4>
+              <div class="theory-cards">
+                <section class="theory-card">
+                  <p class="theory-card-title">🪙 Zero Marginal Cost Tendency</p>
+                  <p class="theory-def">Incremental service cost approaches zero.</p>
+                  <p class="theory-map"><span class="theory-arrow">→</span>Highly overlapping paths make micro-transaction viable.</p>
+                </section>
+                <section class="theory-card">
+                  <p class="theory-card-title">📍 Proximity-Based Efficiency</p>
+                  <p class="theory-def">Geographic closeness eliminates intermediaries.</p>
+                  <p class="theory-map"><span class="theory-arrow">→</span>Walking-distance fulfillment ensures instant response.</p>
+                </section>
+                <section class="theory-card">
+                  <p class="theory-card-title">💰 Secondary Economy</p>
+                  <p class="theory-def">Captures residual value of existing activities.</p>
+                  <p class="theory-map"><span class="theory-arrow">→</span>Transforms Sunk Travel Costs into tradable logistics.</p>
+                </section>
+              </div>
+            </article>
+
+            <article class="theory-col theory-col-green">
+              <h4 class="theory-col-title">II. Circular Economy &amp; Inclusive Growth</h4>
+              <div class="theory-cards">
+                <section class="theory-card">
+                  <p class="theory-card-title">👥 Labor Fragmentation &amp; Hyper-Flexibility</p>
+                  <p class="theory-def">Creates campus micro-job positions with no fixed schedule constraints.</p>
+                  <p class="theory-map"><span class="theory-arrow">→</span>Zero-threshold flexible income · Decentralized inclusive ecosystem.</p>
+                </section>
+                <section class="theory-card">
+                  <p class="theory-card-title">💸 Cross-Subsidization</p>
+                  <p class="theory-def">Commercial profit systematically subsidizes welfare.</p>
+                  <p class="theory-map"><span class="theory-arrow">→</span>Commission funds MavPoints pool · MavAccess fee waiver for students with disabilities.</p>
+                </section>
+                <section class="theory-card">
+                  <p class="theory-card-title">♻️ Circular Economy</p>
+                  <p class="theory-def">Closed-loop resource circulation reduces external dependence.</p>
+                  <p class="theory-map"><span class="theory-arrow">→</span>mnsu.edu trust network · Funds and capacity retained within campus community.</p>
+                </section>
+              </div>
+            </article>
+
+            <article class="theory-col theory-col-purple">
+              <h4 class="theory-col-title">III. Synchronized Dispatching in Hybrid Spaces</h4>
+              <div class="theory-cards">
+                <section class="theory-card">
+                  <p class="theory-card-title">🗺️ Unified Indoor-Outdoor Modeling</p>
+                  <p class="theory-def">Abstracts corridors, tunnels, and outdoor paths as a multi-layer weighted graph.</p>
+                  <p class="theory-map"><span class="theory-arrow">→</span>Integrates Skyway and Tunnel for dynamic localized navigation.</p>
+                </section>
+                <section class="theory-card">
+                  <p class="theory-card-title">⚙️ Context-Aware Algorithm</p>
+                  <p class="theory-def">Dynamically adjusts path weights based on environmental variables.</p>
+                  <p class="theory-map"><span class="theory-arrow">→</span>Extreme cold and snow automatically boost indoor route priority.</p>
+                </section>
+                <section class="theory-card">
+                  <p class="theory-card-title">⏱️ Dynamic ETA Estimation</p>
+                  <p class="theory-def">Queuing theory and dynamic traffic assignment.</p>
+                  <p class="theory-map"><span class="theory-arrow">→</span>Class schedule-driven density correction · Pickup latency modeling ensures temporal feasibility.</p>
+                </section>
+              </div>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <section class="poster-band-middle" aria-label="Theory band">
+        <section class="part3-showcase">
+          <h3 class="subtitle">Part III — Preliminary Results &amp; Prototype Showcase</h3>
+          <p class="module-intro-text">Current frontend showcase in one row (Home → Account → Shop → Task Tracking).</p>
+          <div class="poster-image-row">
+            <article class="poster-image-card">
+              <h4>Home</h4>
+              <img src="show/zhuye.png" alt="Home page preview">
+            </article>
+            <article class="poster-image-card">
+              <h4>Account</h4>
+              <img src="show/account.png" alt="Account page preview">
+            </article>
+            <article class="poster-image-card">
+              <h4>Shop</h4>
+              <img src="show/Shop.png" alt="Shop page preview">
+            </article>
+            <article class="poster-image-card">
+              <h4>Task Tracking</h4>
+              <img src="show/TaskTracking.png" alt="Task tracking page preview">
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <section class="poster-band-bottom" aria-label="Bottom algorithm and stack band">
+        <div class="bottom-col">
+          <section class="flow-box">
+            <h3 class="subtitle">Algorithm - Spatiotemporal Constrained Scheduling Framework</h3>
+      <h4 class="section-heading">I. Foundational Implementation Modules</h4>
+      <!-- 删除重复标题，保留偏离度示意图 -->
+      <div class="arch-diagram" role="img" aria-label="Path deviation calculation diagram">
+        <svg viewBox="70 70 840 280" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="dev-arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 z" fill="#5E2A84"/></marker>
+          </defs>
+          <line x1="120" y1="120" x2="860" y2="120" stroke="#6f6f6f" stroke-width="4" stroke-dasharray="10 8"/>
+          <circle cx="120" cy="120" r="10" fill="#5E2A84"/>
+          <circle cx="860" cy="120" r="10" fill="#5E2A84"/>
+          <text x="90" y="90" font-size="24" font-family="Inter, Arial" fill="#222">A (Bringer Start)</text>
+          <text x="760" y="90" font-size="24" font-family="Inter, Arial" fill="#222">B (Bringer Dest)</text>
+          <circle cx="330" cy="250" r="10" fill="#D4AF37"/>
+          <circle cx="620" cy="250" r="10" fill="#D4AF37"/>
+          <text x="272" y="286" font-size="24" font-family="Inter, Arial" fill="#222">P (Pickup)</text>
+          <text x="565" y="286" font-size="24" font-family="Inter, Arial" fill="#222">D (Drop-off)</text>
+          <polyline points="120,120 330,250 620,250 860,120" fill="none" stroke="#2a85c4" stroke-width="4" marker-end="url(#dev-arrow)"/>
+          <text x="490" y="334" text-anchor="middle" font-size="24" font-family="Inter, Arial" fill="#2b1d3a">Deviation = (|AP| + |PD| + |DB| - |AB|) / |AB|</text>
+        </svg>
+      </div>
+
+      <!-- Module 1: 学术深化 + 公式统一 -->
+      <div class="module-block">
+        <p class="small-note"><strong>Module 1: Path Deviation Ratio (Spatial Feasibility)</strong></p>
+        <p class="small-note">Anchored in Time Geography — Space-Time Prism Constraint</p>
+        <div class="formula-block">\(\Delta = \frac{\mathrm{Dist}(A,P) + \mathrm{Dist}(P,D) + \mathrm{Dist}(D,B) - \mathrm{Dist}(A,B)}{\mathrm{Dist}(A,B)}\)</div>
+        <p class="small-note">Constraint: <strong>\(\Delta \le 15\%\)</strong></p>
+        <p class="small-note" style="color: #5E2A84; font-style: italic;">↳ Task points P, D lie within the micro-perturbation neighborhood of Bringer's space-time prism.</p>
+      </div>
+
+      <!-- Module 2: 公式改为 T_extra 并与流程图一致 -->
+      <div class="module-block">
+        <p class="small-note"><strong>Module 2: Dynamic ETA Estimation (Temporal Modeling)</strong></p>
+        <p class="small-note">Anchored in Queuing Theory &amp; Dynamic Traffic Assignment</p>
+        <div class="formula-block">\(T_{\text{extra}} = T_{\text{detour}} + T_{\text{pickup}}\)</div>
+        <p class="small-note">Constraint: <strong>\(T_{\text{extra}} \le T_{\text{tolerance}}\)</strong></p>
+        <p class="small-note" style="color: #5E2A84; font-style: italic;">↳ \(T_{\text{detour}} = \frac{\mathrm{Distance}}{\mathrm{Speed}} + P_{\text{density}}\) (class schedule-driven density correction)</p>
+      </div>
+
+      <!-- Module 3: 权重公式学术化 -->
+      <div class="module-block">
+        <p class="small-note"><strong>Module 3: Unified Indoor-Outdoor Routing (Context-Awareness)</strong></p>
+        <p class="small-note">Anchored in Multi-layer Weighted Graph &amp; Context-Aware Computing</p>
+        <p class="small-note">Edge cost function: \(w(e) = w_0(e) \times \gamma(e, \text{weather})\)</p>
+        <div class="formula-block">
+          \(\gamma(\text{outdoor}) = 1.5\) (severe weather) else \(1.0\)<br>
+          \(\gamma(\text{indoor}) = 0.8\) (severe weather) else \(1.0\)
+        </div>
+        <p class="small-note" style="color: #5E2A84; font-style: italic;">↳ Path selected to minimize total cost under deviation constraint.</p>
+      </div>
+
+      <h4 class="section-heading">II. Matching Decision Logic</h4>
+      <p class="small-note"><strong>Flowchart: Three-Stage Constraint Screening</strong></p>
+      <div class="flowchart" role="img" aria-label="MavSide Match-Route Decision Process">
+        <svg viewBox="0 0 1200 860" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arrow-main" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#2f2f2f" /></marker>
+            <marker id="arrow-pass" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#2f7a46" /></marker>
+            <marker id="arrow-fail" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#b23b3b" /></marker>
+          </defs>
+          <rect x="325" y="20" width="550" height="78" rx="12" fill="#ffffff" stroke="#303030" stroke-width="2.2"/>
+          <text x="600" y="56" font-size="24" font-family="Inter, Arial" text-anchor="middle" fill="#161616" font-weight="700">START: Bringer activates Match-Route mode</text>
+          <text x="600" y="84" font-size="18" font-family="Inter, Arial" text-anchor="middle" fill="#3a3a3a">Input path: Origin A → Destination B</text>
+
+          <line x1="600" y1="98" x2="600" y2="156" stroke="#2f2f2f" stroke-width="2.8" marker-end="url(#arrow-main)"/>
+
+          <rect x="210" y="160" width="780" height="120" rx="14" fill="#fff8ec" stroke="#d4af37" stroke-width="2.2"/>
+          <text x="600" y="205" font-size="24" font-family="Inter, Arial" text-anchor="middle" fill="#4a2a66" font-weight="700">Step 1 · Spatial Constraint (Deviation)</text>
+          <text x="600" y="238" font-size="20" font-family="Inter, Arial" text-anchor="middle" fill="#2b2b2b">Use Model 1, accept only when Δ ≤ 0.15</text>
+
+          <rect x="980" y="188" width="170" height="68" rx="10" fill="#ffecec" stroke="#c04040" stroke-width="2"/>
+          <text x="1065" y="229" font-size="20" font-family="Inter, Arial" text-anchor="middle" fill="#b03030" font-weight="700">Filter Out</text>
+          <line x1="820" y1="220" x2="980" y2="220" stroke="#b23b3b" stroke-width="2.6" marker-end="url(#arrow-fail)"/>
+
+          <line x1="600" y1="282" x2="600" y2="340" stroke="#2f7a46" stroke-width="2.8" marker-end="url(#arrow-pass)"/>
+          <text x="620" y="322" font-size="17" font-family="Inter, Arial" fill="#2f7a46">Pass</text>
+
+          <rect x="210" y="346" width="780" height="120" rx="14" fill="#eef8ff" stroke="#2a85c4" stroke-width="2.2"/>
+          <text x="600" y="391" font-size="24" font-family="Inter, Arial" text-anchor="middle" fill="#124b6b" font-weight="700">Step 2 · Temporal Constraint (ETA)</text>
+          <text x="600" y="424" font-size="20" font-family="Inter, Arial" text-anchor="middle" fill="#2b2b2b">Use Model 2, accept only when T_extra ≤ T_tolerance</text>
+
+          <rect x="980" y="374" width="170" height="68" rx="10" fill="#ffecec" stroke="#c04040" stroke-width="2"/>
+          <text x="1065" y="415" font-size="20" font-family="Inter, Arial" text-anchor="middle" fill="#b03030" font-weight="700">Filter Out</text>
+          <line x1="820" y1="406" x2="980" y2="406" stroke="#b23b3b" stroke-width="2.6" marker-end="url(#arrow-fail)"/>
+
+          <line x1="600" y1="468" x2="600" y2="528" stroke="#2f7a46" stroke-width="2.8" marker-end="url(#arrow-pass)"/>
+          <text x="620" y="510" font-size="17" font-family="Inter, Arial" fill="#2f7a46">Pass</text>
+
+          <rect x="210" y="534" width="780" height="132" rx="14" fill="#f4fff2" stroke="#6aa84f" stroke-width="2.2"/>
+          <text x="600" y="580" font-size="24" font-family="Inter, Arial" text-anchor="middle" fill="#2f5a2f" font-weight="700">Step 3 · Context-Aware Reweighting</text>
+          <text x="600" y="613" font-size="20" font-family="Inter, Arial" text-anchor="middle" fill="#2b2b2b">Severe weather: increase outdoor cost and favor indoor edges</text>
+          <text x="600" y="640" font-size="20" font-family="Inter, Arial" text-anchor="middle" fill="#2b2b2b">Recompute Model 1 and Model 2 before dispatch</text>
+
+          <line x1="600" y1="668" x2="600" y2="732" stroke="#2f2f2f" stroke-width="2.8" marker-end="url(#arrow-main)"/>
+
+          <rect x="330" y="738" width="540" height="84" rx="12" fill="#fff8ef" stroke="#333333" stroke-width="2.2"/>
+          <text x="600" y="788" font-size="24" font-family="Inter, Arial" text-anchor="middle" fill="#121212" font-weight="700">ACTION: Push task to verified bringer</text>
+        </svg>
+      </div>
+
+      <h4 class="section-heading">III. Evolutionary Roadmap</h4>
+      <table class="min-table">
+        <thead><tr><th>Phase</th><th>Timeline</th><th>Objective</th><th>Key Technology</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Prototype</strong></td><td>Current</td><td>Haversine Deviation + Static ETA</td><td>Full-stack Interaction</td></tr>
+          <tr><td><strong>Network Match</strong></td><td>Next Gen</td><td>Real Walking Path Distance</td><td>Mapbox / OSRM Integration</td></tr>
+          <tr><td><strong>Smart Dispatch</strong></td><td>Future</td><td>Multi-layer Graph + Climate-Adaptive</td><td>Custom Campus Graph API</td></tr>
+        </tbody>
+      </table>
+          </section>
+        </div>
+
+        <div class="bottom-col">
+          <section class="flow-box">
+            <h3 class="subtitle">Part V — Planned Technical Stack &amp; Roadmap</h3>
+            <h4 class="section-heading">Current Baseline (Already Completed)</h4>
+            <p class="small-note">A fully functional frontend prototype has been implemented, covering task publishing, merchant ordering, order tracking, and MavPoints simulation. Data is currently managed via static JSON, and user identity is verified through mandatory <code>mnsu.edu</code> email authentication.</p>
+          </section>
+
+          <section class="flow-box">
+            <h4 class="section-heading">Planned Future Architecture</h4>
+            <div class="arch-diagram" role="img" aria-label="Future architecture diagram">
+              <svg viewBox="0 0 980 700" xmlns="http://www.w3.org/2000/svg">
+                <defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#4f4f4f"/></marker></defs>
+                <rect x="40" y="40" width="900" height="120" rx="12" fill="#f7f1ff" stroke="#5E2A84" stroke-width="2"/>
+                <text x="490" y="95" text-anchor="middle" font-size="32" font-family="Inter, Arial" fill="#5E2A84" font-weight="700">Frontend Layer</text>
+                <text x="490" y="132" text-anchor="middle" font-size="24" font-family="Inter, Arial" fill="#222">Vue 3 (Progressive Migration)</text>
+                <rect x="40" y="210" width="900" height="160" rx="12" fill="#fff8e9" stroke="#D4AF37" stroke-width="2"/>
+                <text x="490" y="260" text-anchor="middle" font-size="32" font-family="Inter, Arial" fill="#5E2A84" font-weight="700">Service Layer</text>
+                <text x="490" y="298" text-anchor="middle" font-size="22" font-family="Inter, Arial" fill="#222">Node.js + Express REST API</text>
+                <text x="490" y="332" text-anchor="middle" font-size="22" font-family="Inter, Arial" fill="#222">Path Service (Deviation) · Task Queue (BullMQ) · WebSocket (Realtime)</text>
+                <rect x="40" y="420" width="430" height="140" rx="12" fill="#eef7ff" stroke="#2a85c4" stroke-width="2"/>
+                <text x="255" y="470" text-anchor="middle" font-size="28" font-family="Inter, Arial" fill="#124b6b" font-weight="700">Data Layer</text>
+                <text x="255" y="506" text-anchor="middle" font-size="22" font-family="Inter, Arial" fill="#222">PostgreSQL + PostGIS</text>
+                <text x="255" y="536" text-anchor="middle" font-size="20" font-family="Inter, Arial" fill="#222">Spatial Indexing</text>
+                <rect x="510" y="420" width="430" height="140" rx="12" fill="#eef7ff" stroke="#2a85c4" stroke-width="2"/>
+                <text x="725" y="470" text-anchor="middle" font-size="28" font-family="Inter, Arial" fill="#124b6b" font-weight="700">Data Layer</text>
+                <text x="725" y="506" text-anchor="middle" font-size="22" font-family="Inter, Arial" fill="#222">Redis</text>
+                <text x="725" y="536" text-anchor="middle" font-size="20" font-family="Inter, Arial" fill="#222">Task Queue / Session Cache</text>
+                <rect x="40" y="600" width="900" height="70" rx="12" fill="#f2fff1" stroke="#6aa84f" stroke-width="2"/>
+                <text x="490" y="642" text-anchor="middle" font-size="22" font-family="Inter, Arial" fill="#2f5a2f">External Integration: Campus Routing · Weather API · Campus SSO</text>
+                <line x1="490" y1="160" x2="490" y2="210" stroke="#4f4f4f" stroke-width="2" marker-end="url(#arr)"/>
+                <line x1="490" y1="370" x2="255" y2="420" stroke="#4f4f4f" stroke-width="2" marker-end="url(#arr)"/>
+                <line x1="490" y1="370" x2="725" y2="420" stroke="#4f4f4f" stroke-width="2" marker-end="url(#arr)"/>
+                <line x1="255" y1="560" x2="255" y2="600" stroke="#4f4f4f" stroke-width="2" marker-end="url(#arr)"/>
+                <line x1="725" y1="560" x2="725" y2="600" stroke="#4f4f4f" stroke-width="2" marker-end="url(#arr)"/>
+              </svg>
+            </div>
+          </section>
+
+          <section class="flow-box">
+            <h4 class="section-heading">Key Evolutionary Decisions</h4>
+            <table class="min-table">
+              <thead><tr><th>Area</th><th>Current</th><th>Future</th><th>Rationale</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Spatial Database</strong></td><td>Static JSON</td><td>PostgreSQL + PostGIS</td><td>Enables efficient spatial indexing for deviation calculation and indoor node storage</td></tr>
+                <tr><td><strong>Path Computation</strong></td><td>Linear approximation</td><td>Campus road network service</td><td>Supports custom indoor corridor data and weather-aware weighting</td></tr>
+                <tr><td><strong>Asynchronous Tasks</strong></td><td>Synchronous calls</td><td>BullMQ task queue</td><td>Decouples matching and notifications from the main thread</td></tr>
+                <tr><td><strong>Authentication</strong></td><td>Manual <code>mnsu.edu</code> check</td><td>Campus SSO (OAuth2)</td><td>Automates identity verification and streamlines onboarding</td></tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section class="flow-box">
+            <h4 class="section-heading">Phased Roadmap</h4>
+            <ul class="poster-list">
+              <li><strong>Current</strong>: Frontend prototype validates core user flows and campus acceptance.</li>
+              <li><strong>Next Phase</strong>: Integrate real campus road network data, implement deviation algorithm and PostGIS spatial queries.</li>
+              <li><strong>Long-term</strong>: Build unified indoor-outdoor weighted graph with climate-adaptive routing.</li>
+            </ul>
+          </section>
+        </div>
+      </section>
+
+      <section class="closing-strip" aria-label="Closing statement">
+        <h3 class="subtitle">Closing Statement</h3>
+        <h4 class="section-heading">Why It Matters</h4>
+        <p class="small-note">Technology races forward, yet daily life remains entangled in small frictions — fetching a package, grabbing a coffee between classes. MavSide offers no grand narrative. It simply ensures that every inevitable footstep across campus carries a little more purpose.</p>
+      </section>
+    </main>
+
+    <section class="github-strip">
+      <div>
+        <div class="g-title">Project Access</div>
+        <div class="g-sub">MavSide: A Peer-to-Peer Logistics Solution</div>
+      </div>
+      <div class="qr-box">QR CODE</div>
+      <div class="g-sub">
+        <div><strong>Link:</strong> https://github.com/Yajing5027/MavSide.git</div>
+        <div style="margin-top:0.06in;"><strong>Action:</strong> Scan to witness the logic of "Mavericks Helping Mavericks" in real-time.</div>
+        <div style="margin-top:0.06in; opacity:0.9;">© 2026 — MavSide · Minnesota State University, Mankato · yajing.ren@mnsu.edu</div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
