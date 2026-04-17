@@ -128,7 +128,7 @@
       card.addEventListener('click', function(){
         var id = card.getAttribute('data-store');
         if (!id) return;
-        window.location.href = '/shop.html?store=' + encodeURIComponent(id);
+        window.location.href = 'shop.html?store=' + encodeURIComponent(id);
       });
     });
   }

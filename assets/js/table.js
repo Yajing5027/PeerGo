@@ -367,7 +367,7 @@ async function acceptRequest(requestId) {
             return;
         }
         applyFilters();
-        window.location.href = '/order-tracking.html?orderId=' + encodeURIComponent(targetItem.sourceOrderId) + '&kind=order&role=bringer';
+        window.location.href = 'order-tracking.html?orderId=' + encodeURIComponent(targetItem.sourceOrderId) + '&kind=order&role=bringer';
         return;
     }
 
@@ -378,7 +378,7 @@ async function acceptRequest(requestId) {
             return;
         }
         applyFilters();
-        window.location.href = '/order-tracking.html?orderId=' + encodeURIComponent(targetItem.sourceOrderId) + '&kind=order&role=bringer';
+        window.location.href = 'order-tracking.html?orderId=' + encodeURIComponent(targetItem.sourceOrderId) + '&kind=order&role=bringer';
         return;
     }
 
@@ -412,7 +412,7 @@ async function acceptRequest(requestId) {
         }
 
         // For regular errand posts, go straight to detail after accept for bringer flow.
-        window.location.href = '/order-tracking.html?kind=errand&id=' + encodeURIComponent(requestId) + '&role=bringer';
+        window.location.href = 'order-tracking.html?kind=errand&id=' + encodeURIComponent(requestId) + '&role=bringer';
     }
 }
 

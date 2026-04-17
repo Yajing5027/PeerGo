@@ -14,7 +14,7 @@ const protectedPaths = [
     '/account.html'
 ];
 
-const loginPagePath = '/index.html';
+const loginPagePath = 'index.html';
 
 function migrateLocalStorageKeys() {
     const mapping = [

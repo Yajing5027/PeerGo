@@ -164,7 +164,7 @@
       });
       localStorage.removeItem('mavsidePendingOrderDraft');
       if(window.clearCart) window.clearCart();
-      window.location.href = '/order-tracking.html?orderId=' + encodeURIComponent(order.orderId);
+      window.location.href = 'order-tracking.html?orderId=' + encodeURIComponent(order.orderId);
     }catch(err){
       setMessage('Order creation failed', true);
     }

@@ -75,7 +75,7 @@
       el.addEventListener('click', function(e){
         const store = e.target && e.target.dataset && e.target.dataset.store ? e.target.dataset.store : el.dataset.store;
         if(!store) return;
-        window.location.href = '/shop.html?store=' + encodeURIComponent(store);
+        window.location.href = 'shop.html?store=' + encodeURIComponent(store);
       });
     });
   }

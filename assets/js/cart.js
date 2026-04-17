@@ -93,7 +93,7 @@
           return;
         }
         cartToDraftOrder(current);
-        window.location.href = '/order-confirm.html';
+        window.location.href = 'order-confirm.html';
         return;
       }
 

@@ -400,7 +400,7 @@
       logoutButton.addEventListener('click', function(){
         localStorage.removeItem('mavsideUserEmail');
         localStorage.removeItem('mavsideUserRole');
-        window.location.href = '/index.html';
+        window.location.href = 'index.html';
       });
     }
 

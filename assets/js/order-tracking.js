@@ -447,7 +447,7 @@
         window.history.back();
         return;
       }
-      window.location.href = '/manage.html';
+      window.location.href = 'manage.html';
     });
   }
 
