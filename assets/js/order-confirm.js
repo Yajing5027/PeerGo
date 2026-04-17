@@ -144,7 +144,7 @@
       if (window.AccountManager && window.AccountManager.writeWallet) {
         window.AccountManager.writeWallet(wallet);
         if (window.AccountManager.addWalletHistory) {
-          window.AccountManager.addWalletHistory('support', 0, 'Accessibility support used 1 MavPoint');
+          window.AccountManager.addWalletHistory('support', -1, 'Accessibility support used 1 MavPoint');
         }
       }
       usedHeartPointsForAccessSupport = true;

@@ -9,7 +9,7 @@
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    <header>
+    <header aria-label="Order confirmation page header">
         <div data-include="components/navbar.html"></div>
         <div class="page-title-row">
             <h1>Confirm Your Order</h1>
@@ -18,10 +18,10 @@
     </header>
 
     <main id="main-content" role="main" aria-label="Confirm Order">
-        <form id="confirm-order-form">
+        <form id="confirm-order-form" aria-label="Confirm order form">
             <h2>Order Details</h2>
 
-            <div id="confirm-order-summary"></div>
+            <div id="confirm-order-summary" role="region" aria-live="polite" aria-label="Order summary"></div>
 
             <div id="order-pickup-location-component"></div>
 

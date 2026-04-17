@@ -8,24 +8,25 @@
     <link rel="stylesheet" href="style/view.css">
 </head>
 <body class="has-cart-dock">
-    <header>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header aria-label="Shop page header">
         <div data-include="components/navbar.html"></div>
         <h1 id="shop-title">Shop</h1>
     </header>
 
-    <main>
-        <section id="shop-info"></section>
-        <section class="shop-menu-layout">
-            <aside class="menu-sidebar">
+    <main id="main-content" role="main" aria-label="Shop details and menu">
+        <section id="shop-info" role="region" aria-live="polite" aria-label="Shop information"></section>
+        <section class="shop-menu-layout" aria-label="Shop menu layout">
+            <aside class="menu-sidebar" aria-label="Menu categories">
                 <h2>Categories</h2>
-                <div id="menu-categories" class="menu-categories"></div>
+                <div id="menu-categories" class="menu-categories" role="list" aria-live="polite"></div>
             </aside>
-            <div class="menu-content-wrap">
+            <div class="menu-content-wrap" role="region" aria-label="Menu items">
                 <h2>Menu</h2>
-                <div id="menu-list" class="menu-list"></div>
+                <div id="menu-list" class="menu-list" role="list" aria-live="polite"></div>
             </div>
         </section>
-        <aside id="cart-panel" class="cart-panel cart-dock"></aside>
+        <aside id="cart-panel" class="cart-panel cart-dock" role="complementary" aria-label="Shopping cart"></aside>
     </main>
 
     <div data-include="components/footer.html"></div>

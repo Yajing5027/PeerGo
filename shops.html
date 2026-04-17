@@ -9,16 +9,16 @@
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    <header>
+    <header aria-label="Shops page header">
         <div data-include="components/navbar.html"></div>
         <h1>Shops</h1>
         <p>Choose a merchant card to enter menu and place an order.</p>
     </header>
 
     <main id="main-content" role="main" aria-label="Shops and Merchants">
-        <section>
-            <h2>All Merchants</h2>
-            <div id="shops-list" class="shops-grid"></div>
+        <section aria-labelledby="shops-title">
+            <h2 id="shops-title">All Merchants</h2>
+            <div id="shops-list" class="shops-grid" role="list" aria-live="polite" aria-label="Merchant list"></div>
         </section>
     </main>
 

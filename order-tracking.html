@@ -8,21 +8,22 @@
     <link rel="stylesheet" href="style/view.css">
 </head>
 <body>
-    <header>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header aria-label="Task tracking page header">
         <div data-include="components/navbar.html"></div>
         <h1>Task Tracking</h1>
         <p>Follow matching, pickup and delivery progress for both orders and errands.</p>
     </header>
 
-    <main>
-        <section>
-            <h2>Current Status</h2>
-            <div id="tracking-overview"></div>
+    <main id="main-content" role="main" aria-label="Task tracking">
+        <section aria-labelledby="tracking-status-title">
+            <h2 id="tracking-status-title">Current Status</h2>
+            <div id="tracking-overview" role="region" aria-live="polite"></div>
         </section>
 
-        <section>
-            <h2>Timeline</h2>
-            <div id="tracking-history" class="tracking-history"></div>
+        <section aria-labelledby="tracking-timeline-title">
+            <h2 id="tracking-timeline-title">Timeline</h2>
+            <div id="tracking-history" class="tracking-history" role="region" aria-live="polite"></div>
         </section>
 
         <section aria-labelledby="verify-heading">

@@ -8,16 +8,16 @@
     <link rel="stylesheet" href="style/view.css">
 </head>
 <body>
-    <header>
+    <header aria-label="Login page header">
         <img class="hero-logo" src="assets/images/mavside-logo.png" alt="MavSide">
         <h1 class="sr-only">MavSide</h1>
         <p>Unlocking the hidden value of every Maverick's trip.</p>
     </header>
 
-    <main>
+    <main id="main-content" role="main" aria-label="Authentication">
         <section id="login-section" aria-labelledby="login-title">
             <h2 id="login-title">Login</h2>
-            <form id="login-form" autocomplete="on">
+            <form id="login-form" autocomplete="on" aria-label="Login form">
                 <div>
                     <label for="login-email">School Email</label>
                     <input id="login-email" name="email" type="email" placeholder="example@mnsu.edu" autocomplete="email" required>
@@ -39,7 +39,7 @@
                     <button type="submit">Login</button>
                 </div>
 
-                <p>Don't have an account? Go to <span class="link-text" id="switch-to-register">Register</span>.</p>
+                <p>Don't have an account? Go to <span class="link-text" id="switch-to-register" role="button" tabindex="0" aria-controls="register-section">Register</span>.</p>
                 <p><strong>Test Accounts:</strong><br>
                 Admin: admin@mnsu.edu / Admin1234<br>
                 MavAccess: mavaccess@mnsu.edu / Access123
@@ -50,7 +50,7 @@
 
         <section id="register-section" aria-labelledby="register-title" hidden>
             <h2 id="register-title">Register</h2>
-            <form id="register-form" autocomplete="on">
+            <form id="register-form" autocomplete="on" aria-label="Register form">
                 <div>
                     <label for="register-email">School Email</label>
                     <input id="register-email" name="email" type="email" placeholder="example@mnsu.edu" autocomplete="email" required>
@@ -70,7 +70,7 @@
                     <button type="submit">Create Account</button>
                 </div>
 
-                <p>Already have an account? Go to <span class="link-text" id="switch-to-login">Login</span>.</p>
+                <p>Already have an account? Go to <span class="link-text" id="switch-to-login" role="button" tabindex="0" aria-controls="login-section">Login</span>.</p>
                 <p>This is running in front-end demo mode, and account data is stored in your browser.</p>
                 <p id="register-message" aria-live="polite"></p>
             </form>

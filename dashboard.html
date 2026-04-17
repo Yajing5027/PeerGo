@@ -9,7 +9,7 @@
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    <header>
+    <header aria-label="Dashboard page header">
         <div data-include="components/navbar.html"></div>
         <h1>MavSide</h1>
         <p>One campus, one stride.</p>
@@ -17,7 +17,7 @@
 
     <main id="main-content" role="main" aria-label="Dashboard Hub">
         <!-- 由 dashboard-components.js 统一渲染大厅入口/商铺展示/My Tasks，减少页面硬编码。 -->
-        <section id="dashboard-hub" aria-label="Dashboard Hub"></section>
+        <section id="dashboard-hub" aria-label="Dashboard Hub" role="region" aria-live="polite"></section>
     </main>
 
     <div data-include="components/footer.html"></div>

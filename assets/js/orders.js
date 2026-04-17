@@ -35,7 +35,7 @@
       wallet.heartPoints = Number(wallet.heartPoints || 0) + 1;
       window.AccountManager.writeWallet(wallet);
       if (window.AccountManager.addWalletHistory) {
-        window.AccountManager.addWalletHistory('heart-reward', 0, 'Completed supported task: +1 MavPoint');
+        window.AccountManager.addWalletHistory('heart-reward', 1, 'Completed supported task: +1 MavPoint');
       }
       return;
     }

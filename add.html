@@ -9,7 +9,7 @@
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    <header>
+    <header aria-label="Post task page header">
         <div data-include="components/navbar.html"></div>
         <div class="page-title-row">
             <h1>Post Task</h1>
@@ -18,7 +18,7 @@
     </header>
 
     <main id="main-content" role="main" aria-label="Post Task">
-        <form id="add-post-form">
+        <form id="add-post-form" aria-label="Post task form">
             <h2>Task Details</h2>
 
             <div>
@@ -26,19 +26,20 @@
                 <input id="request-content" name="content" type="text" placeholder="e.g., Pick up my package" required>
             </div>
 
-            <div id="type-component"></div>
+            <div id="type-component" role="group" aria-label="Task type field"></div>
 
-            <div id="pickup-location-component"></div>
+            <div id="pickup-location-component" role="group" aria-label="Pickup location field"></div>
 
-            <div id="delivery-location-component"></div>
+            <div id="delivery-location-component" role="group" aria-label="Delivery location field"></div>
 
-            <div id="reward-component"></div>
+            <div id="reward-component" role="group" aria-label="Reward field"></div>
 
-            <div id="note-component"></div>
+            <div id="note-component" role="group" aria-label="Task note field"></div>
 
             <div>
                 <label for="deliver-at">Deliver By</label>
-                <input id="deliver-at" name="deliver-at" type="datetime-local" placeholder="Select date and time">
+                <input id="deliver-at" name="deliver-at" type="datetime-local" lang="en-US" placeholder="Select date and time">
+                <small id="deliver-at-us-preview" class="account-muted" aria-live="polite"></small>
             </div>
 
             <div>

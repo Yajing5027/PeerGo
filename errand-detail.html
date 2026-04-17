@@ -8,27 +8,28 @@
     <link rel="stylesheet" href="style/view.css">
 </head>
 <body>
-    <header>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header aria-label="Errand detail page header">
         <div data-include="components/navbar.html"></div>
         <h1>Delivery Detail</h1>
     </header>
 
-    <main>
-        <section>
-            <h2>Task Overview</h2>
-            <div id="errand-detail-overview"></div>
+    <main id="main-content" role="main" aria-label="Errand detail">
+        <section aria-labelledby="errand-overview-title">
+            <h2 id="errand-overview-title">Task Overview</h2>
+            <div id="errand-detail-overview" role="region" aria-live="polite"></div>
         </section>
 
-        <section>
-            <h2>User Note</h2>
-            <div id="errand-detail-note"></div>
+        <section aria-labelledby="errand-note-title">
+            <h2 id="errand-note-title">User Note</h2>
+            <div id="errand-detail-note" role="region" aria-live="polite"></div>
         </section>
 
-        <section>
-            <h2>Actions</h2>
-            <div id="errand-detail-progress" style="margin-bottom:10px;"></div>
+        <section aria-labelledby="errand-actions-title">
+            <h2 id="errand-actions-title">Actions</h2>
+            <div id="errand-detail-progress" style="margin-bottom:10px;" role="status" aria-live="polite"></div>
             <div class="cart-buttons">
-                <button id="errand-detail-back" type="button">Back</button>
+                <button id="errand-detail-back" type="button" aria-label="Back to previous page">Back</button>
             </div>
         </section>
     </main>

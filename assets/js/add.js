@@ -61,6 +61,39 @@ function getWallet() {
     return window.AccountManager.readWallet() || { heartPoints: 0 };
 }
 
+function formatDeliverByPreview(value) {
+    if (!value) return '';
+    try {
+        var date = new Date(value);
+        if (Number.isNaN(date.getTime())) return '';
+        return date.toLocaleString('en-US', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+    } catch (e) {
+        return '';
+    }
+}
+
+function bindDeliverByUSPreview() {
+    var input = document.getElementById('deliver-at');
+    var preview = document.getElementById('deliver-at-us-preview');
+    if (!input || !preview) return;
+
+    function updatePreview() {
+        var text = formatDeliverByPreview(input.value);
+        preview.textContent = text ? ('US format: ' + text) : '';
+    }
+
+    input.setAttribute('lang', 'en-US');
+    input.addEventListener('change', updatePreview);
+    input.addEventListener('input', updatePreview);
+    updatePreview();
+}
+
 function handleFormSubmission(event) {
     event.preventDefault();
 
@@ -109,7 +142,7 @@ function handleFormSubmission(event) {
         if (window.AccountManager && window.AccountManager.writeWallet) {
             window.AccountManager.writeWallet(wallet);
             if (window.AccountManager.addWalletHistory) {
-                window.AccountManager.addWalletHistory('support', 0, 'Accessibility support used 1 MavPoint');
+                window.AccountManager.addWalletHistory('support', -1, 'Accessibility support used 1 MavPoint');
             }
         }
     }
@@ -245,4 +278,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (form) {
         form.addEventListener('submit', handleFormSubmission);
     }
+
+    bindDeliverByUSPreview();
 });

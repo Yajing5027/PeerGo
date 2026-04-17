@@ -15,6 +15,92 @@ const protectedPaths = [
 ];
 
 const loginPagePath = 'index.html';
+const DELIVERY_STORAGE_KEY = 'mavsideDeliveryPosts';
+
+function ensureDeliveryPostsSeeded() {
+    const seed = [
+        {
+            id: 'd-seed-201',
+            time: '2026-04-14',
+            deliverAt: '2026-04-16T12:10',
+            type: 'Shopping',
+            taskType: 'general',
+            content: 'Buy stationery set',
+            pickupLocation: 'Centennial Student Union',
+            deliveryLocation: 'Preska Residence Community',
+            reward: '$4.20',
+            state: 'Open',
+            owner: 'admin@mnsu.edu',
+            acceptedBy: '',
+            depositAmount: 4.2,
+            depositPaid: false,
+            depositReleased: false,
+            delivered: false,
+            sourceType: 'post',
+            sourceOrderId: '',
+            history: [{ when: Date.parse('2026-04-14T09:00:00Z'), who: 'admin@mnsu.edu', action: 'created' }]
+        },
+        {
+            id: 'd-seed-202',
+            time: '2026-04-13',
+            deliverAt: '2026-04-15T18:00',
+            type: 'Delivery',
+            taskType: 'general',
+            content: 'Pick up parcel from office',
+            pickupLocation: 'Wigley Administration Center',
+            deliveryLocation: 'Stadium Heights Residence Community',
+            reward: '$3.80',
+            state: 'Accepted',
+            owner: 'admin@mnsu.edu',
+            acceptedBy: 'mavaccess@mnsu.edu',
+            depositAmount: 3.8,
+            depositPaid: true,
+            depositReleased: false,
+            delivered: false,
+            sourceType: 'post',
+            sourceOrderId: '',
+            history: [
+                { when: Date.parse('2026-04-13T08:20:00Z'), who: 'admin@mnsu.edu', action: 'created' },
+                { when: Date.parse('2026-04-13T08:55:00Z'), who: 'mavaccess@mnsu.edu', action: 'accepted' }
+            ]
+        },
+        {
+            id: 'd-seed-203',
+            time: '2026-04-11',
+            deliverAt: '2026-04-14T13:20',
+            type: 'Delivery',
+            taskType: 'order',
+            content: 'Merchant order #B209',
+            pickupLocation: 'Starbucks',
+            deliveryLocation: 'Trafton Science Center',
+            reward: 'heart',
+            state: 'Open',
+            owner: 'admin@mnsu.edu',
+            acceptedBy: '',
+            depositAmount: 0,
+            depositPaid: false,
+            depositReleased: false,
+            delivered: false,
+            sourceType: 'post',
+            sourceOrderId: '',
+            history: [{ when: Date.parse('2026-04-11T10:10:00Z'), who: 'admin@mnsu.edu', action: 'created' }]
+        }
+    ];
+
+    try {
+        const raw = localStorage.getItem(DELIVERY_STORAGE_KEY);
+        if (!raw) {
+            localStorage.setItem(DELIVERY_STORAGE_KEY, JSON.stringify(seed));
+            return;
+        }
+        const parsed = JSON.parse(raw);
+        if (!Array.isArray(parsed) || parsed.length === 0) {
+            localStorage.setItem(DELIVERY_STORAGE_KEY, JSON.stringify(seed));
+        }
+    } catch (e) {
+        localStorage.setItem(DELIVERY_STORAGE_KEY, JSON.stringify(seed));
+    }
+}
 
 function migrateLocalStorageKeys() {
     const mapping = [
@@ -402,6 +488,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Force document language to English to ensure browser validation messages are in English.
     try { document.documentElement.lang = 'en'; } catch (e) {}
+
+    ensureDeliveryPostsSeeded();
 
     ensureLoginState();
     if (window.AccountManager && window.AccountManager.ensureMavAccessMonthlyGrant) {
