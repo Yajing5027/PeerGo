@@ -18,28 +18,34 @@ The  MavSide concept addresses three primary campus challenges:
 - **Inclusive Growth**: Providing zero-threshold flexible income for students and subsidized access for students with disabilities (MavAccess).
 
 ## 🧠 Scheduling Framework (Technical)
-The matching logic is built on a spatiotemporal constrained scheduling framework, ensuring that tasks only reach \bringers\ who can fulfill them with minimal deviation.
+The matching logic is built on a spatiotemporal constrained scheduling framework, ensuring that tasks only reach "bringers" who can fulfill them with minimal deviation.
 
 ### I. Spatial Feasibility (Path Deviation)
-We use a deviation ratio (\\(\\Delta\\)) to ensure the task fits within the bringer's space-time prism:
-\\[
-\\Delta = \\frac{\\operatorname{Dist}(A,P)+\\operatorname{Dist}(P,D)+\\operatorname{Dist}(D,B)-\\operatorname{Dist}(A,B)}{\\operatorname{Dist}(A,B)}
-\\]
-*Constraint: \\(\\Delta \\le 0.15\\)* (Maximum 15% path deviation).
+We use a deviation ratio (Δ) to ensure the task fits within the bringer's space-time prism:
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?%5CDelta%20%3D%20%5Cfrac%7B%5Coperatorname%7BDist%7D%28A%2CP%29%2B%5Coperatorname%7BDist%7D%28P%2CD%29%2B%5Coperatorname%7BDist%7D%28D%2CB%29%2D%5Coperatorname%7BDist%7D%28A%2CB%29%7D%7B%5Coperatorname%7BDist%7D%28A%2CB%29%7D" alt="\\Delta = (Dist(A,P)+...-Dist(A,B))/Dist(A,B)"/>
+</p>
+
+*Constraint: Δ ≤ 0.15* (Maximum 15% path deviation).
 
 ### II. Temporal Modeling (Dynamic ETA)
-The system estimates the extra time (\\(T_{extra}\\)) required, accounting for both detour distance and pickup latency (\\(P_{density}\\)):
-\\[
-T_{extra} = \\frac{\\operatorname{Distance}}{\\operatorname{Speed}} + P_{density}
-\\]
-*Constraint: \\(T_{extra} \\le T_{tolerance}\\)*
+The system estimates the extra time (T_{extra}) required, accounting for both detour distance and pickup latency (P_{density}):
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?T_%7Bextra%7D%20%3D%20%5Cfrac%7B%5Coperatorname%7BDistance%7D%7D%7B%5Coperatorname%7BSpeed%7D%7D%20%2B%20P_%7Bdensity%7D" alt="T_{extra} = Distance/Speed + P_density"/>
+</p>
+
+*Constraint: T_{extra} ≤ T_{tolerance}*
 
 ### III. Context-Aware Routing
 The routing algorithm utilizes a multi-layer weighted graph that adapts to Minnesota's extreme weather by adjusting weights for indoor vs. outdoor edges:
-\\[
-w(e)=w_0(e)\\cdot\\gamma(e,\\mathrm{weather})
-\\]
-- **Severe Weather**: Outdoor weight (\\(\\gamma\\)) = 1.5 | Indoor weight (\\(\\gamma\\)) = 0.8
+
+<p align="center">
+<img src="https://latex.codecogs.com/svg.latex?w%28e%29%3Dw_0%28e%29%5Ccdot%5Cgamma%28e%2C%5Cmathrm%7Bweather%7D%29" alt="w(e)=w0(e)*gamma(e,weather)"/>
+</p>
+
+- **Severe Weather**: Outdoor weight (γ) = 1.5 | Indoor weight (γ) = 0.8
 - **Normal Weather**: All weights = 1.0
 
 ## 🛠️ System Architecture
@@ -62,11 +68,3 @@ MavSide is built with accessibility as a core tenant, not an afterthought:
 - poster/ — academic assets for the CADSCOM showcase.
 
 ---
-
-### Contact
-**Yajing Ren**  
-Minnesota State University, Mankato  
-[yajing.ren@mnsu.edu](mailto:yajing.ren@mnsu.edu)
-
----
-*Note: Math notations in this document follow LaTeX standards (inline: \\( ... \\), display: \\[ ... \\]). Member of the ACM Twin Cities Chapter.*
