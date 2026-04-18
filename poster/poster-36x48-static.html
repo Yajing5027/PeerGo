@@ -193,7 +193,7 @@
       overflow: hidden;
     }
 
-    .content-container .subtitle {
+    .subtitle {
       margin: 0;
       padding-bottom: 0.06in;
       font-size: var(--subtitle-size);
@@ -437,7 +437,7 @@
     }
 
     .formula-block {
-      margin: 0.02in 0;
+      margin: 0.02in 0 0.1in 0;
       padding: 0.04in 0.08in;
       border-left: 4px solid var(--accent-gold);
       background: rgba(94, 42, 132, 0.04);
@@ -500,7 +500,7 @@
     }
 
     .module-block .formula-block {
-      margin: 0.09in 0;
+      margin: 0.3in 0 0.3in 0;
       padding: 0.09in 0.12in;
       line-height: 1.28;
     }
@@ -578,6 +578,314 @@
       display: block;
     }
 
+    .stack-panel {
+      min-height: auto;
+      height: auto;
+      padding: 0.14in 0.16in;
+    }
+
+    .stack-panel .flow-box {
+      margin: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.1in;
+      padding: 0.1in;
+    }
+
+    .stack-panel .subtitle {
+      margin: 0;
+      font-size: 30pt;
+      line-height: 1.1;
+    }
+
+    .stack-panel .section-heading {
+      margin: 0.04in 0 0.02in;
+      font-size: 21pt;
+      line-height: 1.16;
+      text-align: center;
+    }
+
+    .stack-baseline-list {
+      margin: 0;
+      padding-left: 0.2in;
+      display: grid;
+      gap: 0.04in;
+      list-style: disc;
+    }
+
+    .stack-baseline-list li {
+      margin: 0;
+      font-size: 18pt;
+      line-height: 1.3;
+      color: #1f2937;
+    }
+
+    .stack-architecture {
+      display: grid;
+      gap: 0.08in;
+      padding: 0.08in;
+      border: 1.5pt solid var(--border-lilac);
+      border-radius: 0.08in;
+      background: #ffffff;
+      justify-items: center;
+      align-items: start;
+    }
+
+    .stack-layer {
+      width: 100%;
+      border-radius: 0.07in;
+      padding: 0.1in 0.1in;
+      border: 1.5pt solid;
+      display: grid;
+      gap: 0.1in;
+      text-align: center;
+      min-height: 1.45in;
+      align-content: center;
+    }
+
+    .stack-layer h5 {
+      margin: 0 0 0.04in 0;
+      font-size: 20pt;
+      line-height: 1.2;
+      font-weight: 800;
+    }
+
+    .stack-layer p {
+      margin: 0;
+      font-size: 17pt;
+      line-height: 1.26;
+      color: #1f2937;
+    }
+
+    .stack-layer .stack-note {
+      font-size: 17pt;
+      line-height: 1.26;
+      color: #475569;
+    }
+
+    .stack-front {
+      background: #f7f1ff;
+      border-color: #5e2a84;
+    }
+
+    .stack-front h5 {
+      color: #5e2a84;
+    }
+
+    .stack-service {
+      background: #fff8e9;
+      border-color: #d4af37;
+    }
+
+    .stack-service h5 {
+      color: #7c5a03;
+    }
+
+    .stack-split-arrows {
+      width: 100%;
+      margin: 0.02in 0;
+      display: block;
+    }
+
+    .stack-data-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.06in;
+    }
+
+    .stack-data {
+      background: #eef7ff;
+      border-color: #2a85c4;
+      min-height: 1.45in;
+    }
+
+    .stack-data h5 {
+      color: #124b6b;
+    }
+
+    .stack-external {
+      background: #f2fff1;
+      border-color: #6aa84f;
+      min-height: 1.2in;
+    }
+
+    .stack-external h5 {
+      color: #2f5a2f;
+    }
+
+    .stack-arrow {
+      text-align: center;
+      font-size: 24pt;
+      font-weight: 700;
+      color: #5e2a84;
+      line-height: 1;
+    }
+
+    .logic-derivation-panel {
+      background: linear-gradient(145deg, #fbf7ff 0%, #f5edff 100%);
+      border: 1.5pt solid #d2bdf0;
+    }
+
+    .logic-derivation-title {
+      margin: 0;
+      text-align: center;
+      font-size: 18pt;
+      line-height: 1.22;
+      color: #5e2a84;
+      letter-spacing: 0.2pt;
+      font-weight: 800;
+    }
+
+    .logic-derivation-map {
+      width: 100%;
+      position: relative;
+      display: grid;
+      gap: 0.08in;
+      padding: 0.11in 0.04in;
+      border: 1.2pt solid #d2bdf0;
+      border-radius: 0.08in;
+      background: rgba(255, 255, 255, 0.86);
+    }
+
+    .logic-derivation-map::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0.18in;
+      bottom: 0.18in;
+      width: 0;
+      border-left: 2pt solid #b78fdf;
+      opacity: 0.55;
+      z-index: 0;
+    }
+
+    .logic-node,
+    .logic-core {
+      position: relative;
+      z-index: 1;
+      width: 82%;
+      margin: 0 auto;
+      border: 1.6pt solid #c7a8eb;
+      border-radius: 0.08in;
+      background: #fbf8ff;
+      padding: 0.11in 0.1in;
+      text-align: center;
+      box-shadow: 0 3px 0 rgba(183, 143, 223, 0.14);
+    }
+
+    .logic-node h5,
+    .logic-core h5 {
+      margin: 0 0 0.08in;
+      font-size: 16pt;
+      line-height: 1.15;
+      color: #5e2a84;
+      font-weight: 800;
+    }
+
+    .logic-node p,
+    .logic-core p {
+      margin: 0;
+      font-size: 13pt;
+      line-height: 1.34;
+      color: #3f3057;
+    }
+
+    .logic-drop {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      font-size: 20pt;
+      font-weight: 800;
+      color: #b78fdf;
+      line-height: 1;
+    }
+
+    .logic-tier {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.15fr 2.3fr 1.15fr;
+      align-items: center;
+      gap: 0.05in;
+    }
+
+    .logic-tier::before {
+      content: "";
+      position: absolute;
+      left: 14%;
+      right: 14%;
+      top: 50%;
+      transform: translateY(-50%);
+      border-top: 1.5pt dashed #b78fdf;
+      z-index: 0;
+      opacity: 0.7;
+    }
+
+    .logic-side-note {
+      position: relative;
+      z-index: 1;
+      font-size: 10pt;
+      line-height: 1.2;
+      color: #5e2a84;
+      border: 1.2pt solid #d2bdf0;
+      border-radius: 0.06in;
+      padding: 0.035in 0.02in;
+      background: #f7f0ff;
+      font-weight: 700;
+      text-align: center;
+      width: 78%;
+      justify-self: center;
+    }
+
+    .logic-side-note.left::after,
+    .logic-side-note.right::after {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 13pt;
+      color: #8b6bbf;
+      line-height: 1;
+    }
+
+    .logic-side-note.left::after {
+      content: "→";
+      right: -0.1in;
+    }
+
+    .logic-side-note.right::after {
+      content: "←";
+      left: -0.1in;
+    }
+
+    .logic-core {
+      background: #f6efff;
+      border-color: #b78fdf;
+      box-shadow: 0 3px 0 rgba(183, 143, 223, 0.16);
+    }
+
+    .logic-core h5 {
+      color: #5e2a84;
+      font-size: 17pt;
+    }
+
+    .logic-core p {
+      color: #403152;
+      font-size: 13pt;
+      font-weight: 600;
+    }
+
+    .logic-derivation-panel .flow-box {
+      gap: 0.12in;
+    }
+
+    .logic-derivation-panel {
+      padding-top: 0.18in;
+      padding-bottom: 0.18in;
+    }
+
     .min-table {
       width: 100%;
       border-collapse: collapse;
@@ -600,13 +908,139 @@
       background: #f8f4ff;
     }
 
+    .mavaccess-vertical {
+      display: flex;
+      flex-direction: column;
+      gap: 0.05in;
+    }
+
+    .mav-row {
+      display: flex;
+      align-items: center;
+      gap: 0.09in;
+      background: #faf7ff;
+      border-left: 3px solid var(--accent-gold);
+      padding: 0.08in 0.09in;
+      min-height: 0.62in;
+      width: 92%;
+      margin: 0 auto;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .mav-row-icon {
+      font-size: 23pt;
+      min-width: 0.38in;
+      text-align: center;
+    }
+
+    .mav-row-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.02in;
+    }
+
+    .mav-row-title {
+      font-size: 18pt;
+      font-weight: 700;
+      color: var(--primary-purple);
+      line-height: 1.2;
+    }
+
+    .mav-row-desc {
+      font-size: 16pt;
+      color: #444;
+      line-height: 1.28;
+    }
+
+    .mav-down-arrow {
+      text-align: center;
+      font-size: 19pt;
+      color: var(--accent-gold);
+      margin: 0.02in 0;
+    }
+
+    /* Enriched MavAccess Detailed Structure */
+    .mavaccess-detailed {
+      display: flex;
+      flex-direction: column;
+      gap: 0.04in;
+    }
+
+    .mavaccess-step {
+      background: #faf7ff;
+      border-left: 3px solid var(--accent-gold);
+      padding: 0.06in 0.1in;
+      min-height: 0.7in;
+      width: 92%;
+      margin: 0 auto;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 0.09in;
+      margin-bottom: 0.03in;
+    }
+
+    .step-icon {
+      font-size: 22pt;
+      min-width: 0.38in;
+      text-align: center;
+    }
+
+    .step-title {
+      font-size: 15pt;
+      font-weight: 700;
+      color: var(--primary-purple);
+      line-height: 1.2;
+    }
+
+    .step-desc {
+      font-size: 14pt;
+      color: #333;
+      line-height: 1.2;
+      text-align: justify;
+    }
+
+    .mavaccess-arrow {
+      text-align: center;
+      font-size: 17pt;
+      color: var(--accent-gold);
+      margin: 0.01in 0;
+    }
+
+    .mavaccess-slogans {
+      margin-top: 0.04in;
+      padding-top: 0.05in;
+      border-top: 1px solid var(--accent-gold);
+    }
+
+    .slogan-line {
+      font-size: 12pt;
+      color: #5E2A84;
+      font-style: italic;
+      text-align: center;
+      line-height: 1.2;
+      margin-bottom: 0.02in;
+    }
+
+    .slogan-main {
+      font-size: 12pt;
+      color: var(--primary-purple);
+      font-weight: 600;
+      text-align: center;
+      line-height: 1.3;
+    }
+
     .poster-footer {
       min-height: 1.08in;
       display: grid;
-      grid-template-columns: 1.35fr 0.75fr 1.65fr;
+      grid-template-columns: 1fr 1fr 1fr;
       align-items: center;
-      gap: 0.18in;
-      padding: 0.04in 0.24in;
+      justify-items: center;
+      gap: 0.12in;
+      padding: 0.08in 0.3in;
       background: var(--primary-purple);
       color: #ffffff;
       border-top: 4pt solid var(--border-lilac);
@@ -640,8 +1074,8 @@
     }
 
     .qr-box {
-      width: 1.05in;
-      height: 1.05in;
+      width: 2.2in;
+      height: 2.2in;
       border: 3pt solid var(--border-lilac);
       border-radius: 0.08in;
       font-size: 14pt;
@@ -654,6 +1088,63 @@
       text-align: center;
       font-weight: 800;
       margin: 0 auto;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .qr-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .github-strip {
+      display: contents;
+    }
+
+    .g-left,
+    .g-right {
+      display: flex;
+      flex-direction: column;
+      gap: 0.08in;
+    }
+
+    .g-title {
+      margin: 0;
+      font-size: 26pt;
+      line-height: 1.06;
+      color: var(--accent-gold);
+      font-weight: 800;
+    }
+
+    .g-sub {
+      margin: 0;
+      font-size: 20pt;
+      line-height: 1.18;
+      color: rgba(255, 255, 255, 0.96);
+    }
+
+    .g-link {
+      margin: 0;
+      font-size: 19pt;
+      line-height: 1.18;
+      color: rgba(255, 255, 255, 0.96);
+      overflow-wrap: anywhere;
+      font-weight: 600;
+    }
+
+    .g-scan {
+      margin: 0;
+      font-size: 18pt;
+      line-height: 1.16;
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .g-copy {
+      margin: 0;
+      font-size: 18pt;
+      line-height: 1.16;
+      color: rgba(255, 255, 255, 0.8);
     }
 
     @media print {
@@ -701,7 +1192,7 @@
       <section class="poster-content">
         <div class="poster-column wide">
         <article class="content-container span-two">
-          <h2 class="subtitle" data-imt-p="1">Integrated Visual Overview</h2>
+          <h2 class="subtitle" data-imt-p="1">Problem Statement &amp; Project Objectives</h2>
           <div class="overview-diagram">
               <svg width="1200" height="796" viewBox="18 9 1164 796" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:0; padding-bottom:0;">
               <defs>
@@ -797,7 +1288,7 @@
         </article>
 
           <article class="content-container tall conceptual-framing">
-            <h2 class="subtitle">Conceptual Framing</h2>
+            <h2 class="subtitle">Theoretical Foundations</h2>
             <div class="theory-grid">
                 <section class="theory-section theory-section-relaxed" style="margin-top:0; padding-top:0;">
                 <h4 class="theory-section-title" data-eusoft-scrollable-element="1">I. Secondary Economy &amp; Asset Activation</h4>
@@ -865,7 +1356,7 @@
           </article>
 
           <article class="content-container tight image-only-panel">
-            <img class="panel-image" src="show/zhuye.png" alt="MavSide home screen" />
+            <img class="panel-image" src="show/homepage.png" alt="MavSide home screen" />
           </article>
 
         </div>
@@ -929,7 +1420,7 @@
 
         <article class="content-container algorithm-panel">
           <section class="flow-box">
-            <h4 class="section-heading">II. Matching Decision Logic</h4>
+            <h4 class="section-heading">Algorithm Core</h4>
             <p class="small-note"><strong>Flowchart: Three-Stage Constraint Screening</strong></p>
             <div class="flowchart" role="img" aria-label="MavSide Match-Route Decision Process">
               <svg viewBox="0 0 1200 860" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
@@ -938,31 +1429,31 @@
                   <marker id="arrow-pass" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#2f7a46"></path></marker>
                   <marker id="arrow-fail" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0,0 L12,6 L0,12 z" fill="#b23b3b"></path></marker>
                 </defs>
-                <rect x="325" y="20" width="550" height="78" rx="12" fill="#ffffff" stroke="#303030" stroke-width="2.2"></rect>
-                <text x="600" y="56" font-size="24" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="#161616" font-weight="700">START : Bringer activates Match-Route mode</text>
-                <text x="600" y="84" font-size="18" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="#3a3a3a">Input path: Origin A -> Destination B</text>
+                <rect x="295" y="20" width="610" height="78" rx="12" fill="#ffffff" stroke="#303030" stroke-width="2.2"></rect>
+                <text x="600" y="56" font-size="27" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="#161616" font-weight="700">START : Bringer activates Match-Route mode</text>
+                <text x="600" y="84" font-size="21" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="#3a3a3a">Input path: Origin A -> Destination B</text>
                 <line x1="600" y1="98" x2="600" y2="156" stroke="#2f2f2f" stroke-width="2.8" marker-end="url(#arrow-main)"></line>
                 <rect x="210" y="160" width="780" height="120" rx="14" fill="#fff8ec" stroke="#d4af37" stroke-width="2.2"></rect>
-                <text x="600" y="205" font-size="24" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="#4a2a66" font-weight="700">Step 1 · Spatial Constraint (Deviation)</text>
-                <text x="600" y="238" font-size="20" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="#2b2b2b">Use Model 1, accept only when <tspan font-style="italic">Δ</tspan> ≤ 0.15</text>
+                <text x="600" y="205" font-size="27" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="#4a2a66" font-weight="700">Step 1 · Spatial Constraint (Deviation)</text>
+                <text x="600" y="238" font-size="23" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="#2b2b2b">Use Model 1, accept only when <tspan font-style="italic">Δ</tspan> ≤ 0.15</text>
                 <line x1="600" y1="282" x2="600" y2="340" stroke="#2f7a46" stroke-width="2.8" marker-end="url(#arrow-pass)"></line>
-                <text x="624" y="316" font-size="16" font-family="Arial, Helvetica, sans-serif" text-anchor="start" fill="#2f7a46" font-weight="700">pass</text>
+                <text x="624" y="316" font-size="18" font-family="Arial, Helvetica, sans-serif" text-anchor="start" fill="#2f7a46" font-weight="700">pass</text>
                 <line x1="990" y1="220" x2="1090" y2="220" stroke="#c84f4f" stroke-width="2.8" marker-end="url(#arrow-fail)"></line>
-                <text x="1102" y="225" font-size="16" font-family="Arial, Helvetica, sans-serif" text-anchor="start" fill="#b23b3b" font-weight="700">Filter Out</text>
+                <text x="1102" y="225" font-size="18" font-family="Arial, Helvetica, sans-serif" text-anchor="start" fill="#b23b3b" font-weight="700">Filter Out</text>
                 <rect x="210" y="346" width="780" height="120" rx="14" fill="#eef8ff" stroke="#2a85c4" stroke-width="2.2"></rect>
-                <text x="600" y="391" font-size="24" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="#124b6b" font-weight="700">Step 2 · Temporal Constraint (ETA)</text>
-                <text x="600" y="424" font-size="20" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="#2b2b2b">Use Model 2, accept only when <tspan font-style="italic">T</tspan><tspan baseline-shift="sub" font-size="70%">extra</tspan> ≤ <tspan font-style="italic">T</tspan><tspan baseline-shift="sub" font-size="70%">tolerance</tspan></text>
+                <text x="600" y="391" font-size="27" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="#124b6b" font-weight="700">Step 2 · Temporal Constraint (ETA)</text>
+                <text x="600" y="424" font-size="23" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="#2b2b2b">Use Model 2, accept only when <tspan font-style="italic">T</tspan><tspan baseline-shift="sub" font-size="70%">extra</tspan> ≤ <tspan font-style="italic">T</tspan><tspan baseline-shift="sub" font-size="70%">tolerance</tspan></text>
                 <line x1="600" y1="468" x2="600" y2="528" stroke="#2f7a46" stroke-width="2.8" marker-end="url(#arrow-pass)"></line>
-                <text x="624" y="502" font-size="16" font-family="Arial, Helvetica, sans-serif" text-anchor="start" fill="#2f7a46" font-weight="700">pass</text>
+                <text x="624" y="502" font-size="18" font-family="Arial, Helvetica, sans-serif" text-anchor="start" fill="#2f7a46" font-weight="700">pass</text>
                 <line x1="990" y1="406" x2="1090" y2="406" stroke="#c84f4f" stroke-width="2.8" marker-end="url(#arrow-fail)"></line>
-                <text x="1102" y="411" font-size="16" font-family="Arial, Helvetica, sans-serif" text-anchor="start" fill="#b23b3b" font-weight="700">Filter Out</text>
+                <text x="1102" y="411" font-size="18" font-family="Arial, Helvetica, sans-serif" text-anchor="start" fill="#b23b3b" font-weight="700">Filter Out</text>
                 <rect x="210" y="534" width="780" height="132" rx="14" fill="#f4fff2" stroke="#6aa84f" stroke-width="2.2"></rect>
-                <text x="600" y="580" font-size="24" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="#2f5a2f" font-weight="700">Step 3 · Context-Aware Reweighting</text>
-                <text x="600" y="613" font-size="20" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="#2b2b2b">Severe weather: increase outdoor cost and favor indoor edges</text>
-                <text x="600" y="640" font-size="20" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="#2b2b2b">Recompute Model 1 and Model 2 before dispatch</text>
+                <text x="600" y="580" font-size="27" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="#2f5a2f" font-weight="700">Step 3 · Context-Aware Reweighting</text>
+                <text x="600" y="613" font-size="23" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="#2b2b2b">Severe weather: increase outdoor cost and favor indoor edges</text>
+                <text x="600" y="640" font-size="23" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="#2b2b2b">Recompute Model 1 and Model 2 before dispatch</text>
                 <line x1="600" y1="668" x2="600" y2="732" stroke="#2f2f2f" stroke-width="2.8" marker-end="url(#arrow-main)"></line>
                 <rect x="330" y="738" width="540" height="84" rx="12" fill="#fff8ef" stroke="#333333" stroke-width="2.2"></rect>
-                <text x="600" y="788" font-size="24" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="#121212" font-weight="700">ACTION: Push task to verified bringer</text>
+                <text x="600" y="788" font-size="27" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" fill="#121212" font-weight="700">ACTION: Push task to verified bringer</text>
               </svg>
             </div>
 
@@ -984,12 +1475,169 @@
             <img class="panel-image" src="show/TaskTracking.png" alt="Task tracking screen" />
           </article>
 
-          <article class="content-container tight">
-            <h2 class="subtitle">Takeaway Capsule</h2>
-            <p>
-              Condense final insights into 3-5 high-impact points that can be read
-              quickly by passing attendees.
-            </p>
+          <article class="conk-panel">
+            <section class="flow-box">
+              <h3 class="subtitle">System Architecture &amp; Evolutionary Roadmap</h3>
+
+              <h4 class="section-heading">Current Baseline</h4>
+              <ul class="stack-baseline-list" aria-label="Current baseline summary">
+                <li>Fully functional frontend prototype · Static JSON · mnsu.edu authentication</li>
+                <li>Task posting and claiming · Merchant pre-order · Order tracking</li>
+                <li>MavPoints simulation · MavAccess status display</li>
+                <li>ARIA accessibility annotations · Component-based architecture</li>
+              </ul>
+
+              <h4 class="section-heading" style="margin-top:0.12in;">Target Architecture</h4>
+              <div class="stack-architecture" role="img" aria-label="Target architecture with rationale">
+                <section class="stack-layer stack-front">
+                  <h5>Frontend Layer - <strong>Vue 3</strong></h5>
+                  <p class="stack-note">Component-driven iteration and reactive data flow for real-time task streaming.</p>
+                </section>
+
+                <div class="stack-arrow">↓</div>
+
+                <section class="stack-layer stack-service">
+                  <h5>Service Layer - <strong>Node.js + Express</strong></h5>
+                  <p>Path computation · <strong>BullMQ</strong> task decoupling · <strong>WebSocket</strong> real-time push</p>
+                  <p class="stack-note">Shared JavaScript stack lowers maintenance; async I/O supports high concurrency.</p>
+                </section>
+
+                <svg class="stack-split-arrows" viewBox="0 0 1000 150" style="width: 100%; height: 0.28in;">
+                  <defs>
+                    <marker id="arrowhead-split" markerWidth="15" markerHeight="15" refX="12" refY="7.5" orient="auto">
+                      <polygon points="0 0, 15 7.5, 0 15" fill="#5e2a84" />
+                    </marker>
+                  </defs>
+                  <!-- Left diagonal arrow -->
+                  <line x1="500" y1="10" x2="150" y2="140" stroke="#5e2a84" stroke-width="4" marker-end="url(#arrowhead-split)" />
+                  <!-- Right diagonal arrow -->
+                  <line x1="500" y1="10" x2="850" y2="140" stroke="#5e2a84" stroke-width="4" marker-end="url(#arrowhead-split)" />
+                </svg>
+
+                <div class="stack-data-grid">
+                  <section class="stack-layer stack-data">
+                    <h5>Data Layer</h5>
+                    <p><strong>PostgreSQL</strong> + <strong>PostGIS</strong></p>
+                    <p class="stack-note">R-tree spatial indexing accelerates deviation queries; ACID keeps transactions consistent.</p>
+                  </section>
+                  <section class="stack-layer stack-data">
+                    <h5>Data Layer</h5>
+                    <p><strong>Redis</strong></p>
+                    <p class="stack-note">In-memory cache for Bringer locations and real-time task pool; BullMQ backend.</p>
+                  </section>
+                </div>
+
+                <div class="stack-arrow">↓</div>
+
+                <section class="stack-layer stack-external">
+                  <h5>External Integration</h5>
+                  <p>Self-hosted Campus Routing · <strong>Weather API</strong> · <strong>Campus SSO (OAuth2)</strong></p>
+                  <p class="stack-note">Custom indoor weighting, weather-aware switching, and one-click identity verification.</p>
+                </section>
+              </div>
+            </section>
+          </article>
+
+          <article class="content-container stack-panel logic-derivation-panel">
+            <section class="flow-box">
+              <h3 class="subtitle">MavSide Logic Derivation</h3>
+              <p class="logic-derivation-title">Spare Capacity - Inclusive Value</p>
+
+              <div class="logic-derivation-map" role="img" aria-label="MavSide logic derivation from spare capacity to inclusive value">
+                <section class="logic-node">
+                  <h5>Layer 1: Spare Capacity</h5>
+                  <p>Paid-for but never dispatched pedestrian displacement -&gt; micro-perturbation reuse (Delta &lt;= 15%).</p>
+                </section>
+
+                <div class="logic-drop">↓</div>
+
+                <div class="logic-tier">
+                  <div class="logic-side-note left">Activate idle<br />capacity</div>
+                  <section class="logic-node">
+                    <h5>Layer 2: Secondary Economy</h5>
+                    <p>Opportunistic crowdsourcing based on existing primary trips -&gt; near-zero marginal cost and flexible micro-income.</p>
+                  </section>
+                  <div class="logic-side-note right">Opportunistic<br />crowdsourcing</div>
+                </div>
+
+                <div class="logic-drop">↓</div>
+
+                <section class="logic-node">
+                  <h5>Layer 3: Circular Economy</h5>
+                  <p>Capacity stays on campus, capital circulates internally -&gt; merchant pre-orders activate otherwise lost transactions.</p>
+                </section>
+
+                <div class="logic-drop">↓</div>
+
+                <div class="logic-tier">
+                  <div class="logic-side-note left">Capital loop<br />feeds back</div>
+                  <section class="logic-node">
+                    <h5>Layer 4: Cross-Subsidization</h5>
+                    <p>20% of commercial commission injected into MavPoints pool -&gt; commercial activity fuels community inclusion.</p>
+                  </section>
+                  <div class="logic-side-note right">Capacity loop<br />sustains</div>
+                </div>
+
+                <div class="logic-drop">↓</div>
+
+                <section class="logic-core">
+                  <h5>Core Proposition</h5>
+                  <p>Unlocking the hidden value of existing campus trajectories - building a self-sustaining, inclusive campus network.</p>
+                </section>
+              </div>
+            </section>
+          </article>
+
+          <article class="content-container stack-panel">
+            <section class="flow-box">
+              <h3 class="subtitle">MavAccess: Inclusive Access</h3>
+
+                            <div class="mavaccess-detailed">
+                <div class="mavaccess-step">
+                  <div class="step-header">
+                    <span class="step-icon">🪪</span>
+                    <span class="step-title">Identity Verification</span>
+                  </div>
+                  <div class="step-desc">Verified via mnsu.edu email and Student Affairs whitelist records. Once certified, the account automatically receives 30 MavPoints monthly.</div>
+                </div>
+
+                <div class="mavaccess-arrow">↓</div>
+
+                <div class="mavaccess-step">
+                  <div class="step-header">
+                    <span class="step-icon">🖥️</span>
+                    <span class="step-title">ARIA Accessility Annotations</span>
+                  </div>
+                  <div class="step-desc">The interface adopts ARIA technical standards throughout, ensuring students using assistive technologies can navigate all operations seamlessly.</div>
+                </div>
+
+                <div class="mavaccess-arrow">↓</div>
+
+                <div class="mavaccess-step">
+                  <div class="step-header">
+                    <span class="step-icon">💸</span>
+                    <span class="step-title">MavPoints Shipping Fee Waiver</span>
+                  </div>
+                  <div class="step-desc">When MavAccess status is recognized, shipping fees are automatically deducted from the MavPoints balance. The payment page displays "Campus Access Subsidy" rather than a shipping charge.</div>
+                </div>
+
+                <div class="mavaccess-arrow">↓</div>
+
+                <div class="mavaccess-step">
+                  <div class="step-header">
+                    <span class="step-icon">🎓</span>
+                    <span class="step-title">Bringer Incentives &amp; Campus Economic Loop</span>
+                  </div>
+                  <div class="step-desc">MavPoints earned by Bringers can be redeemed for: official volunteer service certificates and discount coupons from campus partner merchants. Coupon redemptions flow back to merchants, sustaining a self-circulating campus economy.</div>
+                </div>
+              </div>
+
+              <div class="mavaccess-slogans">
+                <div class="slogan-line">"Paths cross. Things arrive. Campus, closer."</div>
+                <div class="slogan-line">"Unlocking the hidden value of every Maverick's trip."</div>
+                <div class="slogan-main">MavSide - One campus, one stride.</div>
+              </div>
+            </section>
           </article>
 
         </div>
@@ -999,17 +1647,21 @@
     </main>
 
     <footer class="poster-footer">
-      <div>
-        <p class="footer-title" data-eusoft-scrollable-element="1">Project Access</p>
-        <p class="footer-copy">MavSide: A Peer-to-Peer Logistics Solution</p>
-      </div>
-      <div class="qr-box">QR<br>CODE</div>
-      <div>
-        <p class="footer-link"><strong>Link:</strong> https://github.com/Yajing5027/MavSide.git</p>
-        <p class="footer-link" style="margin-top: 0.06in;"><strong>Action:</strong> Scan to see the logic of "Mavericks Helping Mavericks".</p>
-        <p class="footer-link" style="margin-top: 0.06in; opacity: 0.9;">© 2026 · Minnesota State University, Mankato · yajing.ren@mnsu.edu</p>
-      </div>
+      <section class="github-strip">
+        <div class="g-left">
+          <div class="g-title" data-eusoft-scrollable-element="1">Prototype Access</div>
+          <div class="g-sub">MavSide · Minnesota State University, Mankato</div>
+        </div>
+        <div class="qr-box"><img src="../assets/images/qrcode_yajing5027.github.io.png" alt="QR code to MavSide prototype" /></div>
+        <div class="g-right">
+          <div class="g-link">https://yajing5027.github.io/MavSide/</div>
+          <div class="g-scan">Scan to view prototype</div>
+          <div class="g-copy">© 2026 · yajing.ren@mnsu.edu</div>
+        </div>
+      </section>
     </footer>
   </div>
 </body>
 </html>
+
+
