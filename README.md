@@ -1,70 +1,50 @@
-﻿# MavSide: A Campus Micro-Logistics Network
+﻿# MavSide: Campus Micro-Logistics Network
 
 This project was selected for presentation at the CADSCOM 2026 Student Showcase, organized by the Twin Cities ACM Chapter.
 
-MavSide is an innovative campus micro-logistics solution designed to bridge the spatiotemporal gap in student needs by leveraging **incidental foot traffic** and **spare capacity**. By transforming routine campus trajectories into a dispatchable logistics network, MavSide creates a self-sustaining, circular economy that prioritizes flexibility and inclusive access.
+Overview
+
+MavSide is a prototype micro‑logistics system designed for campus environments. It efficiently matches routine pedestrian trajectories with on‑demand task requests, lowers barriers to service access, improves on‑campus resource circulation, and—through inclusive design—ensures accessibility and dignity for disadvantaged users.
 
 ---
 
-## 🚀 Live Prototype
-**Experience the project here:** [https://yajing5027.github.io/MavSide/](https://yajing5027.github.io/MavSide/)
+## Live Demo
+
+Prototype (GitHub Pages): https://yajing5027.github.io/MavSide/
 
 ---
 
-## 💡 The Core Vision
-The  MavSide concept addresses three primary campus challenges:
-- **Spatiotemporal Mismatch**: Connecting people who need assistance with those already walking the same route.
-- **Secondary Economy**: Capturing the residual value of existing travel costs (steps already being taken).
-- **Inclusive Growth**: Providing zero-threshold flexible income for students and subsidized access for students with disabilities (MavAccess).
+## Project Overview
 
-## 🧠 Scheduling Framework (Technical)
-The matching logic is built on a spatiotemporal constrained scheduling framework, ensuring that tasks only reach "bringers" who can fulfill them with minimal deviation.
+MavSide combines lightweight path matching with context‑aware routing to support short‑distance pickups, deliveries, and errands on campus in a safe, verifiable, and scalable way. Core objectives include:
 
-### I. Spatial Feasibility (Path Deviation)
-We use a deviation ratio (Δ) to ensure the task fits within the bringer's space-time prism:
+- Converting existing pedestrian trips into dispatchable capacity, increasing the value of routine travel.
+- Enabling inclusive income and service subsidies with minimal participation barriers.
+- Improving matching timeliness and accuracy while preserving user privacy and minimizing intrusiveness.
 
-<p align="center">
-<img src="https://latex.codecogs.com/svg.latex?%5CDelta%20%3D%20%5Cfrac%7B%5Coperatorname%7BDist%7D%28A%2CP%29%2B%5Coperatorname%7BDist%7D%28P%2CD%29%2B%5Coperatorname%7BDist%7D%28D%2CB%29%2D%5Coperatorname%7BDist%7D%28A%2CB%29%7D%7B%5Coperatorname%7BDist%7D%28A%2CB%29%7D" alt="\\Delta = (Dist(A,P)+...-Dist(A,B))/Dist(A,B)"/>
-</p>
+## Key Value Propositions
 
-*Constraint: Δ ≤ 0.15* (Maximum 15% path deviation).
+- Spatiotemporal matching: identify and leverage pedestrians whose routes highly overlap with tasks, minimizing deviation.
+- Inclusive subsidies: support no‑threshold participation and targeted assistance via internal points and subsidy mechanisms.
+- Context awareness: adapt routing preferences based on environment and weather to improve accessibility and user experience.
+- Scalability: modular architecture facilitates integration with campus SSO, merchant booking, and mapping services.
 
-### II. Temporal Modeling (Dynamic ETA)
-The system estimates the extra time (T_{extra}) required, accounting for both detour distance and pickup latency (P_{density}):
+## Core Features
 
-<p align="center">
-<img src="https://latex.codecogs.com/svg.latex?T_%7Bextra%7D%20%3D%20%5Cfrac%7B%5Coperatorname%7BDistance%7D%7D%7B%5Coperatorname%7BSpeed%7D%7D%20%2B%20P_%7Bdensity%7D" alt="T_{extra} = Distance/Speed + P_density"/>
-</p>
+- Task posting & workflow: structured task descriptions, delivery windows, and optional merchant booking integration.
+- Path feasibility screening: evaluate candidate couriers for spatial deviation and temporal tolerance to ensure reasonable task assignments.
+- Real‑time matching & notifications: low‑latency channels for task dispatch and confirmations to maintain delivery flow.
+- Context‑aware routing: incorporate indoor/outdoor, weather, and access constraints into routing weights.
+- Points & subsidy mechanism: allocate a portion of revenue from commercial partners to a MavPoints pool to support subsidized services for disadvantaged users.
+- Accessibility & privacy: interfaces follow accessibility standards and apply data‑minimization to protect user privacy.
 
-*Constraint: T_{extra} ≤ T_{tolerance}*
+## Technical Architecture Plan
 
-### III. Context-Aware Routing
-The routing algorithm utilizes a multi-layer weighted graph that adapts to Minnesota's extreme weather by adjusting weights for indoor vs. outdoor edges:
+The system uses a layered modular design:
 
-<p align="center">
-<img src="https://latex.codecogs.com/svg.latex?w%28e%29%3Dw_0%28e%29%5Ccdot%5Cgamma%28e%2C%5Cmathrm%7Bweather%7D%29" alt="w(e)=w0(e)*gamma(e,weather)"/>
-</p>
-
-- **Severe Weather**: Outdoor weight (γ) = 1.5 | Indoor weight (γ) = 0.8
-- **Normal Weather**: All weights = 1.0
-
-## 🛠️ System Architecture
-- **Frontend Layer**: A responsive prototype utilizing ARIA accessibility standards and component-based design.
-- **Service Layer (Target)**: Node.js + Express for path computation and real-time task streaming via WebSockets.
-- **Data Layer**: PostGIS for spatial indexing and Redis for high-frequency location caching.
-
-## 🤝 MavAccess: De-stigmatized Inclusion
-MavSide is built with accessibility as a core tenant, not an afterthought:
-1. **Identity Integration**: Verified status links to Student Affairs records for automated eligibility.
-2. **Cross-Subsidization**: 20% of commercial commissions are redirected into a **MavPoints pool**.
-3. **Fee Waivers**: Students with disabilities use MavPoints for shipping, appearing as a \Campus Access Subsidy\ to maintain dignity and privacy.
-
----
-
-## 📂 Project Structure
-- index.html, dashboard.html, delivery.html, dd.html — core user views.
-- style/theme.css — centralized design tokens and branding.
-- ssets/js/ — frontend logic (routing, task matching, state management).
-- poster/ — academic assets for the CADSCOM showcase.
+- Frontend: responsive, component‑based implementation following accessibility standards for diverse contexts.
+- Service layer: horizontally scalable services for task matching, path computation, and scheduling; supports real‑time messaging.
+- Data layer: spatial indexing and time‑series caching components to accelerate deviation calculations and location updates.
+- Integration points: interfaces for campus identity systems, third‑party mapping services, and merchant systems.
 
 ---
